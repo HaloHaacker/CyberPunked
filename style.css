@@ -138,3 +138,8 @@ blockquote::after {
     font-weight: bold;
     font-size: 1.1em; /* Adjust size as needed */
 }
+
+/* check to see if it works with name.html later*/
+.right-column .column-title {
+    font-weight: bold;
+}
