@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Role - Cyberpunk RED</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #222;
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .role-container {
+            margin: 10px 0;
+        }
+        .role-container label {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .role-container select {
+            margin-top: 5px;
+            padding: 5px;
+            background-color: #333;
+            border: 1px solid #555;
+            color: white;
+            width: 300px;
+        }
+        .role-container p {
+            font-size: 14px;
+            color: #aaa;
+        }
+        footer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select Your Role in Cyberpunk RED</h1>
+        
+        <!-- Role Selection List -->
+        <div class="role-container">
+            <label for="role">Choose your role:</label>
+            <select id="role" name="role">
+                <option value="">-- Select a Role --</option>
+                <option value="streetkid">Streetkid</option>
+                <option value="nomad">Nomad</option>
+                <option value="corporate">Corporate</option>
+                <option value="solo">Solo</option>
+                <option value="fixer">Fixer</option>
+                <option value="medtech">Medtech</option>
+                <option value="netrunner">Netrunner</option>
+                <option value="tech">Tech</option>
+                <option value="lawman">Lawman</option>
+                <option value="rockerboy">Rockerboy</option>
+            </select>
+            <p>Choose one role from the list above. Each role comes with unique abilities and responsibilities.</p>
+        </div>
+
+        <!-- Role Descriptions with Dropdowns -->
+        <div id="role-description">
+            <div class="role-container" id="streetkid-desc">
+                <label for="streetkid">Streetkid: </label>
+                <select id="streetkid" disabled>
+                    <option value="short">Short Description</option>
+                    <option value="long">Long Description</option>
+                </select>
+                <p>If you choose the Streetkid role, you'll be familiar with life on the streets. Your resourcefulness and street knowledge will help you survive.</p>
+            </div>
+            
+            <div class="role-container" id="nomad-desc">
+                <label for="nomad">Nomad: </label>
+                <select id="nomad" disabled>
+                    <option value="short">Short Description</option>
+                    <option value="long">Long Description</option>
+                </select>
+                <p>Nomads are survivors, roaming the roads of the Badlands. They value freedom and family, often forming close-knit communities.</p>
+            </div>
+            
+            <div class="role-container" id="corporate-desc">
+                <label for="corporate">Corporate: </label>
+                <select id="corporate" disabled>
+                    <option value="short">Short Description</option>
+                    <option value="long">Long Description</option>
+                </select>
+                <p>Corporates are high-powered execs who navigate the complex world of business, wielding influence and power in a cutthroat environment.</p>
+            </div>
+            
+            <!-- Add more roles similarly -->
+        </div>
+
+        <!-- Footer with a submit button -->
+        <footer>
+            <button id="submitBtn">Submit</button>
+        </footer>
+    </div>
+
+    <script>
+        // Enable dropdown only when a role is selected
+        const roleSelect = document.getElementById('role');
+        roleSelect.addEventListener('change', function() {
+            const selectedRole = roleSelect.value;
+            const allRoles = ['streetkid', 'nomad', 'corporate', 'solo', 'fixer', 'medtech', 'netrunner', 'tech', 'lawman', 'rockerboy'];
+
+            // Disable all dropdowns initially
+            allRoles.forEach(role => {
+                const roleDesc = document.getElementById(`${role}-desc`);
+                const dropdown = roleDesc.querySelector('select');
+                dropdown.disabled = true;
+            });
+
+            // Enable the selected role's dropdown
+            if (selectedRole) {
+                const selectedRoleDesc = document.getElementById(`${selectedRole}-desc`);
+                const dropdown = selectedRoleDesc.querySelector('select');
+                dropdown.disabled = false;
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const selectedRole = roleSelect.value;
+
+            if (!selectedRole) {
+                alert('Please select a role!');
+                return;
+            }
+
+            // Store the selected role in localStorage (or handle as needed)
+            localStorage.setItem('selectedRole', selectedRole);
+
+            // Optionally, navigate to a different page
+            window.location.href = 'role-details.html'; // Redirect to another page with more role details
+        });
+    </script>
+</body>
+</html>

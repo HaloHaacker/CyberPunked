@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    height: 100vh; /* Full screen height */
+}
+
+.left-column, .right-column {
+    width: 900px; /* Fixed width */
+    padding: 20px;
+    background-color: #7a0000; /* Dark red */
+    color: white;
+}
+
+.spacer-column {
+    flex-grow: 1; /* Automatically expand to fill the available space */
+    padding: 20px;
+    background-color: #1e1e1e; /* Dark gray */
+    color: white;
+}
+
+.column-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.input-box input {
+    width: 95%; /* Ensure the input spans the full width of the container */
+    padding: 15px; /* Increase padding for a larger height */
+    margin-top: 10px;
+    font-size: 16px; /* Increase font size */
+    border: 1px solid #7a0000;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.input-box input:focus {
+    outline: none;
+    border-color: #ffd000; /* Highlight color for focus */
+}
+
+.input-box textarea {
+    min-height: 25px; /* Minimum height for the textarea */
+    max-width: 99%;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

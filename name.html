@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <div class="column-title">Who are you?</div>
+            <p></p>
+
+            <div class="input-box">
+                <p>IB-2-01 // FULL NAME, THE ONE ON YOUR LICENSES NOT THE ONE YOU GOT ON THE STREETS</p>
+                <input type="text" placeholder="NAME..." id="fullName">
+            </div>
+            <div class="input-box">
+                <p>IB-2-02 // YOUR HANDLE WHAT EVERYONE KNOWS YOU AS AND THE NAME YOU GOT ON THE STREETS</p>
+                <input type="text" placeholder="HANDLE..." id="handle">
+            </div>
+            <div class="input-box">
+                <p>IB-2-03 // ATTACHED BIOGRAPHICAL DOSSIER </p>
+                <textarea placeholder="BIOGRAPHY..." id="biography"></textarea>
+            </div>
+            <div class="input-box">
+                <p>IB-2-04 // ATTACHED RIPPERDOC HEALTH EXAMINATION RESULTS</p>
+                <textarea placeholder="DESCRIPTION..." id="description"></textarea>
+            </div>
+        </div>
+
+        <div class="spacer-column">
+            <div class="column-title">What do you look like?</div>
+            <p>This is the middle spacer column. It automatically expands to fill the remaining space between the left and right columns.</p>
+
+            <!-- Image upload moved here in the middle column -->
+            <div class="input-box">
+                <p>Upload an image:</p>
+                <input type="file" accept="image/*" id="imageInput">
+                <img id="imagePreview" src="" alt="Image preview" style="display: none; margin-top: 10px; max-width: 100%;">
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="column-title">How do you want to do this?</div>
+            <p>In Cyberpunk RED, there are three ways to generate your Character. Streetrat
+                (Templates), Edgerunners (Fast and Dirty), and The Complete Package
+                (Calculated). Each has its own advantages and disadvantages.</p>
+
+            <h2>Streetrat (Templates):</h2>
+            <p>If you've never roleplayed before or just want to get going
+                without a lot of fuss, Templates are the fastest way to start creating a Character. But
+                don't underestimate Templates! In the hands of an experienced roleplayer, even a template can be modified to make a unique and fully fleshed-out Character by expanding
+                on the basics. By adding as you play, the Template gathers more individuality to itself,
+                getting better and better the more you play.</p>
+
+            <h2>Edgerunner (Fast and Dirty):</h2>
+            <p>As you'll soon realize, the Cyberpunk RED
+                Character Generation system is designed to give you a lot of flexibility. You can tailor
+                the Character the way you want it, with lots of personal touches all through the process.
+                But when you need to create a Character quickly and without a lot of painstaking
+                detail, the Fast and Dirty method is an excellent option.</p>
+
+            <h2>The Complete Package (Calculated):</h2>
+            <p>The Calculated method is by far the most
+                complex way to make a Cyberpunk RED Character. Yet the reward is the ability to
+                create a Character that is exactly what you want, using pools of points to buy Statistics
+                and Skills and starting money to buy weapons, armor, gear, and cyberware.</p>
+
+            <form>
+                <input type="radio" id="street" name="way_to_choose_stats" value="Streetrat">
+                <label for="street">Streetrat</label><br>
+                <input type="radio" id="edge" name="way_to_choose_stats" value="Edgerunners">
+                <label for="edge">Edgerunner</label><br>
+                <input type="radio" id="cmplt" name="way_to_choose_stats" value="The Complete Package">
+                <label for="cmplt">The Complete Package</label>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer with submission button -->
+    <footer>
+        <button id="submitBtn">Submit</button>
+    </footer>
+
+    <script>
+        // Function to load saved data from localStorage
+        function loadData() {
+            // Load saved text input values
+            document.getElementById('fullName').value = localStorage.getItem('fullName') || '';
+            document.getElementById('handle').value = localStorage.getItem('handle') || '';
+            document.getElementById('biography').value = localStorage.getItem('biography') || '';
+            document.getElementById('description').value = localStorage.getItem('description') || '';
+    
+            // Load saved radio button selection
+            const savedChoice = localStorage.getItem('way_to_choose_stats');
+            if (savedChoice) {
+                document.querySelector(`input[name="way_to_choose_stats"][value="${savedChoice}"]`).checked = true;
+            }
+    
+            // Load saved image data if available
+            const savedImage = localStorage.getItem('image');
+            if (savedImage) {
+                document.getElementById('imagePreview').src = savedImage;
+                document.getElementById('imagePreview').style.display = 'block';
+            }
+        }
+    
+        // Save data to localStorage when the submit button is clicked
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const fullName = document.getElementById('fullName').value;
+            const handle = document.getElementById('handle').value;
+            const biography = document.getElementById('biography').value;
+            const description = document.getElementById('description').value;
+    
+            // Store form data in localStorage
+            localStorage.setItem('fullName', fullName);
+            localStorage.setItem('handle', handle);
+            localStorage.setItem('biography', biography);
+            localStorage.setItem('description', description);
+    
+            // Save selected radio button value
+            const selectedRadio = document.querySelector('input[name="way_to_choose_stats"]:checked');
+            if (selectedRadio) {
+                localStorage.setItem('way_to_choose_stats', selectedRadio.value);
+            }
+    
+            // Get image data (if any)
+            const imageInput = document.getElementById('imageInput');
+            if (imageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    localStorage.setItem('image', event.target.result); // Store image as a data URL
+                    window.location.href = 'role.html'; // Redirect to role.html after saving
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            } else {
+                window.location.href = 'role.html'; // Redirect to role.html if no image is uploaded
+            }
+        });
+    
+        // Load saved data when the page is loaded
+        window.onload = loadData;
+    </script>
+    
+</body>
+</html>
