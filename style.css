@@ -109,6 +109,7 @@ footer {
     object-fit: contain; /* Ensures the image is scaled properly */
 }
 
+/* for italisizing check role.html in the quote part*/
 blockquote {
     font-style: italic;
     margin: 20px 0;
@@ -130,4 +131,10 @@ blockquote::after {
     font-size: 30px;
     vertical-align: -10px;
     color: #ffd000;
+}
+
+/* for bolding check out the role ability partin role.html*/
+.right-column strong {
+    font-weight: bold;
+    font-size: 1.1em; /* Adjust size as needed */
 }
