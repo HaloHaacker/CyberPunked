@@ -108,3 +108,26 @@ footer {
     border-radius: 10px; /* Optional: Add rounded corners for aesthetics */
     object-fit: contain; /* Ensures the image is scaled properly */
 }
+
+blockquote {
+    font-style: italic;
+    margin: 20px 0;
+    padding: 10px 20px;
+    border-left: 4px solid #ffd000; /* Highlight the quote with a colored border */
+    background-color: #1e1e1e; /* Light background for contrast */
+    color: #ffd000; /* Dark text for readability */
+}
+
+blockquote::before {
+    content: "“"; /* Opening quote */
+    font-size: 30px;
+    vertical-align: -10px;
+    color: #ffd000;
+}
+
+blockquote::after {
+    content: "”"; /* Closing quote */
+    font-size: 30px;
+    vertical-align: -10px;
+    color: #ffd000;
+}

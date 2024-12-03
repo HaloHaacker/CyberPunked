@@ -122,60 +122,60 @@
             rockerboy: {
                 quote: "My old man TRIED to do music back before the War. The Corps snapped him up, sucked him dry, and spit him out to DIE on The Street. These days, it's diffrent. I write my OWN lyrics, make my OWN arrangements, record it all myself, then upload it to the Data Pool. No Corp needed.They're not chanting my name in giant concert halls yet, but I've got FANS, and I don't have to compromise my message for anyone. Just like the origonal ROCKERBOY, my music's giving the middle finger to every power-hungry suit who thinks they can CONTROL the world.",
                 author: "-Forty, Rockerboy",
-                description: "Rockerboys are rebellious artists who fight the establishment with their music, charisma, and performances. They are often seen as countercultural icons, leading protests, and challenging authority through their art.",
+                description: "If you live to rock, this is where you belong. As a Rockerboy, you're one of the street poets, the social conscience, and the rebels of the Time of the Red. With the advent of digital porta-studios and garage music mastering, every Rockerboy with a message can take it to The Street, put it in the record stores, bounce it off the comsats. Sometimes, your message isn't something the Corporations or the government wants to hear. Sometimes what you say is going to get right in the faces of the powerful people who really want to run this world. But you don't care, because as a Rockerboy, you know it's your place to challenge authority, whether in straight-out protest songs that tell it like it is, playing kick-ass rock n' roll to get the people away from the TV sets and into The Streets, firing up the crowd with speeches, or composing fiery writings that shape the minds and hearts of millions. You have a proud history as a Rockerboy. Dylan, Springsteen, U2, NWA, the Who, Jett, the Stones—the legions of hard-rock heroes who told the truth with screaming guitars or gut-honest lyrics. You have the power to get the people up; to lead, inspire, and inform. Your message can give the timid courage, the weak strength, and the blind vision. Rockerboy legends like Johnny Silverhand, Rockerboy Manson (for whom the Role is named) and Kerry Eurodyne have led armies against Corporations and governments. Rockerboys have exposed corruption and brought down dictators. It's a lot of power for someone doing gigs every night in another city. But you can handle it. After all: you came to play!",
                 image: "images/rockerboy.jpg"  
             },
             solo: {
                 quote: "",
-                author: "",
+                author: "-Abril (Mover) Montella, Private Contractor",
                 description: "Solos are mercenaries, hired guns, and elite fighters who excel in combat. Whether it's assassination or protecting a client, Solos are highly trained in both physical and mental combat strategies.",
                 image: "images/solo.jpg"  
             },
             netrunner: {
                 quote: "",
-                author: "",
+                author: "-Redeye, Netrunner",
                 description: "Netrunners are hackers who operate in cyberspace, using their skills to infiltrate and manipulate digital systems. They're the ultimate cybernetic spies, capable of pulling off mind-bending feats in the virtual world.",
                 image: "images/netrunner.jpg"  
             },
             tech: {
                 quote: "",
-                author: "",
+                author: "-João (Torch) Barbosa alves, Owner of Torch's Total Repairs",
                 description: "Techs are the engineers and inventors of the Cyberpunk world. They can build, repair, and modify technology—everything from weapons to vehicles, and even cyberware. They're the hands that keep the future running smoothly.",
                 image: "images/tech.jpg"  
             },
             medtech: {
                 quote: "",
-                author: "",
+                author: "-virgil (Redtail) Martinez",
                 description: "Medtechs are cyberware doctors and street medics, performing emergency surgeries and cybernetic implants. They operate in the shadows, often going where legal doctors fear to tread to patch up the wounded or enhance people with cyberware.",
                 image: "images/medtech.jpg"  
             },
             media: {
                 quote: "",
-                author: "",
+                author: "-24/7, Reporter for Never Blink News",
                 description: "Media personalities and journalists are the ones shaping the narrative in the Cyberpunk world. They use their influence, investigative skills, and charisma to uncover truths, or spin stories for fame and profit.",
                 image: "images/media.jpg"  
             },
             exec: {
                 quote: "",
-                author: "",
+                author: "-Chanda Mishra, Rocklin Augmentics Executive",
                 description: "Executives are high-powered corporate players who control vast resources and manipulate the corporate world for profit. They work within the Megacorps, controlling resources and pulling the strings of the business world.",
                 image: "images/exec.jpg" 
             },
             lawman: {
                 quote: "",
-                author: "",
+                author: "-Officer Suri (Cavalry) Navarro, NCPD",
                 description: "Lawmen are the enforcers of justice, whether it be within the dystopian cities or the chaotic outskirts. They serve as peacekeepers, investigators, and warriors, maintaining order and protecting the weak from the lawless.",
                 image: "images/lawman.jpg" 
             },
             fixer: {
                 quote: "",
-                author: "",
+                author: "-Grease, Fixer",
                 description: "Fixers are middlemen in the criminal underworld, connecting clients with jobs, services, and information. They broker deals and organize heists or smuggling runs, often making their fortunes through shady connections.",
                 image: "images/fixer.jpg" 
             },
             nomad: {
                 quote: "",
-                author: "",
+                author: "-Racer rajavi, Aldecaldo Nomad",
                 description: "Nomads are wanderers, experts in transportation, survival, and navigation across the desolate roads and dangerous zones. They are loyal to their families and clans, working together to keep the roads clear and their people safe.",
                 image: "images/nomad.jpg"
             }
@@ -184,13 +184,20 @@
         // Event listener for role selection
         document.querySelectorAll('.role-item').forEach(item => {
             item.addEventListener('click', function() {
+                // Remove active state from all roles
+                document.querySelectorAll('.role-item').forEach(role => role.classList.remove('active'));
+
+                // Add active state to the clicked role
+                item.classList.add('active');
+
                 // Get the role selected
                 const selectedRole = item.getAttribute('data-role');
-                // Update the right column with the role details and image
                 const role = roleDetails[selectedRole];
+
+                // Update the right column with the role details, quote, and image
                 document.querySelector('.right-column').innerHTML = `
                     <div class="column-title">${selectedRole.charAt(0).toUpperCase() + selectedRole.slice(1)}</div>
-                    <p>${role.quote}</p>
+                    <blockquote>${role.quote}</blockquote>
                     <p>${role.author}</p>
                     <p>${role.description}</p>
                     <img src="${role.image}" alt="${selectedRole}" class="role-image"/>
