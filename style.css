@@ -97,3 +97,14 @@ footer {
     font-size: 14px;
     color: #ccc; /* Light text color for descriptions */
 }
+
+
+.role-image {
+    width: 100%; /* Set a constant width relative to the column */
+    max-width: 360px; /* Optional: Add a max-width to prevent overly large images */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure it doesn’t overflow */
+    margin-top: 20px; /* Add some space above or below */
+    border-radius: 10px; /* Optional: Add rounded corners for aesthetics */
+    object-fit: contain; /* Ensures the image is scaled properly */
+}
