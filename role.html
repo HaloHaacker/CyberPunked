@@ -9,10 +9,22 @@
 </head>
 <body>
     <div class="container">
-        <!-- Left Column (Can hold static content or additional information) -->
+        <!-- Left Column (Dropdown for selecting roles) -->
         <div class="left-column">
-            <div class="column-title">About the Roles</div>
-            <p>Each role in Cyberpunk RED offers unique skills, abilities, and story opportunities. Select the role that best suits your playstyle!</p>
+            <div class="column-title">Choose Your Role</div>
+            <select id="roleDropdown">
+                <option value="rockerboy">Rockerboy</option>
+                <option value="solo">Solo</option>
+                <option value="netrunner">Netrunner</option>
+                <option value="rockerboy">Tech</option>
+                <option value="solo">Medtec</option>
+                <option value="netrunner">Media</option>
+                <option value="rockerboy">Exec</option>
+                <option value="solo">Lawmen</option>
+                <option value="netrunner">Fixer</option>
+                <option value="netrunner">Nomad</option>
+                <!-- Add more roles here as needed -->
+            </select>
         </div>
 
         <!-- Middle Column (Role Selection) -->
@@ -129,7 +141,7 @@
                 image: "images/rockerboy.jpg"  
             },
             solo: {
-                quote: "",
+                quote: "Why'd I join up? I was tired of being HUNGRY and POOR. Whhen Militech offered me three squares a day and a cot, you better belive I signed up. The first few actions weren't bad. The third one went pear-shaped. Don't know why, but they sent a squad of GREENIES against a bunch of full body conversions. Just two of us survived. After the War, I took the new CHROME the Corp medics gave me and went local. Turns out, when a city's BLOWN to hell and rebuilding, there's plenty of folk who'll PAY for a certain set of skills. Good thing I have them.",
                 author: "-Abril (Mover) Montella, Private Contractor",
                 description: "You were reborn with a gun in your hand—the flesh and blood hand—not the metallic weapons factory that covers most of your other arm. Whether as a freelance guard and killer-for-hire, or as one of the Corporate cybersoldiers who enforce business deals and the Company's (black operations,) you're one of the elite fighting machines of the Time of the Red. Most Solos put in military time during the 4th Corporate War, in a Corporate army, or in one of the government's current (police actions) around the country. As the battle damage piles up, you start to rely more and more upon tech: cyberlimbs for weapons and armor, bio-program chips to increase your reflexes and awareness, combat drugs to give you that edge over your opponents. When you're the best of the best, you might even leave the ranks of Corporate samurai and go ronin—freelancing your lethal talents as a killer, bodyguard, or enforcer to whoever can pay your very high fees. Sounds good? There's a price—a heavy one. You've lost so much of your original meat body that you're almost a machine. Your killing reflexes are so jacked up that you have to restrain yourself from going berserk at any moment. Years of combat drugs taken to keep the edge have given you terrifying addictions. There are few people you can trust anymore. One night you might sleep in a penthouse condo in the City, the next in a filthy alley on The Street. But that's the price of being the best. And you're willing to pay it. Because you're a Solo.",
                 role_ability: "▶ Role Ability: Combat Awareness",
@@ -137,7 +149,7 @@
                 image: "images/solo.jpg"  
             },
             netrunner: {
-                quote: "",
+                quote: "Bartmoss had it EASY. He got to chill in a fridge while his mind wandered all over the whole damn planet, and thanks to him? I'll never have that freaking LUXURY. To crack a system, I have to move my MEAT and jack in on-site. Sure, maybe I'll encounter a HELLHOUND, but they don't spike my heart rate. I've got the skills and the programs to handle those puppies. They're no problem at all. You know what SCARES me? Real dogs. Cloned, chipped, and cybered to be NASTIER than any Black ICE. That's why I always go in with friends. They handle the real hounds. I handle the Hellhounds. SYMBIOSIS at its best.",
                 author: "-Redeye, Netrunner",
                 description: "You're a brain-burning computer hacker & master of the Post-NET cyberverse in the Time of the Red. At three, your parents bought you an old Kirama LPD-12 cyberdeck with Zetatech 526 optical goggles (you were too young for interface plugs), and your life was changed. By fifth grade, you were already using REFRAME-G1s meta-programming to crack into the school district's system and change your grades. When you were thirteen, you shifted enough funds out of unprotected Trans United Bank accounts to finance your first neural interface plugs. You couldn't wait to run high and fast with the other gods of the NET—Bartmoss, Magnificent Curtis, and the rest. Then the 4th Corp War blew the Old NET apart. The R.A.B.I.D.S. made NET travel a suicide run; the Nodes were fragmented or corrupted. But there were still places to run. You just had to go there and jack in the hard way. You traded in sitting on the couch for a Bodyweight combat bodysuit and Virtuality 5 interface goggles to mesh NET with Meatspace. The systems you cracked were smaller, but even deadlier. Now, you're really part of a team, with Solos to cover your back, Medtechs to restart your heart if the ICE gets you, and Techs to help you hot-wire your cyberdeck for more speed and software deployment. Now, nothing can stop you. As an electronic wraith, you slip into the (hardest) mainframe systems with ease: stealing, trading, and selling their deepest secrets at will. The Black ICE may still kill you in the end, but until the ride runs out you'll be there, bare-brained and headfirst in the New NET.",
                 role_ability: "▶ Role Ability: Interface",
@@ -145,7 +157,7 @@
                 image: "images/netrunner.jpg"  
             },
             tech: {
-                quote: "",
+                quote: "Just because the world got dipped in CRAP and hung to dry doesn't mean things have changed that much. Life in this City still depends on TECHNOLOGY to keep everything from going full-on post-apocalypse. And that means everyone depends on ME. If your blender breaks, chances are you won't see a new one at the local Night Market for WEEKS. Maybe MONTHS. And that's assuming you're on good terms with the local Fixer and they bother to invite you. Meanwhile, I'm here, ready to REPAIR your blender. And your Agent. And whatever else you got. Technology's the LIFEBLOOD of this City and me? I'm the beating HEART keeping it flowing. At least in this neighborhood.",
                 author: "-João (Torch) Barbosa alves, Owner of Torch's Total Repairs",
                 description: "You can't leave anything alone—if it sits near you for more than five minutes, you've disassembled it and made it into something new. You've always got at least two screwdrivers and a wrench in your pockets. Computer down? No problem. Hydrogen burner out in your Metrocar? No problem. Can't get the video to run or your interface glitching? No problem. You make your living building, fixing, and modifying—a crucial occupation in a technological world recovering from a War that broke the back of the supply chain. You can make some good bucks fixing everyday stuff, but for the serious money you need to tackle the big jobs. Illegal weapons. Illegal or stolen cybertech. Corporate espionage and counter-espionage gear for (black operations.) If you're any good, you're making a lot of money. And that money goes into new gadgets, hardware, and information. Your black market work isn't just making you friends—it's also racking you up an impressive number of enemies as well—so you invest a lot in defense systems and, if really pushed to the wall, call in a few markers on a Solo or two. You've fixed up tech for everybody from black ops Corporate samurai to Ms. Zepada down the block. No one's ever come back to you with a complaint but that might be because of the turrets guarding your front door. You're addicted to technology in all its forms and that's what makes you a Tech.",
                 role_ability: "▶ Role Ability: Maker",
@@ -153,7 +165,7 @@
                 image: "images/tech.jpg"  
             },
             medtech: {
-                quote: "",
+                quote: "I've been fixing what's BROKEN since I was young. The first time was when the front of our Kombi smacked into a bird on the way through the Los Angeles ruins. We were traveling ALONE, and my old man, knowing I was sensitive to that sort of thing, stopped the rollers and let me out to collect the carcass. Turned out it was a live red-tail hawk. I splinted its busted wing and NURSED it back to health. Mom saw what I did and apprenticed me to our Pack's HEALER. Now I'm the healer. No, I don't have INITALS after my name, but I can still FIX that mangled arm of yours. Or you can lose it. Your choice.",
                 author: "-virgil (Redtail) Martinez",
                 description: "You're an artist, and the human body is your canvas. You've got the best tools the Time of the Red can offer, and you know how to use them. If you're lucky, you got to attend one of the real med schools scattered around the wreck of the Old United States. And after the War, military hospitals were everywhere and the few doctors on the war front needed helping hands to hold down screaming patients and splice cyberware back together. So, maybe you learned that way. And there's always an old ripperdoc or two out there who hearken back to that old science fiction story called The Bladerunner—not that old flatscreen vid, but the really old sci-fi book about renegade doctors who performed illegal street surgery in one of the first dystopian novels. Maybe one of those guys trained you. Maybe that's where you are right now, patching up the wounded, mending up the sick, and keeping the locals alive. For love, commitment, or maybe just a fat payday on the side. If you're really lucky, you've scored a berth in the local Trauma Team franchise. Trauma Teams are groups of licensed paramedicals who patrol the city looking for patients. You operate from an AV-4 Urban Assault Vehicle, redesigned into an ambulance configuration, and armed with a belly-mounted minigun. It's the best of the best—Trauma Team charges some heavy subscription fees to save its clients, and that translates into new medical toys, faster AV ambulances, and hefty salaries for the best surgeons around. It doesn't matter how you got here. What matters is that you're here, on The Street, doing the job. And you'd be doing it no matter what the reason. It's what marks you as a Medtech.",
                 role_ability: "▶ Role Ability: Medicine",
@@ -161,7 +173,7 @@
                 image: "images/medtech.jpg"  
             },
             media: {
-                quote: "",
+                quote: "Used to work for Night City Today, can you believe it? FETCHING coffee and TOTING camera gear like a goddamned pack mule! First shot I got at a SCOOP? Some FLUFF piece on a Corp PR stunt giving away kibble to people who needed real food... I didn't become a reporter to SMILE for a camera and joke around with a weatherman strung out on synthcoke. That's why I quit. Now I'm in the ACTION: the sharp end. I run my own shop, hunt down the leads, and bring people the NEWS they really care about! If you wanna know what's really going on in the City, hit Never Blink News.",
                 author: "-24/7, Reporter for Never Blink News",
                 description: "They're bending the truth out there. And you're going to stop them. Someone has to do it. The Corporations used to rule the world. They dumped toxics, destabilized economies, and committed murder with equal impunity. The government back then couldn't even stop them—hell, they owned the government. But then the War came. The War stripped away the facade and let us all know exactly what had been going on under our noses. And the people who made sure we all knew the score were the Medias. That's you. You've got a vidlink and a press pass, and you're not afraid to use them. You're a city-wide figure, seen nightly all over the Data Pool in the Time of the Red. It's not like the old days, when you had a major Mediacorp behind you; this time, you've gotta depend on your fans, your contacts, and your own reputation. But it's harder for these new Corps to make you disappear. So when you dig down for the dirt and slime the corrupt officials and Corporate lapdogs try to cover up, you can dig deep. The next morning, you can put the details of their crimes all over the screamsheets and vidscreens. Three or four times, the bad guys have tried to kill you—that's why your backup's a crack Solo bodyguard and you've got one of the top ‘Runners in the business digging through NET Architectures to back your stories. You have to be good, or else. Your ‘Runner's just phoned in with a hot lead. You grab your gear and flag your backup. You're going to break those bastards. This time, for sure.",
                 role_ability: "▶ Role Ability: Credibility",
@@ -169,7 +181,7 @@
                 image: "images/media.jpg"  
             },
             exec: {
-                quote: "",
+                quote: "If you want to MAKE it in the Neocorporate world, you have to remember the number one rule: stay HUNGRY. Jacinda Hidalgo and Artyom Sokolov didn't make it to the top by resting on their laurels. Keep dealing, keep trading, and if anyone tries to stop you? BREAK them. And if you can't? Find a way. Do WHATEVER you have to do. Always have a plan to ruin everyone you meet. That's the Corporate way. Keep your best RESOURCES close and make sure they know you're on your way to the top, and if they TOW the line? They can ride along.",
                 author: "-Chanda Mishra, Rocklin Augmentics Executive",
                 description: "In the old days before the Time of the Red, you would have been a hard-driven, fast-track MBA on their way up the Corporate ladder. Sure, it was selling your soul to the Company, but face it: the Corporations ruled the world. They controlled governments, markets, nations, armies—you name it. And you knew that whoever controlled the Corporations controlled everything else. But things changed when the largest Megacorps on the planet got into a major war that was equal to anything any real national governments could have thrown down. Okay, so right now your life as a junior executive is anything but easy. There are those underneath you who'd kill for a shot at your job. Literally. There are those over you who'd kill to keep you out of their jobs. Literally. And they're not kidding about the killing—every up-and-comer in the Corporation has their own Team of Solos and Netrunners to cover important pet projects. Last week, you led a mixed team of Solos, Netrunners, and Techs on a headhunting run to (extract) a researcher from a rival company. You told yourself you joined the Corporation to make it a better place—work from the inside, you said. Or just until you could start your own Corporation that would be...a little more honest. But now you're not so sure. Your ideals are a little tarnished and things are getting pretty bleak. But you can't worry about ethics now. You've got a report due in an hour, and it looks like that guy in sales is planning to ice your database for good. You're gonna ice him first.",
                 role_ability: "▶ Role Ability: Teamwork",
@@ -177,7 +189,7 @@
                 image: "images/exec.jpg" 
             },
             lawman: {
-                quote: "",
+                quote: "Listen, kid, call us WHATEVER you like—lawmen, badges, PIGS. We don’t care. The City's in SHAMBLES, and every day we see people pushing back against the rebuilding. Boosters, cyberpsychos, terror groups—the worst of the WORRST. I'm not in it for the glory, and I'm not looking to FLASH my gun and act like some big-shot Solo. I took an oath to keep this City safe, and I take that oath seriously. Someone has to keep the streets safe so civilians like you can walk to the market without taking a stray bullet from the latest gang war. And that’s ME.",
                 author: "-Officer Suri (Cavalry) Navarro, NCPD",
                 description: "In the old days before the War, they only used to shoot at cops. Now you're lucky if you just take a slug. The Street is mean these days, filled with new drugs, new gangs, and new weapons that make a Minami-10 look like a kid's toy. But even so, you're out there doing what you can to Protect—and Serve. There used to be a big City Force, but most of the Old Guard in NCPD have been thrown out on their own to keep what peace they can. The ones who remain still take the Badge seriously; they work to keep people safe and make some kind of stand against chaos. Even if you'd rather just walk a beat, if you're a professional Lawman of any stripe, you're stuck carrying at least four high-caliber weapons, most of them full-auto types, wearing a Kevlar® vest that'll stop 850ft/lbs. per square inch—and often you're still outgunned and outflanked. Half the gangs were cybered up to begin with: super speed, super reflexes, could see in the dark, carried weapons in their arms...and that was before the War and the Fall of the Towers pumped a metric ton of milspec cybertech into the Night Markets. The other half of the guys on The Street are freelance Corporate mercs who used to have jobs during the War; hired to enforce Corp armies disbanded by the New United States' goon squads. Now they're the goon squads and you're trying to keep them under control too. Used to be the Corporate Cops had heavy weapons, full combat armor, Trauma Team backup, AV-4 assault vehicles, and gyrocopters with miniguns. But the nice, clean sectors full of new office buildings and fancy restaurants—where no jacked-up psychopunk is going to ever go on a killing spree with an FN-RAL37—are mostly gone. Now you've got mostly burned-out buildings and abandoned cars, where every night is a new firefight and another great opportunity for a messy death. Or you might draw a Psycho Squad berth and get the job of hunting down heavily armed and armored cyborgs who've flipped out. A cyberpsycho can walk through machine gun fire and not even feel it, so a lot of the Psycho Squad become a bit crazy themselves; they load up with boosted reflexes, get some monstrously huge guns, and go hunt the cyborgs solo. But you're not that crazy. Yet.",
                 role_ability: "▶ Role Ability: Backup",
@@ -185,7 +197,7 @@
                 image: "images/lawman.jpg" 
             },
             fixer: {
-                quote: "",
+                quote: "Think of me as a MIDDLEMAN. If you need a team of killers, a new car, or a rare antique? I’m your man. Payment? Cold hard EB and maybe a favor here or there. I’m sure you’ve got some talents my other CLIENTS might find interesting. It’s all one big web, and I’m at the CENTER. Just last week, I took a ride down to the Combat Zone to pick up a shipment of explosives that’d make the NCPD have a coronary. Tomorrow, I’ve got a meeting at a Night Market to sell off a truckload of milspec hardware to the Iron Sights. I don’t need to KNOW what they’ll do with it. Like I said, I’m just the MIDDLEMAN.",
                 author: "-Grease, Fixer",
                 description: "You realized fast that you weren't ever going to get a Corporate job or be tough enough to be a Solo. But you always knew you had a knack for figuring out what other people wanted, and how to get it for them. For a price, of course. Now your deals have moved past the nickel-and-dime stuff into the big time. Maybe you move illegal weapons over the border. Or steal and resell medical supplies. Perhaps you're a skill broker acting as an agent for high-priced Solos and 'Runners, or even hiring a whole Nomad pack to back a client's contracts. You buy and sell favors like an old-style Mafia godfather. You have connections into all kinds of businesses, deals, and political groups. You use your contacts and allies as part of a vast web of intrigue and coercion. If there's a hot nightclub in the City, you've bought into it. If there are military-class weapons on The Street, you smuggled ‘em in. If there's a faction war going down, you're negotiating between sides with an eye on the main chance. But you're not entirely in it for the bucks. If someone needs to get the heat off, you'll hide them. You get people housing when there isn't any, and you bring in food when the streets are blockaded. Maybe you do it because you know they'll owe you later, but you're not sure. You're one part Robin Hood and two parts AI Capone. In the past, they would have called you a crime lord. But this is the fragmented, nasty, deadly Time of the Red. So now they call you a Fixer",
                 role_ability: "▶ Role Ability: Operator",
@@ -193,7 +205,7 @@
                 image: "images/fixer.jpg" 
             },
             nomad: {
-                quote: "",
+                quote: "People didn’t used to CARE much about us Nomads. My family came and went like the wind, and people paid about as much attention. Hell, most times, if folks did take notice, they tried to THROW us out. But things are DIFFRENT now. Turns out, when society breaks down, wanderers become USEFUL. Now people pay us to MOVE their cargo and keep the scavengers off them. Suits me just fine. There’s nothing like the FREEDOM of the open road under your wheels. I’ve got my BIKE, I’ve got my GUN, and I’ve got my FAMILY. That’s all I’ll ever need.",
                 author: "-Racer rajavi, Aldecaldo Nomad",
                 description: "Years ago, the Corps drove your family off the farm. They rolled in, took over the land, and put rent-a-cops all over the place. But that was before the War. You were loners, homeless, until you created a Nomad Pack of nearly two-hundred members. Back then, your Pack was crammed into a huge, ragtag fleet of cars, vans, buses, and RVs roaming the freeways looking for supplies, odd jobs, and spare parts in a fragmented world. The Pack was your home—it had teachers, Medtechs, leaders, and mechanics—a virtual town on wheels in which everyone was related by marriage or kinship. But in the Time of the Red, your Nomad Pack has evolved. Your knowledge of roadcraft—of how to get between the safezones over the savage highways has allowed you to become the masters of getting people, supplies, and materials to a world that desperately needs them. Your cousins on the open seas have taken over the huge container ships and turned them into the Nomad convoys keeping civilization running. Your Deltajock famboys keep the supply lines to the Orbital Highriders open. If it has to get somewhere and get there safely, Nomads get the job done. Your vehicles are well-armored and bristling with stolen weapons: miniguns, rocket launchers, and the like. Every kid knows how to use a rifle, and everyone packs a knife. Like modern-day cowboys, you ride the hard trail. You've got a gun, a bike, and your Family, and that's all you need. You're a Nomad.",
                 role_ability: "▶ Role Ability: Moto ",
@@ -201,6 +213,9 @@
                 image: "images/nomad.jpg"
             }
         };
+
+        
+        
 
         // Event listener for role selection
         document.querySelectorAll('.role-item').forEach(item => {
@@ -238,7 +253,7 @@
 
             // Store the selected role in localStorage
             localStorage.setItem('selectedRole', selectedRole);
-            window.location.href = 'role-details.html'; // Redirect to another page
+            window.location.href = 'lifepath.html'; // Redirect to another page
         });
     </script>
 </body>

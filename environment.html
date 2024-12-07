@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Environment</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Apply a general white text color to the entire page */
+        body {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column-title">Choose Your Environment (You can either roll or choose)</div>
+
+        <!-- Lifepath Table with Radio Buttons -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Childhood Environment</th>
+                    <th>Choose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Ran on The Street, with no adult supervision.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="environment" value="option1">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Spent in a safe Corp Zone walled off from the rest of the City.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="environment" value="option2">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>In a Nomad pack moving from place to place.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="environment" value="option3">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>n a Nomad pack with roots in transport (ships, planes, caravans).</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="environment" value="option4">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>In a decaying, once upscale neighborhood, now holding off the boosters to survive.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="environment" value="option5">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>In the heart of the Combat Zone, living in a wrecked building or other squat.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="environment" value="option6">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>In a huge "megastructure" building controlled by a Corp or the City.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="environment" value="option7">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>In the ruins of a deserted town or city taken over by Reclaimers.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="environment" value="option8">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>In a Drift Nation (a floating offshore city) that is a meeting place for all kinds of people.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="environment" value="option9">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>In a Corporate luxury "starscraper," high above the rest of the teeming rabble.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="environment" value="option10">
+                        </label>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // Event listener for lifepath selection
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Get selected lifepath value
+            const selectedEnvironmentpath = document.querySelector('input[name="environment"]:checked')?.value;
+
+            if (!selectedEnvironmentpath) {
+                alert('Please select a Environmnet option!');
+                return;
+            }
+
+            // Store the selected lifepath in localStorage
+            localStorage.setItem('selectedEnvironmentpath', selectedEnvironmentpath);
+
+            // Optionally, log the selected value
+            console.log('Selected Enviroment:', selectedEnvironmentpath);
+
+            // Redirect or perform other actions
+            window.location.href = 'familycrisis.html'; // Redirect to another page if needed
+        });
+    </script>
+</body>
+</html>

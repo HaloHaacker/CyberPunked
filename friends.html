@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Role - Cyberpunk RED</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Column (Dropdown for selecting roles) -->
+        <div class="left-column">
+            <div class="column-title">How many friends did you Roll</div>
+            <select id="roleDropdown">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+
+        <!-- Middle Column (Role Selection) -->
+        <div class="spacer-column">
+            <div class="column-title">Instructions</div>
+            <p>Roll 1d10 and subtract 7 (minimum 0) to see just how many friends you've made so far in your life. Put that number in the dropdown on the left and for each friend, fill out that many tables on the right.</p>
+        </div>
+
+        <!-- Right Column (Dynamic Tables) -->
+        <div class="right-column">
+            <div class="column-title">Choose Your Friends (You can either roll or choose)</div>
+            <div id="tableContainer"></div>
+        </div>
+    </div>
+
+    <!-- Footer with Submit Button -->
+    <footer>
+        <button id="submitBtn">Next</button>
+    </footer>
+
+    <script>
+        let friendsData = []; // Array to store data for each friend
+
+        // Function to handle dropdown change and update the number of tables
+        function updateTables() {
+            const tableContainer = document.getElementById('tableContainer');
+            const selectedValue = parseInt(document.getElementById('roleDropdown').value);
+
+            // Clear existing tables
+            tableContainer.innerHTML = '';
+            friendsData = [];
+
+            // Add the selected number of tables
+            for (let i = 0; i < selectedValue; i++) {
+                friendsData.push({ index: i + 1, value: '' }); // Initialize friend data
+                const table = document.createElement('div');
+                table.classList.add('friend-table');
+                table.innerHTML = `
+                    <h4>Friend ${i + 1}</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Roll</th>
+                                <th>What Do You Value Most?</th>
+                                <th>Choose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>Like an older sibling to you</td><td><input type="radio" name="motivation${i}" value="Like an older sibling to you" onclick="saveFriendData(${i}, 'Like an older sibling to you')"></td></tr>
+                            <tr><td>2</td><td>Like a younger sibling to you.</td><td><input type="radio" name="motivation${i}" value="Like a younger sibling to you" onclick="saveFriendData(${i}, 'Like a younger sibling to you')"></td></tr>
+                            <tr><td>3</td><td>A teacher or mentor.</td><td><input type="radio" name="motivation${i}" value="A teacher or mentor." onclick="saveFriendData(${i}, 'A teacher or mentor')"></td></tr>
+                            <tr><td>4</td><td>A partner or coworker.</td><td><input type="radio" name="motivation${i}" value="A partner or coworker" onclick="saveFriendData(${i}, 'A partner or coworker')"></td></tr>
+                            <tr><td>5</td><td>A former lover.</td><td><input type="radio" name="motivation${i}" value="A former lover." onclick="saveFriendData(${i}, 'A former lover.')"></td></tr>
+                            <tr><td>6</td><td>An old enemy</td><td><input type="radio" name="motivation${i}" value="An old enemy" onclick="saveFriendData(${i}, 'An old enemy')"></td></tr>
+                            <tr><td>7</td><td>Like a parent to you</td><td><input type="radio" name="motivation${i}" value="Like a parent to you" onclick="saveFriendData(${i}, 'Like a parent to you')"></td></tr>
+                            <tr><td>8</td><td>An old childhood friend</td><td><input type="radio" name="motivation${i}" value="An old childhood friend" onclick="saveFriendData(${i}, 'An old childhood friend')"></td></tr>
+                            <tr><td>9</td><td>Someone you know from The Street</td><td><input type="radio" name="motivation${i}" value="Someone you know from The Street" onclick="saveFriendData(${i}, 'Someone you know from The Street')"></td></tr>
+                            <tr><td>10</td><td>Someone with a common interest or goal.</td><td><input type="radio" name="motivation${i}" value="Someone with a common interest or goal" onclick="saveFriendData(${i}, 'Someone with a common interest or goal')"></td></tr>
+                        </tbody>
+                    </table>`;
+                tableContainer.appendChild(table);
+            }
+        }
+
+        // Function to save data dynamically
+        function saveFriendData(index, value) {
+            friendsData[index].value = value;
+            console.log(`Friend ${index + 1} choice saved: ${value}`);
+        }
+
+        // Function to handle submission and save data to localStorage
+        function handleSubmit() {
+            const incomplete = friendsData.some(friend => !friend.value);
+            if (incomplete) {
+                alert("Please make sure to select an option for every friend!");
+            } else {
+                // Save friendsData to localStorage
+                localStorage.setItem('friendsData', JSON.stringify(friendsData));
+                console.log("Saved Data:", friendsData);
+
+                // Navigate to the next page
+                window.location.href = 'enemies.html'; // Change this to your next page URL
+            }
+        }
+
+        // Attach event listeners
+        window.onload = () => {
+            document.getElementById('roleDropdown').addEventListener('change', updateTables);
+            document.getElementById('submitBtn').addEventListener('click', handleSubmit);
+        };
+    </script>
+</body>
+</html>

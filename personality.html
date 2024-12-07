@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Personality</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Apply a general white text color to the entire page */
+        body {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column-title">Choose Your Personality (You can either roll or choose)</div>
+
+        <!-- Lifepath Table with Radio Buttons -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>What Are You Like</th>
+                    <th>Choose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Shy and secretive</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="personality" value="option1">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Rebellious, antisocial, and violent</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="personality" value="option2">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Arrogant, proud, and aloof</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="personality" value="option3">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Moody, rash, and headstrong</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="personality" value="option4">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Picky, fussy, and nervous</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="personality" value="option5">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Stable and serious</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="personality" value="option6">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Silly and fluff-headed</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="personality" value="option7">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Sneaky and deceptive</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="personality" value="option8">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Intellectual and detached</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="personality" value="option9">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Friendly and outgoing</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="personality" value="option10">
+                        </label>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // Event listener for lifepath selection
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Get selected lifepath value
+            const selectedPersonalitypath = document.querySelector('input[name="personality"]:checked')?.value;
+
+            if (!selectedPersonalitypath) {
+                alert('Please select a personality option!');
+                return;
+            }
+
+            // Store the selected lifepath in localStorage
+            localStorage.setItem('selectedPersonalitypath', selectedPersonalitypath);
+
+            // Optionally, log the selected value
+            console.log('Selected Personality:', selectedPersonalitypath);
+
+            // Redirect or perform other actions
+            window.location.href = 'dress.html'; // Redirect to another page if needed
+        });
+    </script>
+</body>
+</html>

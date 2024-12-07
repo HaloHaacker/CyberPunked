@@ -26,6 +26,11 @@
         const description = localStorage.getItem('description');
         const imageData = localStorage.getItem('image');
 
+        // getting friend data it just gave it to me so thaught i would put it here
+        //check later if there is a problem with saving them diffrently or if they overlap with motivition becaus of name = motivation{i} part
+        const friendsData = JSON.parse(localStorage.getItem('friendsData'));
+        console.log('Retrieved Data:', friendsData);
+
         // Display data in the document
         document.getElementById('fullName').textContent = `Full Name: ${fullName}`;
         document.getElementById('handle').textContent = `Handle: ${handle}`;

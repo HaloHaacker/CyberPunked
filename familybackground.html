@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Family Background</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Apply a general white text color to the entire page */
+        body {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column-title">Choose Your Origonal Family Background (You can either roll or choose)</div>
+
+        <!-- Lifepath Table with Radio Buttons -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Origonal Background</th>
+                    <th>Languages You Might Know (pick one in your group)</th>
+                    <th>Choose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Corporate Execs</td>
+                    <td>Wealthy, powerful, with servants, luxury homes, and the best of everything. Private security ensured you were always safe. You undoubtedly attended a prestigious private school.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_background" value="option1">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Corporate Managers</td>
+                    <td>Well to do, with large homes, safe neighborhoods, and nice cars. Occasionally, your parents would hire servants, though this was rare. You received a mix of private and corporate education.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_background" value="option2">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Corporate Technicians</td>
+                    <td>Middle-middle class, living in comfortable conapts or suburban Beaverville homes, driving minivans, and attending corporate-run technical schools. A lifestyle reminiscent of 1950s America blended with the dystopian control of 1984.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_background" value="option3">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Nomad Pack</td>
+                    <td>You lived in a mix of rugged trailers, vehicles, and massive road kombis that served as your home. Driving and fighting were skills you picked up early on, but your family was always there to support and protect you. Food was fresh and plentiful, and your education was primarily home-based.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_background" value="option4">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Ganger "Family"</td>
+                    <td>You grew up in a brutal, chaotic environment, wherever the gang could establish control. Hunger, fear, and the cold were constant companions, and the identity of your real parents was likely a mystery. Your education came from the gang, focusing on survival skills—fighting, killing, and stealing. Anything else was irrelevant.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_background" value="option5">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Combat Zoners</td>
+                    <td>You lived in a crumbling structure within the 'Zone,' a step above gang life but still far from secure. The building was fortified, providing some semblance of safety. While hunger was an occasional concern, you usually managed to find food and a place to sleep. Your education was home-based, shaped by the challenges of your environment.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_background" value="option6">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Urban Homeless</td>
+                    <td>Your "home" consisted of cars, dumpsters, or abandoned shipping modules—if you were lucky enough to find shelter at all. Hunger, cold, and fear were constant companions unless you were strong or cunning enough to fight for scraps. Your education came from the harsh lessons of survival in the School of Hard Knocks.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_background" value="option7">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Megastructure Warren Rats</td>
+                    <td>You grew up in one of the massive new megastructures built after the War. Home was a tiny conapt with kibble and scop for food and a mostly warm bed. Education, if any, came from better-educated warren dwellers or a local Corporation that might have set up a small school.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_background" value="option8">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Reclaimers</td>
+                    <td>You began life on the road but eventually settled in a deserted ghost town or city to rebuild it. It was a pioneer life—dangerous but with plenty of simple food and a safe place to sleep. Education came from homeschooling, if someone had the time to teach.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_background" value="option9">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Edgerunners</td>
+                    <td>Your home constantly changed depending on your parents' latest "job." One day it might be a luxury apartment, the next an urban conapt, or even a dumpster if you were on the run. Food and shelter ranged from gourmet meals to basic kibble.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_background" value="option10">
+                        </label>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // Event listener for lifepath selection
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Get selected lifepath value
+            const selectedFamilyBackgroundpath = document.querySelector('input[name="family_background"]:checked')?.value;
+
+            if (!selectedFamilyBackgroundpath) {
+                alert('Please select a lifepath option!');
+                return;
+            }
+
+            // Store the selected lifepath in localStorage
+            localStorage.setItem('selectedFamilyBackgroundpath', selectedFamilyBackgroundpath);
+
+            // Optionally, log the selected value
+            console.log('Selected Family Background:', selectedFamilyBackgroundpath);
+
+            // Redirect or perform other actions
+            window.location.href = 'environment.html'; // Redirect to another page if needed
+        });
+    </script>
+</body>
+</html>

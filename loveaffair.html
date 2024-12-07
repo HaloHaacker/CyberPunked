@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Love Affair</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Column (Dropdown for selecting roles) -->
+        <div class="left-column">
+            <div class="column-title">How many Tragic Love Affair(s) did you Roll</div>
+            <select id="roleDropdown">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+
+        <!-- Middle Column (Role Selection) -->
+        <div class="spacer-column">
+            <div class="column-title">Instructions</div>
+            <p>Roll 1d10 and subtract 7 (minimum 0) to see how many tragic love affairs you've had, then use the table below to see how each ended. </p>
+        </div>
+
+        <!-- Right Column (Dynamic Tables) -->
+        <div class="right-column">
+            <div class="column-title">Choose Your Tragic Love Affairs (You can either roll or choose)</div>
+            <div id="tableContainer"></div>
+        </div>
+    </div>
+
+    <!-- Footer with Submit Button -->
+    <footer>
+        <button id="submitBtn">Next</button>
+    </footer>
+
+    <script>
+        let loveaffairData = []; // Array to store data for each friend
+
+        // Function to handle dropdown change and update the number of tables
+        function updateTables() {
+            const tableContainer = document.getElementById('tableContainer');
+            const selectedValue = parseInt(document.getElementById('roleDropdown').value);
+
+            // Clear existing tables
+            tableContainer.innerHTML = '';
+            loveaffairData = [];
+
+            // Add the selected number of tables
+            for (let i = 0; i < selectedValue; i++) {
+                loveaffairData.push({ index: i + 1, value: '' }); // Initialize friend data
+                const table = document.createElement('div');
+                table.classList.add('love-affair-table');
+                table.innerHTML = `
+                    <h4>Love Affair ${i + 1}</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Roll</th>
+                                <th>What Happened?</th>
+                                <th>Choose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>Your lover died in an accident.</td><td><input type="radio" name="motivation${i}" value="Your lover died in an accident." onclick="saveFriendData(${i}, 'Your lover died in an accident.')"></td></tr>
+                            <tr><td>2</td><td>Your lover mysteriously vanished.</td><td><input type="radio" name="motivation${i}" value="Your lover mysteriously vanished." onclick="saveFriendData(${i}, 'Your lover mysteriously vanished.')"></td></tr>
+                            <tr><td>3</td><td>It just didn't work out.</td><td><input type="radio" name="motivation${i}" value="It just didn't work out." onclick="saveFriendData(${i}, 'It just didn't work out.')"></td></tr>
+                            <tr><td>4</td><td>A personal goal or vendetta came between you and your lover.</td><td><input type="radio" name="motivation${i}" value="A personal goal or vendetta came between you and your lover." onclick="saveFriendData(${i}, 'A personal goal or vendetta came between you and your lover.')"></td></tr>
+                            <tr><td>5</td><td>Your lover was kidnapped.</td><td><input type="radio" name="motivation${i}" value="Your lover was kidnapped." onclick="saveFriendData(${i}, 'Your lover was kidnapped.')"></td></tr>
+                            <tr><td>6</td><td>Your lover went insane or cyberpsycho</td><td><input type="radio" name="motivation${i}" value="Your lover went insane or cyberpsycho" onclick="saveFriendData(${i}, 'Your lover went insane or cyberpsycho')"></td></tr>
+                            <tr><td>7</td><td>Your lover committed suicide.</td><td><input type="radio" name="motivation${i}" value="Your lover committed suicide." onclick="saveFriendData(${i}, 'Your lover committed suicide.')"></td></tr>
+                            <tr><td>8</td><td>Your lover was killed in a fight.</td><td><input type="radio" name="motivation${i}" value="Your lover was killed in a fight." onclick="saveFriendData(${i}, 'Your lover was killed in a fight.')"></td></tr>
+                            <tr><td>9</td><td>A rival cut you out of the action.</td><td><input type="radio" name="motivation${i}" value="A rival cut you out of the action." onclick="saveFriendData(${i}, 'A rival cut you out of the action.')"></td></tr>
+                            <tr><td>10</td><td>Your lover is imprisoned or exiled</td><td><input type="radio" name="motivation${i}" value="Your lover is imprisoned or exiled" onclick="saveFriendData(${i}, 'Your lover is imprisoned or exiled')"></td></tr>
+                        </tbody>
+                    </table>`;
+                tableContainer.appendChild(table);
+            }
+        }
+
+        // Function to save data dynamically
+        function saveLoveAffairData(index, value) {
+            loveaffairData[index].value = value;
+            console.log(`loveAffair ${index + 1} choice saved: ${value}`);
+        }
+
+        // Function to handle submission and save data to localStorage
+        function handleSubmit() {
+            const incomplete = loveaffairData.some(friend => !friend.value);
+            if (incomplete) {
+                alert("Please make sure to select an option for every love affair!");
+            } else {
+                // Save loveaffairData to localStorage
+                localStorage.setItem('loveaffairData', JSON.stringify(loveaffairData));
+                console.log("Saved Data:", loveaffairData);
+
+                // Navigate to the next page
+                window.location.href = 'goals.html'; // Change this to your next page URL
+            }
+        }
+
+        // Attach event listeners
+        window.onload = () => {
+            document.getElementById('roleDropdown').addEventListener('change', updateTables);
+            document.getElementById('submitBtn').addEventListener('click', handleSubmit);
+        };
+    </script>
+</body>
+</html>

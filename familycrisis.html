@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Family Crisis</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Apply a general white text color to the entire page */
+        body {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column-title">Choose Your Family Crisis (You can either roll or choose)</div>
+
+        <!-- Lifepath Table with Radio Buttons -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Background</th>
+                    <th>Choose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Your family lost everything through betrayal.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_crisis" value="option1">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Your family lost everything through bad management.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_crisis" value="option2">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Your family was exiled or otherwise driven from their original home/nation/Corporation.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_crisis" value="option3">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Your family is imprisoned, and you alone escaped.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_crisis" value="option4">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Your family vanished. You are the only remaining member.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_crisis" value="option5">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Your family was killed, and you were the only survivor.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_crisis" value="option6">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Your family is involved in a long-term conspiracy, organization, or association, such as a crime family or revolutionary group</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_crisis" value="option7">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Your family was scattered to the winds due to misfortune</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_crisis" value="option8">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Your family is cursed with a hereditary feud that has lasted for generations</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_crisis" value="option9">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>You are the inheritor of a family debt; you must honor this debt before moving on with your life.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="family_crisis" value="option10">
+                        </label>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // Event listener for lifepath selection
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Get selected lifepath value
+            const selectedFamilyCrisispath = document.querySelector('input[name="family_crisis"]:checked')?.value;
+
+            if (!selectedFamilyCrisispath) {
+                alert('Please select a family crisis option!');
+                return;
+            }
+
+            // Store the selected lifepath in localStorage
+            localStorage.setItem('selectedFamilyCrisispath', selectedFamilyCrisispath);
+
+            // Optionally, log the selected value
+            console.log('Selected Family Crisis:', selectedFamilyCrisispath);
+
+            // Redirect or perform other actions
+            window.location.href = 'friends.html'; // Redirect to another page if needed
+        });
+    </script>
+</body>
+</html>

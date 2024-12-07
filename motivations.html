@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Motivations</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Apply a general white text color to the entire page */
+        body {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column-title">Choose Your Motivations (You can either roll or choose)</div>
+
+        <!-- Lifepath Table with Radio Buttons -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>What Do You Value Most? </th>
+                    <th>Choose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Money</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="motivation" value="option1">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Honor</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="motivation" value="option2">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Your Word</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="motivation" value="option3">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Honesty</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="motivation" value="option4">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Knowlage</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="motivation" value="option5">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Vengence</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="motivation" value="option6">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Love</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="motivation" value="option7">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Power</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="motivation" value="option8">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Family</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="motivation" value="option9">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Frendship</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="motivation" value="option10">
+                        </label>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // Event listener for lifepath selection
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Get selected lifepath value
+            const selectedMotivationpath = document.querySelector('input[name="motivation"]:checked')?.value;
+
+            if (!selectedMotivationpath) {
+                alert('Please select a motivation option!');
+                return;
+            }
+
+            // Store the selected lifepath in localStorage
+            localStorage.setItem('selectedMotivationpath', selectedMotivationpath);
+
+            // Optionally, log the selected value
+            console.log('Selected Motivation:', selectedMotivationpath);
+
+            // Redirect or perform other actions
+            window.location.href = 'relationships.html'; // Redirect to another page if needed
+        });
+    </script>
+</body>
+</html>

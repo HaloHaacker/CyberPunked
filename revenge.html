@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Revenge</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Apply a general white text color to the entire page */
+        body {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column-title">Choose Your Sweet Revenge (You can either roll or choose)</div>
+
+        <!-- Lifepath Table with Radio Buttons -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>What are You/They Gonna do About it?</th>
+                    <th>Choose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1-2</td>
+                    <td>Avoid the scum.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="revenge" value="option1">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3-4</td>
+                    <td>Go into a murderous rage and try to physically rip their face off.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="revenge" value="option2">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5-6</td>
+                    <td>Backstab them indirectly.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="revenge" value="option3">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7-8</td>
+                    <td>Verbally attack them.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="revenge" value="option4">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Set them up for a crime or other transgression they didn't commit.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="revenge" value="option5">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Set out to murder or maim them.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="revenge" value="option6">
+                        </label>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // Event listener for lifepath selection
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Get selected lifepath value
+            const selectedRevengepath = document.querySelector('input[name="revenge"]:checked')?.value;
+
+            if (!selectedRevengepath) {
+                alert('Please select a revenge option!');
+                return;
+            }
+
+            // Store the selected lifepath in localStorage
+            localStorage.setItem('selectedRevengepath', selectedRevengepath);
+
+            // Optionally, log the selected value
+            console.log('Selected Revenge:', selectedRevengepath);
+
+            // Redirect or perform other actions
+            window.location.href = 'loveaffair.html'; // Redirect to another page if needed
+        });
+    </script>
+</body>
+</html>

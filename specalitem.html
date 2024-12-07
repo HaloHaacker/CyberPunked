@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Affectation</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Apply a general white text color to the entire page */
+        body {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column-title">Choose Your Affectation (You can either roll or choose)</div>
+
+        <!-- Lifepath Table with Radio Buttons -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Affectation You Are Never Without</th>
+                    <th>Choose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Tattoos</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="affectaion" value="option1">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Mirrorshades</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="affectaion" value="option2">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Ritual Scars</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="affectaion" value="option3">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Spiked Gloves</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="affectaion" value="option4">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Nose Rings</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="affectaion" value="option5">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Tongue or other Piercings</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="affectaion" value="option6">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Strange fingernail implants</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="affectaion" value="option7">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Spiked Boots or Heels</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="affectaion" value="option8">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Fingerless gloves</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="affectaion" value="option9">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Strange Contacts</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="affectaion" value="option10">
+                        </label>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // Event listener for lifepath selection
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Get selected lifepath value
+            const selectedAffectationpath = document.querySelector('input[name="affectaion"]:checked')?.value;
+
+            if (!selectedAffectationpath) {
+                alert('Please select a personality option!');
+                return;
+            }
+
+            // Store the selected lifepath in localStorage
+            localStorage.setItem('selectedAffectationpath', selectedAffectationpath);
+
+            // Optionally, log the selected value
+            console.log('Selected Affectation:', selectedAffectationpath);
+
+            // Redirect or perform other actions
+            window.location.href = 'motivations.html'; // Redirect to another page if needed
+        });
+    </script>
+</body>
+</html>

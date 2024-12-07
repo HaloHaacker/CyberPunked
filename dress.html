@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Clothes</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Apply a general white text color to the entire page */
+        body {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column-title">Choose Your Clothes (You can either roll or choose)</div>
+
+        <!-- Lifepath Table with Radio Buttons -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Clothing Style</th>
+                    <th>Hair Style</th>
+                    <th>Choose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Generic Chic (Standard, Colorful, Modular</td>
+                    <td>Mowhawk</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="clothing" value="option1">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Leisurewear (Comfort, Agility, Athleticism)</td>
+                    <td>Long and Ratty</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="clothing" value="option2">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Urban Flash (Flashy, Technological, Streetwear)</td>
+                    <td>Short and Spiked</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="clothing" value="option3">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Businesswear (Leadership, Presence, Authority)</td>
+                    <td>Wild and all over</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="clothing" value="option4">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>High Fashion (Exclusive, Designer, Couture)</td>
+                    <td>Bald</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="clothing" value="option5">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Bohemian (Folksy, Retro, Free-spirited)</td>
+                    <td>Striped</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="clothing" value="option6">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Bag Lady Chic (Homeless, Ragged, Vagrant)</td>
+                    <td>Wild Colors</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="clothing" value="option7">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Gang Colors (Dangerous, Violent, Rebellious)</td>
+                    <td>Neat and Short</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="clothing" value="option8">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Nomad Leathers (Western, Rugged, Tribal)</td>
+                    <td>Short and Curly</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="clothing" value="option9">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Asia Pop (Bright, Costume-like, Youthful)</td>
+                    <td>Long and Straight</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="clothing" value="option10">
+                        </label>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // Event listener for lifepath selection
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Get selected lifepath value
+            const selectedClothingpath = document.querySelector('input[name="clothing"]:checked')?.value;
+
+            if (!selectedClothingpath) {
+                alert('Please select a lifepath option!');
+                return;
+            }
+
+            // Store the selected lifepath in localStorage
+            localStorage.setItem('selectedClothingpath', selectedClothingpath);
+
+            // Optionally, log the selected value
+            console.log('Selected Clothing:', selectedClothingpath);
+
+            // Redirect or perform other actions
+            window.location.href = 'specalitem.html'; // Redirect to another page if needed
+        });
+    </script>
+</body>
+</html>

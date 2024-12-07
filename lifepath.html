@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Lifepath</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Apply a general white text color to the entire page */
+        body {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column-title">Choose Your Cultural Origin (You can either roll or choose)</div>
+
+        <!-- Lifepath Table with Radio Buttons -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Your (General) Cultural Region</th>
+                    <th>Languages You Might Know (pick one in your group)</th>
+                    <th>Choose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>North American</td>
+                    <td>Chinese, Cree, Creole, English, French, Navajo, Spanish</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="cultural_region" value="option1">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>South/Central American</td>
+                    <td>Creole, English, German, Guarani, Mayan, Portuguese, Quechua, Spanish</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="cultural_region" value="option2">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Western European</td>
+                    <td>Dutch, English, French, German, Italian, Norwegian, Portuguese, Spanish</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="cultural_region" value="option3">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Eastern European</td>
+                    <td>English, Finnish, Polish, Romanian, Russian, Ukrainian</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="cultural_region" value="option4">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Middle Eastern/North African</td>
+                    <td>Arabic, Berber, English, Farsi, French, Hebrew, Turkish</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="cultural_region" value="option5">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Sub-Saharan African</td>
+                    <td>Arabic, English, French, Hausa, Lingala, Oromo, Portuguese, Swahili, Twi, Yoruba</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="cultural_region" value="option6">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>South Asian</td>
+                    <td>Bengali, Dari, English, Hindi, Nepali, Sinhalese, Tamil, Urdu</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="cultural_region" value="option7">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>South East Asian</td>
+                    <td>Arabic, Burmese, English, Filipino, Hindi, Indonesian, Khmer, Malayan, Vietnamese</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="cultural_region" value="option8">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>East Asian </td>
+                    <td>Cantonese Chinese, English, Japanese, Korean, Mandarin Chinese, Mongolian </td>
+                    <td>
+                        <label>
+                            <input type="radio" name="cultural_region" value="option9">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Oceania/Pacific Islander</td>
+                    <td>English, French, Hawaiian, Maori, Pama-Nyungan, Tahitian</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="cultural_region" value="option10">
+                        </label>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // Event listener for lifepath selection
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Get selected lifepath value
+            const selectedCulturalpath = document.querySelector('input[name="cultural_region"]:checked')?.value;
+
+            if (!selectedCulturalpath) {
+                alert('Please select a lifepath option!');
+                return;
+            }
+
+            // Store the selected lifepath in localStorage
+            localStorage.setItem('selectedCulturalpath', selectedCulturalpath);
+
+            // Optionally, log the selected value
+            console.log('Selected Lifepath:', selectedCulturalpath);
+
+            // Redirect or perform other actions
+            window.location.href = 'personality.html'; // Redirect to another page if needed
+        });
+    </script>
+</body>
+</html>

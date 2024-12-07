@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Goals</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Apply a general white text color to the entire page */
+        body {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column-title">Choose Your Goals (You can either roll or choose)</div>
+
+        <!-- Lifepath Table with Radio Buttons -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Life Goals</th>
+                    <th>Choose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Get rid of a bad reputation.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="goal" value="option1">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Gain power and control.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="goal" value="option2">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Get off The Street no matter what it takes.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="goal" value="option3">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Cause pain and suffering to anyone who crosses you.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="goal" value="option4">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Live down your past life and try to forget it.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="goal" value="option5">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Hunt down those responsible for your miserable life and make them pay.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="goal" value="option6">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Get what's rightfully yours.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="goal" value="option7">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Save, if possible, anyone else involved in your background, like a lover, or family member.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="goal" value="option8">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Gain fame and recognition.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="goal" value="option9">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Become feared and respected.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="goal" value="option10">
+                        </label>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // Event listener for lifepath selection
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Get selected lifepath value
+            const selectedGoalpath = document.querySelector('input[name="goal"]:checked')?.value;
+
+            if (!selectedGoalpath) {
+                alert('Please select a motivation option!');
+                return;
+            }
+
+            // Store the selected lifepath in localStorage
+            localStorage.setItem('selectedGoalpath', selectedGoalpath);
+
+            // Optionally, log the selected value
+            console.log('Selected Goals:', selectedGoalpath);
+
+            // Redirect or perform other actions
+            window.location.href = 'relationships.html'; // Redirect to another page if needed
+        });
+    </script>
+</body>
+</html>

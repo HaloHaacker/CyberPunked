@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Relationship</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Apply a general white text color to the entire page */
+        body {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column-title">Choose Your Relationship With Other People (You can either roll or choose)</div>
+
+        <!-- Lifepath Table with Radio Buttons -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>How Do You Feel About Most People?</th>
+                    <th>Choose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>I stay neutral.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="relationship" value="option1">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>I stay neutral.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="relationship" value="option2">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>I like almost everyone.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="relationship" value="option3">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>I hate almost everyone.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="relationship" value="option4">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>People are tools. Use them for your own goals then discard them.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="relationship" value="option5">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Every person is a valuable individual.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="relationship" value="option6">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>People are obstacles to be destroyed if they cross me.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="relationship" value="option7">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>People are untrustworthy. Don't depend on anyone.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="relationship" value="option8">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Wipe'em all out and let the cockroaches take over.</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="relationship" value="option9">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>People are wonderful!</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="relationship" value="option10">
+                        </label>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // Event listener for lifepath selection
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Get selected lifepath value
+            const selectedRelationshippath = document.querySelector('input[name="relationship"]:checked')?.value;
+
+            if (!selectedRelationshippath) {
+                alert('Please select a relationship option!');
+                return;
+            }
+
+            // Store the selected lifepath in localStorage
+            localStorage.setItem('selectedRelationshippath', selectedRelationshippath);
+
+            // Optionally, log the selected value
+            console.log('Selected Relationship:', selectedRelationshippath);
+
+            // Redirect or perform other actions
+            window.location.href = 'mvp.html'; // Redirect to another page if needed
+        });
+    </script>
+</body>
+</html>

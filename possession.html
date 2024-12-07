@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Possession</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Apply a general white text color to the entire page */
+        body {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column-title">Choose Your Most Values Possession (You can either roll or choose)</div>
+
+        <!-- Lifepath Table with Radio Buttons -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Most Valued Possession You Own?</th>
+                    <th>Choose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>A weapon</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="possession" value="option1">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>A tool</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="possession" value="option2">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>A piece of clothing</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="possession" value="option3">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>A photograph</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="possession" value="option4">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>A book or diary</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="possession" value="option5">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>A recording</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="possession" value="option6">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>A musical instrument</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="possession" value="option7">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>A piece of jewlry</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="possession" value="option8">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>A toy</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="possession" value="option9">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>A letter</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="possession" value="option10">
+                        </label>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // Event listener for lifepath selection
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            // Get selected lifepath value
+            const selectedPossessionpath = document.querySelector('input[name="possession"]:checked')?.value;
+
+            if (!selectedPossessionpath) {
+                alert('Please select a possession option!');
+                return;
+            }
+
+            // Store the selected lifepath in localStorage
+            localStorage.setItem('selectedPossessionpath', selectedPossessionpath);
+
+            // Optionally, log the selected value
+            console.log('Selected Motivation:', selectedPossessionpath);
+
+            // Redirect or perform other actions
+            window.location.href = 'familybackground.html'; // Redirect to another page if needed
+        });
+    </script>
+</body>
+</html>

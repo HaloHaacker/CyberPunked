@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enemy Layout</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white; /* Set all text color to white */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 3fr 3fr 3fr; /* Four columns */
+            gap: 16px;
+            padding: 16px;
+        }
+        .column {
+            padding: 16px;
+            background-color: #1e1e1e;
+            border: 1px solid #ffd000;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin-top: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- First Column: Dropdown -->
+        <div class="column">
+            <h4>Number of Enemies</h4>
+            <select id="enemyDropdown">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+
+        <!-- Second Column: Table 1 -->
+        <div class="column">
+            <h4>Enemy</h4>
+            <div id="tableContainer1" class="table-container"></div>
+        </div>
+
+        <!-- Third Column: Table 2 -->
+        <div class="column">
+            <h4>What Caused it? Who's been Wronged? (choose)</h4>
+            <div id="tableContainer2" class="table-container"></div>
+        </div>
+
+        <!-- Fourth Column: Table 3 -->
+        <div class="column">
+            <h4>What Can They Throw at You?</h4>
+            <div id="tableContainer3" class="table-container"></div>
+        </div>
+    </div>
+
+    <!-- Footer with Submit Button -->
+    <footer>
+        <button id="submitBtn">Next</button>
+    </footer>
+
+    <script>
+        let enemiesData = []; // Array to store data for each enemy
+
+        // Function to dynamically update the tables based on dropdown
+        function updateTables() {
+            const enemyCount = parseInt(document.getElementById('enemyDropdown').value);
+            const tableContainer1 = document.getElementById('tableContainer1');
+            const tableContainer2 = document.getElementById('tableContainer2');
+            const tableContainer3 = document.getElementById('tableContainer3');
+
+            // Clear existing tables and reset data array
+            tableContainer1.innerHTML = '';
+            tableContainer2.innerHTML = '';
+            tableContainer3.innerHTML = '';
+            enemiesData = Array.from({ length: enemyCount }, () => ({ type: '', cause: '', threat: '' }));
+
+            for (let i = 0; i < enemyCount; i++) {
+                // Create Table for Column 1 (Enemy Types)
+                const table1 = document.createElement('table');
+                table1.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Roll</th>
+                            <th>Enemy ${i + 1}</th>
+                            <th>Choose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Ex-friend</td><td><input type="radio" name="enemy_type${i}" value="Ex-friend" onclick="saveEnemyData(${i}, 'type', 'Ex-friend')"></td></tr>
+                        <tr><td>2</td><td>Ex-lover</td><td><input type="radio" name="enemy_type${i}" value="Ex-lover" onclick="saveEnemyData(${i}, 'type', 'Ex-lover')"></td></tr>
+                        <tr><td>3</td><td>Estranged relative</td><td><input type="radio" name="enemy_type${i}" value="Estranged relative" onclick="saveEnemyData(${i}, 'type', 'Estranged relative')"></td></tr>
+                        <tr><td>4</td><td>Childhood enemy</td><td><input type="radio" name="enemy_type${i}" value="Childhood enemy" onclick="saveEnemyData(${i}, 'type', 'Childhood enemy')"></td></tr>
+                        <tr><td>5</td><td>Person working for you</td><td><input type="radio" name="enemy_type${i}" value="Person working for you" onclick="saveEnemyData(${i}, 'type', 'Person working for you')"></td></tr>
+                        <tr><td>6</td><td>Person you work for</td><td><input type="radio" name="enemy_type${i}" value="Person you work for" onclick="saveEnemyData(${i}, 'type', 'Person you work for')"></td></tr>
+                        <tr><td>7</td><td>Partner or coworker</td><td><input type="radio" name="enemy_type${i}" value="Partner or coworker" onclick="saveEnemyData(${i}, 'type', 'Partner or coworker')"></td></tr>
+                        <tr><td>8</td><td>Corporate exec</td><td><input type="radio" name="enemy_type${i}" value="Corporate exec" onclick="saveEnemyData(${i}, 'type', 'Corporate exec')"></td></tr>
+                        <tr><td>9</td><td>Government official</td><td><input type="radio" name="enemy_type${i}" value="Government official" onclick="saveEnemyData(${i}, 'type', 'Government official')"></td></tr>
+                        <tr><td>10</td><td>Boosterganger</td><td><input type="radio" name="enemy_type${i}" value="Boosterganger" onclick="saveEnemyData(${i}, 'type', 'Boosterganger')"></td></tr>
+                    </tbody>
+                `;
+                tableContainer1.appendChild(table1);
+
+                // Create Table for Column 2 (Causes)
+                const table2 = document.createElement('table');
+                table2.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Roll</th>
+                            <th>Cause</th>
+                            <th>Choose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Caused the other to lose face or status.</td><td><input type="radio" name="cause${i}" value="Caused the other to lose face or status." onclick="saveEnemyData(${i}, 'cause', 'Caused the other to lose face or status.')"></td></tr>
+                        <tr><td>2</td><td>Caused the loss of lover, friend, or relative.</td><td><input type="radio" name="cause${i}" value="Caused the loss of lover, friend, or relative." onclick="saveEnemyData(${i}, 'cause', 'Caused the loss of lover, friend, or relative.')"></td></tr>
+                        <tr><td>3</td><td>Caused a major public humiliation.</td><td><input type="radio" name="cause${i}" value="Caused a major public humiliation." onclick="saveEnemyData(${i}, 'cause', 'Caused a major public humiliation.')"></td></tr>
+                        <tr><td>4</td><td>Accused the other of cowardice or some other significant personal flaw.</td><td><input type="radio" name="cause${i}" value="Accused the other of cowardice or some other significant personal flaw." onclick="saveEnemyData(${i}, 'cause', 'Accused the other of cowardice or some other significant personal flaw.')"></td></tr>
+                        <tr><td>5</td><td>Deserted or betrayed the other.</td><td><input type="radio" name="cause${i}" value="Deserted or betrayed the other." onclick="saveEnemyData(${i}, 'cause', 'Deserted or betrayed the other.')"></td></tr>
+                        <tr><td>6</td><td>Turned down the other's offer of a job or romantic involvement.</td><td><input type="radio" name="cause${i}" value="Turned down the other's offer of a job or romantic involvement." onclick="saveEnemyData(${i}, 'cause', 'Turned down the other's offer of a job or romantic involvement.')"></td></tr>
+                        <tr><td>7</td><td>You just don't like each other</td><td><input type="radio" name="cause${i}" value="You just don't like each other" onclick="saveEnemyData(${i}, 'cause', 'You just don't like each other')"></td></tr>
+                        <tr><td>8</td><td>One of you was a romantic rival.</td><td><input type="radio" name="cause${i}" value="One of you was a romantic rival." onclick="saveEnemyData(${i}, 'cause', 'One of you was a romantic rival.')"></td></tr>
+                        <tr><td>9</td><td>One of you was a business rival.</td><td><input type="radio" name="cause${i}" value="One of you was a business rival." onclick="saveEnemyData(${i}, 'cause', 'One of you was a business rival.')"></td></tr>
+                        <tr><td>10</td><td>One of you set the other up for a crime they didn't commit.</td><td><input type="radio" name="cause${i}" value="One of you set the other up for a crime they didn't commit." onclick="saveEnemyData(${i}, 'cause', 'One of you set the other up for a crime they didn't commit.')"></td></tr>
+                    </tbody>
+                `;
+                tableContainer2.appendChild(table2);
+
+                // Create Table for Column 3 (Threats)
+                const table3 = document.createElement('table');
+                table3.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Roll</th>
+                            <th>Threat</th>
+                            <th>Choose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Just themselves and even they won't go out of their way.</td><td><input type="radio" name="threat${i}" value="Just themselves and even they won't go out of their way." onclick="saveEnemyData(${i}, 'threat', 'Just themselves and even they won't go out of their way.')"></td></tr>
+                        <tr><td>2</td><td>Just themselves</td><td><input type="radio" name="threat${i}" value="Just themselves" onclick="saveEnemyData(${i}, 'threat', 'Just themselves')"></td></tr>
+                        <tr><td>3</td><td>Just themselves and a close friend.</td><td><input type="radio" name="threat${i}" value="Just themselves and a close friend." onclick="saveEnemyData(${i}, 'threat', 'Just themselves and a close friend.')"></td></tr>
+                        <tr><td>4</td><td>Themselves and a few (1d6/2) friends</td><td><input type="radio" name="threat${i}" value="Themselves and a few (1d6/2) friends" onclick="saveEnemyData(${i}, 'threat', 'Themselves and a few (1d6/2) friends')"></td></tr>
+                        <tr><td>5</td><td>Themselves and a few (1d10/2) friends.</td><td><input type="radio" name="threat${i}" value="Themselves and a few (1d10/2) friends." onclick="saveEnemyData(${i}, 'threat', 'Themselves and a few (1d10/2) friends.')"></td></tr>
+                        <tr><td>6</td><td>An entire gang (at least 1d10 + 5 people).</td><td><input type="radio" name="threat${i}" value="An entire gang (at least 1d10 + 5 people)." onclick="saveEnemyData(${i}, 'threat', 'An entire gang (at least 1d10 + 5 people).')"></td></tr>
+                        <tr><td>7</td><td>The local cops or other Lawmen.</td><td><input type="radio" name="threat${i}" value="The local cops or other Lawmen." onclick="saveEnemyData(${i}, 'threat', 'The local cops or other Lawmen.')"></td></tr>
+                        <tr><td>8</td><td>Themselves, their crew, and even a hired killer.</td><td><input type="radio" name="threat${i}" value="Themselves, their crew, and even a hired killer." onclick="saveEnemyData(${i}, 'threat', 'Themselves, their crew, and even a hired killer.')"></td></tr>
+                        <tr><td>9</td><td>A professional hit squad.</td><td><input type="radio" name="threat${i}" value="A professional hit squad." onclick="saveEnemyData(${i}, 'threat', 'A professional hit squad.')"></td></tr>
+                        <tr><td>10</td><td>A professional hit squad, plus a mob boss.</td><td><input type="radio" name="threat${i}" value="A professional hit squad, plus a mob boss." onclick="saveEnemyData(${i}, 'threat', 'A professional hit squad, plus a mob boss.')"></td></tr>
+                    </tbody>
+                `;
+                tableContainer3.appendChild(table3);
+            }
+        }
+
+        // Function to save the data for each enemy
+        function saveEnemyData(index, typeOrCauseOrThreat, value) {
+            enemiesData[index][typeOrCauseOrThreat] = value;
+            console.log(enemiesData); // You can log or use the data as needed
+        }
+
+        // Function to handle submission and save data to localStorage
+        function handleSubmit() {
+            // Check if all options are selected
+            const incomplete = enemiesData.some(enemy => !enemy.type || !enemy.cause || !enemy.threat);
+            if (incomplete) {
+                alert("Please make sure to select an option for every enemy!");
+                return; // Stop form submission
+            }
+
+            // Save enemiesData to localStorage
+            localStorage.setItem('enemiesData', JSON.stringify(enemiesData));
+            console.log("Saved Data:", enemiesData);
+
+            // Navigate to the next page
+            window.location.href = 'revenge.html'; // Change this to your next page URL
+        }
+
+        // Initialize dropdown and tables on page load
+        document.getElementById('enemyDropdown').addEventListener('change', updateTables);
+        document.getElementById('submitBtn').addEventListener('click', handleSubmit);
+
+        // Call updateTables initially to generate the tables based on the default dropdown value
+        updateTables();
+    </script>
+</body>
+</html>
