@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Role</title>
+    <link rel="stylesheet" href="../style.css">
+    
+    <style>
+
+        body {
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 0; /* Allow content to grow and take up available space */
+            padding: 20px;
+            }
+        /* General styling for tables */
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        /* Initially hide the additional tables */
+        .additional-table {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- First Table with Radio Buttons -->
+        <div class="column-title">What Kind of Rockerboy are You?</div>
+        <table id="roleTable">
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Type</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Musician</td>
+                    <td><input type="radio" name="role" value="musician"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Slam Poet</td>
+                    <td><input type="radio" name="role" value="slamPoet"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Street Artist</td>
+                    <td><input type="radio" name="role" value="streetArtist"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Performance Artist</td>
+                    <td><input type="radio" name="role" value="performanceArtist"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Comedian</td>
+                    <td><input type="radio" name="role" value="comedian"></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Orator</td>
+                    <td><input type="radio" name="role" value="orator"></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Politico</td>
+                    <td><input type="radio" name="role" value="politico"></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Rap Artist</td>
+                    <td><input type="radio" name="role" value="rapArtist"></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>DJ</td>
+                    <td><input type="radio" name="role" value="dj"></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Idoru</td>
+                    <td><input type="radio" name="role" value="idoru"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Second Table with Radio Buttons for Solo or Group -->
+        <div id="soloOrGroupContainer" class="additional-table">
+            <div class="column-title">Were you Solo or in a Group?</div>
+            <table id="soloGroupTable">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Solo</td>
+                        <td><input type="radio" name="soloOrGroup" value="solo"></td>
+                    </tr>
+                    <tr>
+                        <td>In a Group</td>
+                        <td><input type="radio" name="soloOrGroup" value="group"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tables based on Solo or Group selection -->
+        <!-- Solo Table -->
+        <div id="onceInAGroup" class="additional-table">
+            <div class="column-title">Solo Life Choices</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Have you always been a solo act</td>
+                        <td><input type="radio" name="soloOrGroupTwo" value="solotwo"></td>
+                    </tr>
+                    <tr>
+                        <td>Were you once part of a group</td>
+                        <td><input type="radio" name="soloOrGroupTwo" value="grouptwo"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- why did you leave Table -->
+        <div id="whyDidYouLeave" class="additional-table">
+            <div class="column-title">Why Did You Leave?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Reason</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Have you always been a solo act</td>
+                        <td><input type="radio" name="whyLeave" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>You got caught sleeping around with another member's mainline.</td>
+                        <td><input type="radio" name="whyLeave" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>The rest of the group was killed in a tragic "accident."</td>
+                        <td><input type="radio" name="whyLeave" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>The rest of the group was murdered or otherwise broken up by external enemies.</td>
+                        <td><input type="radio" name="whyLeave" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>The group broke up over "creative differences."</td>
+                        <td><input type="radio" name="whyLeave" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>You decided to go solo.</td>
+                        <td><input type="radio" name="whyLeave" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Group Table -->
+        <div id="whereToPerformContainer" class="additional-table">
+            <div class="column-title">Where Do You Perform? </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Venue</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Alternative Cafes</td>
+                        <td><input type="radio" name="whereToPerform" value="alternativeCafes"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Private Clubs</td>
+                        <td><input type="radio" name="whereToPerform" value="privateClubs"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Seedy Dive Bars</td>
+                        <td><input type="radio" name="whereToPerform" value="seedyDiveBars"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Guerrilla Performances</td>
+                        <td><input type="radio" name="whereToPerform" value="guerrillaPerformances"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Nightclubs Around the City</td>
+                        <td><input type="radio" name="whereToPerform" value="nightclubsAroundtheCity"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>On the Data Pool</td>
+                        <td><input type="radio" name="whereToPerform" value="ontheDataPool"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Table on whose gunning for ya -->
+        <div id="whoseGunningForYouContainer" class="additional-table">
+            <div class="column-title">Who's Gunning for You/Your Group?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Who?</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Old group member who thinks you did them dirty</td>
+                        <td><input type="radio" name="whoseGunningYou" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Rival group or artist trying to steal market share.</td>
+                        <td><input type="radio" name="whoseGunningYou" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Corporate enemies who don't like your message.</td>
+                        <td><input type="radio" name="whoseGunningYou" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Critic or other "influencer" trying to bring you down.</td>
+                        <td><input type="radio" name="whoseGunningYou" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Older media star who feels threatened by your rising fame.</td>
+                        <td><input type="radio" name="whoseGunningYou" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Romantic interest or media figure who wants revenge for personal reasons.</td>
+                        <td><input type="radio" name="whoseGunningYou" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // When a role is selected, show the second table (solo or group)
+        const roleRadios = document.querySelectorAll('input[name="role"]');
+        roleRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('soloOrGroupContainer').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const soloOrGroupRadios = document.querySelectorAll('input[name="soloOrGroup"]');
+        soloOrGroupRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Hide both tables first
+                document.getElementById('onceInAGroup').style.display = 'none';
+                document.getElementById('whereToPerformContainer').style.display = 'none';
+
+                // Show the respective table based on selection
+                if (radio.value === 'solo') {
+                    document.getElementById('onceInAGroup').style.display = 'block';
+                } else if (radio.value === 'group') {
+                    document.getElementById('whereToPerformContainer').style.display = 'block';
+                }
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const soloOrGroupRadiosTwo = document.querySelectorAll('input[name="soloOrGroupTwo"]');
+        soloOrGroupRadiosTwo.forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Hide both tables first
+                document.getElementById('whereToPerformContainer').style.display = 'none';
+                document.getElementById('whyDidYouLeave').style.display = 'none';
+
+                // Show the respective table based on selection
+                if (radio.value === 'solotwo') {
+                    document.getElementById('whereToPerformContainer').style.display = 'block';
+                } else if (radio.value === 'grouptwo') {
+                    document.getElementById('whyDidYouLeave').style.display = 'block';
+                }
+            });
+        });
+
+        const whyLeaveRaidos = document.querySelectorAll('input[name="whyLeave"]');
+        whyLeaveRaidos.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('whereToPerformContainer').style.display = 'block'; // Show second table
+            });
+        });
+
+
+        // When a where is selected, show the next table (whose gunning for you)
+        const whereRaidos = document.querySelectorAll('input[name="whereToPerform"]');
+        whereRaidos.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('whoseGunningForYouContainer').style.display = 'block'; // Show second table
+            });
+        });
+
+        // Handle submit action
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+            const selectedType = document.querySelector('input[name="soloOrGroup"]:checked')?.value;
+
+            if (!selectedRole || !selectedType) {
+                alert('Please complete all selections!');
+                return;
+            }
+
+            // Store the selections in localStorage
+            localStorage.setItem('selectedRole', selectedRole);
+            localStorage.setItem('selectedType', selectedType);
+
+            // Optionally, log the selected values
+            console.log('Selected Role:', selectedRole);
+            console.log('Selected Type:', selectedType);
+
+            // Redirect or perform other actions
+            window.location.href = 'nextpage.html'; // Change to your desired page
+        });
+    </script>
+</body>
+</html>

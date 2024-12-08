@@ -128,24 +128,68 @@
 
     <script>
         // Event listener for lifepath selection
-        document.getElementById('submitBtn').addEventListener('click', function() {
+        document.getElementById('submitBtn').addEventListener('click', function () {
             // Get selected lifepath value
             const selectedGoalpath = document.querySelector('input[name="goal"]:checked')?.value;
-
+    
             if (!selectedGoalpath) {
                 alert('Please select a motivation option!');
                 return;
             }
-
+    
             // Store the selected lifepath in localStorage
             localStorage.setItem('selectedGoalpath', selectedGoalpath);
-
-            // Optionally, log the selected value
-            console.log('Selected Goals:', selectedGoalpath);
-
-            // Redirect or perform other actions
-            window.location.href = 'rolebasedlifepath.html'; // Redirect to another page if needed
+    
+            // Get the role from localStorage
+            const selectedRole = localStorage.getItem('selectedRole');
+    
+            // Redirect based on the role
+            let targetPage;
+            switch (selectedRole) {
+                case 'rockerboy':
+                    targetPage = 'RoleBasedLifepaths/rockerboyLifepath.html';
+                    break;
+                case 'solo':
+                    targetPage = 'RoleBasedLifepaths/soloLifepath.html';
+                    break;
+                case 'netrunner':
+                    targetPage = 'RoleBasedLifepaths/netrunnerLifepath.html';
+                    break;
+                case 'tech':
+                    targetPage = 'RoleBasedLifepaths/techLifepath.html';
+                    break;
+                case 'medtech':
+                    targetPage = 'RoleBasedLifepaths/medtechLifepath.html';
+                    break;
+                case 'media':
+                    targetPage = 'RoleBasedLifepaths/mediaLifepath.html';
+                    break;
+                case 'exec':
+                    targetPage = 'RoleBasedLifepaths/execLifepath.html';
+                    break;
+                case 'lawman':
+                    targetPage = 'RoleBasedLifepaths/lawmanLifepath.html';
+                    break;
+                case 'fixer':
+                    targetPage = 'RoleBasedLifepaths/fixerLifepath.html';
+                    break;
+                case 'nomad':
+                    targetPage = 'RoleBasedLifepaths/nomadLifepath.html';
+                    break;
+                // Add additional cases for other roles as needed
+                default:
+                    targetPage = 'role.html'; // Fallback for unknown roles
+                    break;
+            }
+    
+            // Log the navigation for debugging purposes
+            console.log(`Redirecting to: ${targetPage} based on role: ${selectedRole}`);
+    
+            // Redirect to the appropriate page
+            window.location.href = targetPage;
+            // to get out of the folder use: window.location.href = "../role.html"; 
         });
     </script>
+    
 </body>
 </html>
