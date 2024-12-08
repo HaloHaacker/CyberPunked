@@ -173,23 +173,31 @@
 
         // Retrieve saved data from localStorage
         function loadData() {
-            const savedData = JSON.parse(localStorage.getItem('selectedValues'));
-            if (savedData) {
-                selectedValues = savedData;
-                remainingPoints = totalPoints - selectedValues.reduce((sum, val) => sum + val, 0); // Recalculate remaining points
-                remainingPointsElement.textContent = remainingPoints;
-                selectionMode.value = savedData.mode;
-                updateTable(savedData.mode);
-            }
+        const savedData = JSON.parse(localStorage.getItem('selectedValues'));
+        if (savedData) {
+            selectedValues = savedData.selectedValues;
+            remainingPoints = totalPoints - selectedValues.flat().reduce((sum, val) => sum + val, 0); // Recalculate remaining points
+            remainingPointsElement.textContent = remainingPoints;
+            selectionMode.value = savedData.mode;
+            updateTable(savedData.mode); // Update the table with the correct mode
+            restoreSelections();
         }
+    }
 
-        // Save current selected values to localStorage
-        function saveData() {
-            localStorage.setItem('selectedValues', JSON.stringify({
-                selectedValues,
-                mode: selectionMode.value
-            }));
-        }
+    function restoreSelections() {
+        // Restore the values in the table based on saved data
+        selectedValues.forEach((row, rowIndex) => {
+            row.forEach((value, colIndex) => {
+                if (value !== undefined) {
+                    const cell = tableContainer.rows[rowIndex + 1].cells[colIndex + 1]; // Get the correct cell (excluding headers)
+                    if (cell && cell.querySelector('input[type="number"]')) {
+                        cell.querySelector('input[type="number"]').value = value; // Restore the value to the number input
+                    }
+                }
+            });
+        });
+    }
+
 
         // Switch between different selection modes and update the table
         function updateTable(mode) {
@@ -253,18 +261,28 @@
             });
         }
 
-        function updateSelectedValues(rowIndex, colIndex, input) {
-            // Save selected number
-            const selectedValue = parseInt(input.value, 10);
-            selectedValues.push(selectedValue);
+    function updateSelectedValues(rowIndex, colIndex, input) {
+        // Check if the value is valid before adding it
+        const selectedValue = parseInt(input.value, 10);
 
-            // Recalculate remaining points
-            remainingPoints = totalPoints - selectedValues.reduce((sum, val) => sum + val, 0);
-            remainingPointsElement.textContent = remainingPoints;
+        // Save the selected number into the list (using rowIndex and colIndex as identifiers)
+        selectedValues[rowIndex - 1] = selectedValues[rowIndex - 1] || []; // Ensure the row exists
+        selectedValues[rowIndex - 1][colIndex - 1] = selectedValue; // Update the value at the correct position
 
-            // Save data to localStorage
-            saveData();
-        }
+        // Recalculate remaining points
+        remainingPoints = totalPoints - selectedValues.flat().reduce((sum, val) => sum + val, 0); // Flatten and sum all values
+        remainingPointsElement.textContent = remainingPoints;
+
+        // Save data to localStorage
+        saveData();
+    }
+
+    function saveData() {
+        localStorage.setItem('selectedValues', JSON.stringify({
+            selectedValues,
+            mode: selectionMode.value
+        }));
+    }
 
         function toggleRowSelection(selectedRow) {
             const allInputs = tableContainer.querySelectorAll('input[type="radio"]');
