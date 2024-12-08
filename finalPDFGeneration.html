@@ -13,62 +13,75 @@
         <p id="handle"></p>
         <p id="biography"></p>
         <p id="description"></p>
-        <img id="imagePreview" src="" alt="Image preview" style="max-width: 100%;"/>
+        <img id="imagePreview" src="" alt="Image preview" style="max-width: 100%;" />
 
         <h2>Roles:</h2>
         <p id="selectedRole"></p>
 
         <h2>Lifepath:</h2>
         <p id="selectedCulturalpath"></p>
-        
-        
+        <p id="selectedPersonalitypath"></p>
+        <p id="selectedClothingpath"></p>
+        <p id="selectedAffectationpath"></p>
+        <p id="selectedMotivationpath"></p>
+        <p id="selectedRelationshippath"></p>
+        <p id="selectedmvppath"></p>
+        <p id="selectedPossessionpath"></p>
+        <p id="selectedFamilyBackgroundpath"></p>
+        <p id="selectedEnvironmentpath"></p>
+        <p id="selectedFamilyCrisispath"></p>
+
         <h2>Friends List:</h2>
-        <ul id="friendsList"></ul> <!-- Display friends data here -->
+        <ul id="friendsList"></ul>
+
+        <h2>Enemies List:</h2>
+        <ul id="enemiesList"></ul>
+
+        <p id="selectedRevengepath"></p>
+        <div id="loveAffairList"></div>
+        <div id="selectedGoalpath"></div>
     </div>
 
     <button id="generatePDF">Generate PDF</button>
 
     <script>
-        // Get data from localStorage
-        const fullName = localStorage.getItem('fullName');
-        const handle = localStorage.getItem('handle');
-        const biography = localStorage.getItem('biography');
-        const description = localStorage.getItem('description');
+        // Retrieve data from localStorage
+        const fullName = localStorage.getItem('fullName') || 'N/A';
+        const handle = localStorage.getItem('handle') || 'N/A';
+        const biography = localStorage.getItem('biography') || 'N/A';
+        const description = localStorage.getItem('description') || 'N/A';
         const imageData = localStorage.getItem('image');
 
-        const selectedRole = localStorage.getItem('selectedRole');
+        const selectedRole = localStorage.getItem('selectedRole') || 'N/A';
 
-        const selectedCulturalpath = localStorage.getItem('selectedCulturalpath');
-        const selectedPersonalitypath = localStorage.getItem('selectedPersonalitypath');
-        const selectedClothingpath = localStorage.getItem('selectedClothingpath');
-        const selectedAffectationpath = localStorage.getItem('selectedAffectationpath');
-        const selectedMotivationpath = localStorage.getItem('selectedMotivationpath');
-        const selectedRelationshippath = localStorage.getItem('selectedRelationshippath');
-        const selectedmvppath = localStorage.getItem('selectedmvppath');
-        const selectedPossessionpath = localStorage.getItem('selectedPossessionpath');
-        const selectedFamilyBackgroundpath = localStorage.getItem('selectedFamilyBackgroundpath');
-        const selectedEnvironmentpath = localStorage.getItem('selectedEnvironmentpath');
-        const selectedFamilyCrisispath = localStorage.getItem('selectedFamilyCrisispath');
-        
-        
+        const selectedCulturalpath = localStorage.getItem('selectedCulturalpath') || 'N/A';
+        const selectedPersonalitypath = localStorage.getItem('selectedPersonalitypath') || 'N/A';
+        const selectedClothingpath = localStorage.getItem('selectedClothingpath') || 'N/A';
+        const selectedAffectationpath = localStorage.getItem('selectedAffectationpath') || 'N/A';
+        const selectedMotivationpath = localStorage.getItem('selectedMotivationpath') || 'N/A';
+        const selectedRelationshippath = localStorage.getItem('selectedRelationshippath') || 'N/A';
+        const selectedmvppath = localStorage.getItem('selectedmvppath') || 'N/A';
+        const selectedPossessionpath = localStorage.getItem('selectedPossessionpath') || 'N/A';
+        const selectedFamilyBackgroundpath = localStorage.getItem('selectedFamilyBackgroundpath') || 'N/A';
+        const selectedEnvironmentpath = localStorage.getItem('selectedEnvironmentpath') || 'N/A';
+        const selectedFamilyCrisispath = localStorage.getItem('selectedFamilyCrisispath') || 'N/A';
+        const friendsData = JSON.parse(localStorage.getItem('friendsData')) || [];
+        const enemiesData = JSON.parse(localStorage.getItem('enemiesData')) || [];
+        const selectedRevengepath = localStorage.getItem('selectedRevengepath') || 'N/A';
+        const loveaffairData = JSON.parse(localStorage.getItem('loveaffairData')) || [];
+        const selectedGoalpath = localStorage.getItem('selectedGoalpath') || 'N/A';
 
-        // Retrieve friends data from localStorage
-        const friendsData = JSON.parse(localStorage.getItem('friendsData'));
-        
-        // Display data in the document
+        // Display the retrieved data on the page
         document.getElementById('fullName').textContent = `Full Name: ${fullName}`;
         document.getElementById('handle').textContent = `Handle: ${handle}`;
         document.getElementById('biography').textContent = `Biography: ${biography}`;
         document.getElementById('description').textContent = `Description: ${description}`;
-        
-        
-        // Display image if available
+
         if (imageData) {
             document.getElementById('imagePreview').src = imageData;
         }
 
         document.getElementById('selectedRole').textContent = `Role: ${selectedRole}`;
-
         document.getElementById('selectedCulturalpath').textContent = `Cultural Origins: ${selectedCulturalpath}`;
         document.getElementById('selectedPersonalitypath').textContent = `Your Personality: ${selectedPersonalitypath}`;
         document.getElementById('selectedClothingpath').textContent = `Your Dress and Personal Style: ${selectedClothingpath}`;
@@ -79,45 +92,84 @@
         document.getElementById('selectedPossessionpath').textContent = `Most Valued Possession You Own: ${selectedPossessionpath}`;
         document.getElementById('selectedFamilyBackgroundpath').textContent = `Your Original Family Background: ${selectedFamilyBackgroundpath}`;
         document.getElementById('selectedEnvironmentpath').textContent = `Your Childhood Environment: ${selectedEnvironmentpath}`;
-        document.getElementById('selectedFamilyCrisispath').textContent = `Your Family Crisis : ${selectedFamilyCrisispath}`;
+        document.getElementById('selectedFamilyCrisispath').textContent = `Your Family Crisis: ${selectedFamilyCrisispath}`;
 
+        const friendsList = document.getElementById('friendsList');
+        friendsData.forEach((friend, index) => {
+            const li = document.createElement('li');
+            li.textContent = `Friend ${index + 1}: ${friend.value}`;
+            friendsList.appendChild(li);
+        });
 
-        // Display friends list if available
-        const friendsListElement = document.getElementById('friendsList');
-        if (friendsData && Array.isArray(friendsData)) {
-            friendsData.forEach(friend => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `Name: ${friend.name}, Handle: ${friend.handle}`;
-                friendsListElement.appendChild(listItem);
-            });
-        }
+        const enemiesList = document.getElementById('enemiesList');
+        enemiesData.forEach((enemy, index) => {
+            const li = document.createElement('li');
+            li.textContent = `Enemy ${index + 1}: ${enemy.type}, Cause: ${enemy.cause}, Threat: ${enemy.threat}`;
+            enemiesList.appendChild(li);
+        });
 
-        // Generate PDF using jsPDF
-        document.getElementById('generatePDF').addEventListener('click', function() {
+        document.getElementById('selectedRevengepath').textContent = `Your Sweet Revenge: ${selectedRevengepath}`;
+
+        // Display the data
+        const loveAffairList = document.getElementById('loveAffairList');
+        loveaffairData.forEach((affair, index) => {
+            const div = document.createElement('div');
+            div.textContent = `Love Affair ${index + 1}: ${affair.value}`;
+            loveAffairList.appendChild(div);
+        });
+
+        document.getElementById('selectedGoalpath').textContent = `Your Life Goals: ${selectedGoalpath}`;
+
+        // Generate PDF
+        document.getElementById('generatePDF').addEventListener('click', function () {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-            
+
             // Add content to the PDF
             doc.text(`Full Name: ${fullName}`, 10, 10);
             doc.text(`Handle: ${handle}`, 10, 20);
             doc.text(`Biography: ${biography}`, 10, 30);
             doc.text(`Description: ${description}`, 10, 40);
 
-            // Add friends to the PDF if available
-            if (friendsData && Array.isArray(friendsData)) {
-                let yPosition = 50; // Start position for friends list
-                friendsData.forEach(friend => {
-                    doc.text(`Friend: ${friend.name}, Handle: ${friend.handle}`, 10, yPosition);
-                    yPosition += 10; // Increment Y position for next friend
+            let yPosition = 50;
+
+            doc.text(`Role: ${selectedRole}`, 10, yPosition);
+            yPosition += 10;
+            doc.text(`Cultural Origins: ${selectedCulturalpath}`, 10, yPosition);
+            yPosition += 10;
+
+            // Add friends to PDF
+            if (friendsData.length > 0) {
+                yPosition += 10;
+                doc.text(`Friends:`, 10, yPosition);
+                yPosition += 10;
+                friendsData.forEach((friend, index) => {
+                    doc.text(`Friend ${index + 1}: ${friend.value}`, 10, yPosition);
+                    yPosition += 10;
                 });
             }
 
-            // If image exists, add it to the PDF
+            // Add enemies to PDF
+            if (enemiesData.length > 0) {
+                yPosition += 10;
+                doc.text(`Enemies:`, 10, yPosition);
+                yPosition += 10;
+                enemiesData.forEach((enemy, index) => {
+                    doc.text(
+                        `Enemy ${index + 1}: ${enemy.type}, Cause: ${enemy.cause}, Threat: ${enemy.threat}`,
+                        10,
+                        yPosition
+                    );
+                    yPosition += 10;
+                });
+            }
+
+            // Add image if exists
             if (imageData) {
                 const img = new Image();
                 img.src = imageData;
-                img.onload = function() {
-                    doc.addImage(img, 'JPEG', 10, 80, 180, 160); // Adjust size and position
+                img.onload = () => {
+                    doc.addImage(img, 'JPEG', 10, yPosition, 180, 120);
                     doc.save('finalDocument.pdf');
                 };
             } else {

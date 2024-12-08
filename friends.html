@@ -89,18 +89,23 @@
 
         // Function to handle submission and save data to localStorage
         function handleSubmit() {
-            const incomplete = friendsData.some(friend => !friend.value);
+            const selectedValue = parseInt(document.getElementById('roleDropdown').value);
+            
+            // Check if all necessary tables have a value selected
+            const incomplete = friendsData.slice(0, selectedValue).some(friend => !friend.value);
+            
             if (incomplete) {
                 alert("Please make sure to select an option for every friend!");
             } else {
                 // Save friendsData to localStorage
-                localStorage.setItem('friendsData', JSON.stringify(friendsData));
-                console.log("Saved Data:", friendsData);
-
+                localStorage.setItem('friendsData', JSON.stringify(friendsData.slice(0, selectedValue)));
+                console.log("Saved Data:", friendsData.slice(0, selectedValue));
+                
                 // Navigate to the next page
                 window.location.href = 'enemies.html'; // Change this to your next page URL
             }
         }
+
 
         // Attach event listeners
         window.onload = () => {

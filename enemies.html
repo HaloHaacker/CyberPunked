@@ -178,20 +178,25 @@
 
         // Function to handle submission and save data to localStorage
         function handleSubmit() {
-            // Check if all options are selected
-            const incomplete = enemiesData.some(enemy => !enemy.type || !enemy.cause || !enemy.threat);
+            const enemyCount = parseInt(document.getElementById('enemyDropdown').value);
+
+            // Validate only the selected number of enemies
+            const incomplete = enemiesData.slice(0, enemyCount).some(enemy => !enemy.type || !enemy.cause || !enemy.threat);
+
             if (incomplete) {
-                alert("Please make sure to select an option for every enemy!");
+                alert("Please make sure to select an option for every active enemy!");
                 return; // Stop form submission
             }
 
-            // Save enemiesData to localStorage
-            localStorage.setItem('enemiesData', JSON.stringify(enemiesData));
-            console.log("Saved Data:", enemiesData);
+            // Save only the active enemies to localStorage
+            const activeEnemiesData = enemiesData.slice(0, enemyCount);
+            localStorage.setItem('enemiesData', JSON.stringify(activeEnemiesData));
+            console.log("Saved Data:", activeEnemiesData);
 
             // Navigate to the next page
             window.location.href = 'revenge.html'; // Change this to your next page URL
         }
+
 
         // Initialize dropdown and tables on page load
         document.getElementById('enemyDropdown').addEventListener('change', updateTables);
