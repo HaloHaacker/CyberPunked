@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Points Allocation</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1e1e1e;
+            padding: 20px;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .left-column, .right-column {
+            width: 98%;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 10px;
+            padding: 10px;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ffd000;
+            padding: 10px;
+            text-align: center;
+        }
+        input[type="number"] {
+            width: 60px;
+        }
+        .remaining-points {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: auto; /* Pushes the footer to the bottom */
+            padding: 10px;
+            background-color: #1e1e1e;
+            text-align: center;
+        }
+        footer button {
+            padding: 10px 20px;
+            background-color: #ffd000;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+        footer button:hover {
+            background-color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Left Column for Skill Points and Instructions -->
+    <div class="left-column">
+        <h1>Skill Points Allocation</h1>
+        <div class="remaining-points">Remaining Skill Points: <span id="remaining-points">86</span></div>
+        <p>
+            In this section, you can allocate your 86 available skill points across various skills to improve your character's abilities. 
+            Each skill can be increased up to a maximum level of 6. Some skills have a minimum required level, while others cost more points to increase.
+            Adjust the values in the right-hand tables to assign points to the corresponding skills.
+            Be mindful that once the points are spent, you cannot exceed the available total of 86 skill points.
+        </p>
+        <p>The following Skills must be at least Level 2: Athletics, Brawling, Concentration, Conversation,
+            Education, Evasion, First Aid, Human Perception, Language (Streetslang), Local Expert (Your Home),
+            Perception, Persuasion, and Stealth</p>
+        <p>Skills marked in the Master Skill List with a (x2) cost two Skill points to increase in Level by
+            one. All other Skills cost one Skill point to increase in Level by one.</p>
+    </div>
+
+    <!-- Right Column for Tables -->
+    <div class="right-column" id="tables-container">
+        <!-- Tables will be inserted here by JavaScript -->
+    </div>
+    
+    <!-- Footer with Button -->
+    <footer>
+        <button onclick="goToNextPage()">Go to Next Page</button>
+    </footer>
+
+    <script>
+        const totalSkillPoints = 86;
+        let remainingPoints = totalSkillPoints;
+        let totalSpentPoints = 0;
+
+        // Function to update remaining points
+        function updateRemainingPoints() {
+            const remainingPointsElement = document.getElementById('remaining-points');
+            remainingPointsElement.textContent = remainingPoints;
+        }
+
+        // Skills data (Name, Description, and Attribute) grouped by categories
+        const skills = [
+        {
+                category: 'Awareness Skills',
+                skills: [
+                    { name: 'Concentration', description: 'Skill of focus and mental control, encompassing feats of memory, recall, ignoring distractions, and physiological mastery.', attribute: 'WILL', minLevel: 2 },
+                    { name: 'Conceal/Reveal Object', description: 'Skill for hiding objects and finding objects that have been hidden. This is the Skill used for concealing weapons under clothing and detecting concealed weapons.', attribute: 'INT' },
+                    { name: 'Lip Reading', description: 'Skill of reading someone\'s lips to tell what they are saying.', attribute: 'INT' },
+                    { name: 'Perception', description: 'Skill of spotting hidden things like clues, traps, and people using the Stealth Skill, but not objects hidden with the Conceal/Reveal Object Skill.', attribute: 'INT', minLevel: 2 },
+                    { name: 'Tracking', description: 'Skill of following a trail by observing tracks and other clues left behind.', attribute: 'INT' }
+                ]
+            },
+            {
+                category: 'Body Skills',
+                skills: [
+                    { name: 'Athletics', description: 'Skill of jumping, climbing, throwing, swimming, lifting weights, etc.', attribute: 'DEX', minLevel: 2 },
+                    { name: 'Contortionist', description: 'Skill of manipulating your body to get out of handcuffs or other bindings and to fit yourself into otherwise inaccessible places or spaces.', attribute: 'DEX' },
+                    { name: 'Dance', description: 'Skill of dancing at a professional level.', attribute: 'DEX' },
+                    { name: 'Endurance', description: 'Skill of withstanding harsh environmental conditions and hardship.', attribute: 'WILL' },
+                    { name: 'Resist Torture/Drugs', description: 'Skill of resisting painful effects including interrogation, torture, and drugs.', attribute: 'WILL' },
+                    { name: 'Stealth', description: 'Skill of moving quietly, hiding, doing an Action discreetly, or otherwise evading detection. Other Characters can try to find you with their Perception Skill.', attribute: 'DEX', minLevel: 2 }
+                ]
+            },
+            {
+                category: 'Control Skills',
+                skills: [
+                    { name: 'Drive Land Vehicle', description: 'Skill of driving and maneuvering land vehicles.', attribute: 'REF' },
+                    { name: 'Pilot Air Vehicle (x2)', description: 'Skill of piloting and maneuvering air vehicles.', attribute: 'REF', x2: true },
+                    { name: 'Pilot Sea Vehicle', description: 'Skill of piloting and maneuvering sea vehicles.', attribute: 'REF' },
+                    { name: 'Riding', description: 'Skill of riding a living creature trained for the purpose.', attribute: 'REF' }
+                ]
+            },
+            {
+                category: 'Education Skills',
+                skills: [
+                    { name: 'Accounting', description: 'Skill of balancing books, creating false books and identifying them, juggling numbers, creating budgets, and handling day to day business operations.', attribute: 'INT' },
+                    { name: 'Animal Handling', description: 'Skill of handling, training, and caring for animals.', attribute: 'INT' },
+                    { name: 'Bureaucracy', description: 'Skill for dealing with bureaucrats, knowing who to talk to in a bureaucracy, how to reach them, and how to extract information from bureaucracies.', attribute: 'INT' },
+                    { name: 'Business', description: 'Skill regarding knowledge of basic business practices, laws of supply and demand, employee management, procurement, sales, marketing.', attribute: 'INT' },
+                    { name: 'Composition', description: 'Skill of professionally writing songs, articles, or stories.', attribute: 'INT' },
+                    { name: 'Criminology', description: 'Skill for looking for clues by dusting for fingerprints, doing ballistic tests, examining evidence, and searching through police records and files.', attribute: 'INT' },
+                    { name: 'Cryptography', description: 'Skill of encrypting and decoding messages.', attribute: 'INT' },
+                    { name: 'Deduction', description: 'Skill of taking several clues and leaping to a non-obvious conclusion or medical diagnosis.', attribute: 'INT' },
+                    { name: 'Education', description: 'Skill of general knowledge, equivalent to a basic school education, allowing you to know how to read, write, use basic math, and know enough history to get by.', attribute: 'INT', minLevel: 2},
+                    { name: 'Gamble', description: 'Skill of knowing how to figure odds and play games of chance successfully.', attribute: 'INT' },
+                    { name: 'Language', description: 'Skill of speaking a particular language. You must choose a specific language whenever you increase this Skill.', attribute: 'INT', minLevel: 2},
+                    { name: 'Library Search', description: 'Skill of using databases, Data Pools, libraries, and other compiled information sources to find facts.', attribute: 'INT' },
+                    { name: 'Local Expert', description: 'Skill of knowing a specific area well and knowing the agendas of its various factions, both political and criminal. You must choose a specific location whenever you increase this Skill, which cannot be any larger than a single neighborhood or community.', attribute: 'INT', minLevel: 2},
+                    { name: 'Science', description: 'Skill for knowing how to design experiments, write scientific papers, test hypotheses, and discuss with other academics in a particular field of science. An area of study must be specified whenever this Skill is increased. Possible options include: Geology, Mathematics, Physics, Zoology, Anthropology, Biology, Chemistry, History, etc.', attribute: 'INT' },
+                    { name: 'Tactics', description: 'Skill of managing a large-scale battle effectively and efficiently. A Character with this Skill usually knows what must be done to direct a battle, and how an enemy force may react.', attribute: 'INT' },
+                    { name: 'Wilderness Survival', description: 'Skill for knowing how to survive comfortably in the wilderness.', attribute: 'INT' }                   
+                ]
+            },
+            {
+                category: 'Fighting Skills',
+                skills: [
+                    { name: 'Brawling', description: 'Skill at fighting and grappling with brute strength.', attribute: 'DEX', minLevel: 2},
+                    { name: 'Evasion', description: 'Skill for getting out of the way of someone attacking you in melee. A Character with REF 8 or higher can also use this Skill to dodge Ranged Attacks.', attribute: 'DEX', minLevel: 2},
+                    { name: 'Martial Arts (x2)', description: 'Skill for fighting with a Martial Arts Form. Each time you increase this Skill you must choose in which form you are training. You can learn multiple forms, but you must do so separately.', attribute: 'DEX' , x2: true },
+                    { name: 'Melee Weapon', description: 'Skill for fighting with melee weapons.', attribute: 'DEX' }                   
+                ]
+            },
+            {
+                category: 'Performance Skills',
+                skills: [
+                    { name: 'Acting', description: 'Skill of assuming a role, disguising yourself as someone else, whether real or fictitious, and faking emotions and moods.', attribute: 'COOL' },
+                    { name: 'Play Instrument', description: 'Skill of professionally playing a musical instrument. You can choose which instrument when you increase this Skill. Possible options include: singing, guitar, drums, violin, piano, etc.', attribute: 'TECH' }                  
+                ]
+            },
+            {
+                category: 'Ranged Weapon Skills',
+                skills: [
+                    { name: 'Archery', description: 'Skill for accurately firing bolt- or arrow-launching projectile weapons.', attribute: 'REF' },
+                    { name: 'Autofire (x2)', description: 'Skill for keeping a weapon\'s Autofire firing mode on target through recoil.', attribute: 'REF', x2: true},
+                    { name: 'Handgun', description: 'Skill for accurately firing handheld projectile weapons such as pistols.', attribute: 'REF' },
+                    { name: 'Heavy Weapons (x2)', description: 'Skill for accurately firing extremely large projectile weapons, including grenade and rocket launchers.', attribute: 'REF', x2: true},
+                    { name: 'Shoulder Arms', description: 'Skill for accurately firing shoulder-braced projectile weapons, including rifles and shotguns.', attribute: 'REF' }             
+                ]
+            },
+            {
+                category: 'Social Skills',
+                skills: [
+                    { name: 'Bribery', description: 'Skill of knowing when to bribe someone, how to approach them, and how much to offer.', attribute: 'COOL' },
+                    { name: 'Conversation', description: 'Skill of extracting information from people without alerting them with careful conversation.', attribute: 'EMP', minLevel: 2},
+                    { name: 'Human Perception', description: 'Skill of reading a person\'s facial expressions and body language to discern their emotional state and detect lies or deception.', attribute: 'EMP', minLevel: 2},
+                    { name: 'Interrogation', description: 'Skill of forcibly extracting information from people.', attribute: 'COOL' },
+                    { name: 'Persuasion', description: 'Skill of convincing, persuading, or influencing individuals.', attribute: 'COOL', minLevel: 2},
+                    { name: 'Personal Grooming', description: 'Skill of knowing proper grooming to maximize attractiveness.', attribute: 'COOL' },
+                    { name: 'Streetwise', description: 'Skill of making and using contacts to get illegal goods and contraband, talking to the criminal element, and avoiding bad situations in bad neighborhoods.', attribute: 'COOL' },
+                    { name: 'Trading', description: 'Skill of striking a good bargain with a merchant or customer.', attribute: 'COOL' },
+                    { name: 'Wardrobe & Style', description: 'Skill of knowing the clothes to wear and when to wear them.', attribute: 'COOL' }
+                ]
+            },
+            {
+                category: 'Technique Skills',
+                skills: [
+                    { name: 'Air Vehicle Tech', description: 'Skill of repairing and maintaining air vehicles.', attribute: 'TECH' },
+                    { name: 'Basic Tech', description: 'Skill of identifying, understanding, and repairing simple electronic and mechanical devices and all other items not covered by another Technique Skill.', attribute: 'TECH' },
+                    { name: 'Cybertech', description: 'Skill of identifying, understanding, and repairing cybernetics.', attribute: 'TECH' },
+                    { name: 'Demolitions (x2)', description: 'Skill of setting and defusing explosives, and knowing how much explosive will accomplish a desired result.', attribute: 'TECH', x2: true},
+                    { name: 'Electronics/Security Tech (x2)', description: 'Skill of identifying, understanding, repairing, countering, and installing complex electronic devices, including: computers, cyberdecks, personal electronics, electronic security systems, bugs and tracers, pressure plates, laser tripwires, etc.', attribute: 'TECH', x2: true},
+                    { name: 'First Aid', description: 'Skill of applying medical treatments to a wounded person to treat the most common Critical Injuries and keep them from dying.', attribute: 'TECH', minLevel: 2},
+                    { name: 'Forgery', description: 'Skill of creating and detecting false documents and identification.', attribute: 'TECH' },
+                    { name: 'Land Vehicle Tech', description: 'Skill of repairing and maintaining land vehicles.', attribute: 'TECH' },
+                    { name: 'Paint/Draw/Sculpt', description: 'Skill of producing professional paintings, drawings, or sculpture.', attribute: 'TECH' },
+                    { name: 'Paramedic', description: 'Skill of applying medical treatments to a wounded person to treat all Critical Injuries not requiring Surgery and keep them from dying (Surgery is only available to Medtechs through their Role Ability, Medicine).', attribute: 'TECH' },
+                    { name: 'Photography/Film', description: 'Skill for producing photographs, videos, or braindances.', attribute: 'TECH' },
+                    { name: 'Pick Lock', description: 'Skill for bypassing non-electronic locks.', attribute: 'TECH' },
+                    { name: 'Pick Pocket', description: 'Skill for stealthily retrieving items secured on another person and shoplifting small items without being noticed.', attribute: 'TECH' },
+                    { name: 'Sea Vehicle Tech', description: 'Skill of repairing and maintaining sea vehicles.', attribute: 'TECH' },
+                    { name: 'Weaponstech', description: 'Skill for repairing and maintaining weapons of all types.', attribute: 'TECH' }
+                ]
+            },
+        ];
+
+        // Function to create a table for each category of skills
+        function createTableForCategory(category) {
+            const table = document.createElement('table');
+            const tableHeader = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            const headerCell = document.createElement('th');
+            headerCell.colSpan = 3;
+            headerCell.textContent = category.category;
+            headerRow.appendChild(headerCell);
+            tableHeader.appendChild(headerRow);
+            table.appendChild(tableHeader);
+
+            const tableBody = document.createElement('tbody');
+
+            category.skills.forEach(skill => {
+                const row = document.createElement('tr');
+                const nameCell = document.createElement('td');
+                const descriptionCell = document.createElement('td');
+                const inputCell = document.createElement('td');
+
+                const name = document.createElement('span');
+                name.textContent = skill.name;
+                nameCell.appendChild(name);
+
+                const description = document.createElement('span');
+                description.textContent = skill.description;
+                descriptionCell.appendChild(description);
+
+                const input = document.createElement('input');
+                input.type = 'number';
+                input.value = skill.minLevel || 0;
+                input.min = 0;
+                input.max = 6;
+                input.addEventListener('input', handleInputChange);
+                input.setAttribute('data-x2', skill.x2 ? 'true' : 'false');  // Add custom attribute for x2 skills
+                inputCell.appendChild(input);
+
+                row.appendChild(nameCell);
+                row.appendChild(descriptionCell);
+                row.appendChild(inputCell);
+                tableBody.appendChild(row);
+            });
+
+            table.appendChild(tableBody);
+            return table;
+        }
+
+        // Handle the input change and update remaining points
+        function handleInputChange(event) {
+            const input = event.target;
+            const previousValue = parseInt(input.getAttribute('data-previous-value')) || 0;
+            const newValue = parseInt(input.value);
+            const isX2 = input.getAttribute('data-x2') === 'true';  // Check if the skill is x2
+
+            // Ensure that value does not exceed 6
+            if (newValue > 6) {
+                input.value = previousValue;
+            } else {
+                input.setAttribute('data-previous-value', newValue);
+            }
+
+            updateTotalSpentPoints(isX2);  // Pass if the skill is x2
+            updateRemainingPoints();
+
+            // Save the data to localStorage after each change
+            saveToLocalStorage();
+        }
+
+        // Update the total spent points based on the input values
+        function updateTotalSpentPoints(isX2) {
+            totalSpentPoints = 0;
+            const allInputs = document.querySelectorAll('input[type="number"]');
+
+            allInputs.forEach(input => {
+                const value = parseInt(input.value);
+                if (input.getAttribute('data-x2') === 'true') {
+                    totalSpentPoints += value * 2;  // Multiply by 2 for x2 skills
+                } else {
+                    totalSpentPoints += value;  // Regular skills cost 1 per point
+                }
+            });
+
+            remainingPoints = totalSkillPoints - totalSpentPoints;
+            document.getElementById('remaining-points').textContent = remainingPoints;
+        }
+
+        // Save the current state to localStorage
+        function saveToLocalStorage() {
+            const skillData = [];
+            const allInputs = document.querySelectorAll('input[type="number"]');
+
+            allInputs.forEach(input => {
+                skillData.push({
+                    skillName: input.previousElementSibling.previousElementSibling.textContent,
+                    value: input.value,
+                    x2: input.getAttribute('data-x2') === 'true'
+                });
+            });
+
+            localStorage.setItem('skillPointsData', JSON.stringify(skillData));
+        }
+
+        // Load the saved data from localStorage
+        function loadFromLocalStorage() {
+            const savedData = localStorage.getItem('skillPointsData');
+            if (savedData) {
+                const skillData = JSON.parse(savedData);
+                const allInputs = document.querySelectorAll('input[type="number"]');
+                skillData.forEach(data => {
+                    allInputs.forEach(input => {
+                        if (input.previousElementSibling.previousElementSibling.textContent === data.skillName) {
+                            input.value = data.value;
+                            input.setAttribute('data-previous-value', data.value);
+                        }
+                    });
+                });
+                updateTotalSpentPoints();
+                updateRemainingPoints();
+            }
+        }
+
+        // Navigate to another page
+        function goToNextPage() {
+            window.location.href = "finalPDFGeneration.html";  // Replace with your desired URL
+        }
+
+        // Initialize the page
+        function init() {
+            skills.forEach(category => {
+                const table = createTableForCategory(category);
+                document.getElementById('tables-container').appendChild(table);
+            });
+
+            loadFromLocalStorage();  // Load saved data when the page is loaded
+            updateRemainingPoints();
+        }
+
+        init(); // Initialize the page
+    </script>
+
+</body>
+</html>
