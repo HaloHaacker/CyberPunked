@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Table</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 20px;
+        }
+
+       
+
+        .instructions {
+            width: 30%;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .instructions h2 {
+            text-align: center;
+        }
+
+        select {
+            margin: 10px 0;
+            padding: 5px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .table-container {
+            width: 65%;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #1e1e1e;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #7a0000;
+        }
+
+        td input[type="radio"],
+        td input[type="number"] {
+            transform: scale(1.2);
+            margin: 5px;
+        }
+
+        td input[type="number"] {
+            width: 60px;
+        }
+
+        #totalPointsDisplay {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        footer button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Selection Table</h1>
+    <div class="container">
+        <!-- Left Column: Instructions -->
+        <div class="instructions">
+            <h2>Instructions</h2>
+            <p>Select a mode from the dropdown:</p>
+            <select id="selectionMode">
+                <option value="streetrat">Streetrat</option>
+                <option value="edgerunner">Edgerunner</option>
+                <option value="completePackage">Complete Package</option>
+            </select>
+            <p id="instructionsText">
+                <strong>Streetrat:</strong> Select a single row.
+            </p>
+        </div>
+
+        <!-- Right Column: Table -->
+        <div class="table-container">
+            <table id="selectionTable">
+                <!-- Table will be dynamically populated -->
+            </table>
+
+            <!-- Skill points display below the table -->
+            <div id="totalPointsDisplay">
+                <p>Total Points Remaining: <span id="remainingPoints">62</span></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <button id="goToPageBtn" onclick="goToPage()">Go to Another Page</button>
+    </footer>
+
+    <script>
+        const tableContainer = document.getElementById('selectionTable');
+        const selectionMode = document.getElementById('selectionMode');
+        const instructionsText = document.getElementById('instructionsText');
+        const remainingPointsElement = document.getElementById('remainingPoints');
+        const goToPageBtn = document.getElementById('goToPageBtn');
+
+        // Predefined data
+        const streetratData = [
+            ["Roll", "Intelligence", "Reflexes", "Dexterity", "Technique", "Cool", "Willpower", "Luck", "Movement", "Body", "Empathy"],
+            ["1", "7", "6", "6", "5", "6", "8", "7", "7", "3", "8"],
+            ["2", "3", "7", "7", "7", "7", "6", "7", "7", "5", "8"],
+            ["3", "4", "5", "7", "7", "6", "6", "7", "7", "5", "8"],
+            ["4", "4", "5", "7", "7", "6", "8", "7", "6", "3", "8"],
+            ["5", "3", "7", "7", "7", "6", "8", "6", "5", "4", "7"],
+            ["6", "5", "6", "7", "5", "7", "8", "5", "7", "3", "7"],
+            ["7", "5", "6", "6", "7", "7", "8", "7", "6", "3", "6"],
+            ["8", "5", "7", "7", "5", "6", "6", "6", "6", "4", "8"],
+            ["9", "3", "5", "5", "6", "7", "8", "7", "5", "5", "7"],
+            ["10", "4", "5", "6", "5", "8", "8", "7", "6", "4", "7"],
+        ];
+
+        const edgerunnerData = [
+            ["Roll", "Intelligence", "Reflexes", "Dexterity", "Technique", "Cool", "Willpower", "Luck", "Movement", "Body", "Empathy"],
+            ["1", "7", "6", "6", "5", "6", "8", "7", "7", "3", "8"],
+            ["2", "3", "7", "7", "7", "7", "6", "7", "7", "5", "8"],
+            ["3", "4", "5", "7", "7", "6", "6", "7", "7", "5", "8"],
+            ["4", "4", "5", "7", "7", "6", "8", "7", "6", "3", "8"],
+            ["5", "3", "7", "7", "7", "6", "8", "6", "5", "4", "7"],
+            ["6", "5", "6", "7", "5", "7", "8", "5", "7", "3", "7"],
+            ["7", "5", "6", "6", "7", "7", "8", "7", "6", "3", "6"],
+            ["8", "5", "7", "7", "5", "6", "6", "6", "6", "4", "8"],
+            ["9", "3", "5", "5", "6", "7", "8", "7", "5", "5", "7"],
+            ["10", "4", "5", "6", "5", "8", "8", "7", "6", "4", "7"],
+        ];
+
+        const completePackageData = [
+            ["Placeholder", "Intelligence", "Reflexes", "Dexterity", "Technique", "Cool", "Willpower", "Luck", "Movement", "Body", "Empathy"],
+            ["Placeholder", "temp1", "temp1", "temp1", "temp1", "temp1", "temp1", "temp1", "temp1", "temp1", "temp1"],
+        ];
+
+        let totalPoints = 62;
+        let remainingPoints = totalPoints;
+
+        let previousValues = {};
+
+        // Retrieve saved data from localStorage
+        function loadData() {
+            const savedData = JSON.parse(localStorage.getItem('selectionData'));
+            if (savedData) {
+                remainingPoints = savedData.remainingPoints;
+                previousValues = savedData.previousValues || {};
+                remainingPointsElement.textContent = remainingPoints;
+                selectionMode.value = savedData.mode;
+                updateTable(savedData.mode);
+            }
+        }
+
+        // Save current data to localStorage
+        function saveData() {
+            const selectionData = {
+                remainingPoints,
+                previousValues,
+                mode: selectionMode.value,
+            };
+            localStorage.setItem('selectionData', JSON.stringify(selectionData));
+        }
+
+        // Switch between different selection modes and update the table
+        function updateTable(mode) {
+            tableContainer.innerHTML = "";
+            if (mode === 'streetrat') {
+                instructionsText.innerHTML = "<strong>Streetrat:</strong> When using The Streetrat Option, you'll roll 1d10 and then copy the numbers adjacent to the result of that roll onto your Character Sheet. You may not move your STATs around; you must transfer them as written on the table for that Roll. The good news is that these tables have been computer-generated to give you an optimal Character for that type of Role.";
+                generateTable(streetratData, 'row');
+            } else if (mode === 'edgerunner') {
+                instructionsText.innerHTML = "<strong>Edgerunner:</strong> When using the Edgerunner option, you will once again move to the Templates for your Character's Role. This time, you will roll 1d10 for each STAT individually, comparing the roll for that STAT against the value on the column for that STAT.";
+                generateTable(edgerunnerData, 'column');
+            } else if (mode === 'completePackage') {
+                instructionsText.innerHTML = "<strong>Complete Package:</strong> When using the Complete Package option, your GM will give you a specific number of points with which to generate your Character's STATs (normally 62). The only limit is that no STAT may be higher than 8 or lower than 2. And we strongly suggest that GMs start their Players on the Starting Character rank. ";
+                generateTable(completePackageData, 'increment');
+            }
+        }
+
+        function generateTable(data, mode) {
+            data.forEach((row, rowIndex) => {
+                const tr = document.createElement('tr');
+
+                row.forEach((cell, colIndex) => {
+                    const cellElement = document.createElement(rowIndex === 0 ? 'th' : 'td');
+
+                    if (rowIndex === 0) {
+                        cellElement.textContent = cell;
+                    } else if (rowIndex > 0 && colIndex === 0) {
+                        if (mode === 'row') {
+                            cellElement.innerHTML = `
+                                <label>
+                                    <input type="radio" name="rowSelection" value="${rowIndex}" onchange="toggleRowSelection(${rowIndex})">
+                                    ${cell}
+                                </label>
+                            `;
+                        } else {
+                            cellElement.textContent = cell;
+                        }
+                    } else if (rowIndex > 0 && colIndex > 0) {
+                        if (mode === 'row') {
+                            cellElement.textContent = cell;
+                        } else if (mode === 'column') {
+                            cellElement.innerHTML = `
+                                <label>
+                                    <input type="radio" name="col${colIndex}" value="${cell}">
+                                    ${cell}
+                                </label>
+                            `;
+                        } else if (mode === 'increment') {
+                            if (cell === "temp1") {
+                                cellElement.innerHTML = `<input type="number" min="2" max="8" value="2" class="point-input" onchange="updatePoints(this, ${rowIndex}, ${colIndex})">`;
+                            } else {
+                                cellElement.textContent = cell;
+                            }
+                        }
+                    }
+
+                    tr.appendChild(cellElement);
+                });
+
+                tableContainer.appendChild(tr);
+            });
+        }
+
+        function updatePoints(input, rowIndex, colIndex) {
+            const previousValue = previousValues[`${rowIndex}-${colIndex}`] || 1;
+            const newValue = parseInt(input.value, 10);
+
+            let totalAllocatedPoints = 0;
+            const allInputs = document.querySelectorAll('.point-input');
+            allInputs.forEach(i => totalAllocatedPoints += parseInt(i.value, 10));
+
+            if (totalAllocatedPoints > totalPoints) {
+                input.value = previousValue;
+                alert('You cannot allocate more than 62 points.');
+                return;
+            }
+
+            previousValues[`${rowIndex}-${colIndex}`] = newValue;
+            remainingPoints = totalPoints - totalAllocatedPoints;
+            remainingPointsElement.textContent = remainingPoints;
+
+            saveData(); // Save data to localStorage whenever a change happens
+        }
+
+        function toggleRowSelection(selectedRow) {
+            const allInputs = tableContainer.querySelectorAll('input[type="radio"]');
+            allInputs.forEach(input => {
+                if (input.name === "rowSelection" && input.value != selectedRow) {
+                    input.checked = false;
+                }
+            });
+        }
+
+        // Navigate to another page
+        function goToPage() {
+            window.location.href = 'anotherPage.html'; // Change this URL to your desired page
+        }
+
+        selectionMode.addEventListener('change', function () {
+            updateTable(selectionMode.value);
+            saveData(); // Save mode selection
+        });
+
+        // Load data from localStorage when the page is loaded
+        loadData();
+    </script>
+</body>
+</html>
