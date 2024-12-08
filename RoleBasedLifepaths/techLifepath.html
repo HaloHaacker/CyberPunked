@@ -419,7 +419,7 @@
 
         // Handle submit action
         document.getElementById('submitBtn').addEventListener('click', function() {
-            const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+            const selectedSubRole = document.querySelector('input[name="role"]:checked')?.value;
             const selectedGroup = document.querySelector('input[name="soloOrGroup"]:checked')?.value;
             const selectedPartner = document.querySelector('input[name="partner"]:checked')?.value;
             const selectedWorkspace = document.querySelector('input[name="workspace"]:checked')?.value;
@@ -427,13 +427,13 @@
             const selectedSupplies = document.querySelector('input[name="supplies"]:checked')?.value;
             const selectedGunning = document.querySelector('input[name="gunningYou"]:checked')?.value;
 
-            if (!selectedRole || !selectedWorkspace || !selectedClient || !selectedSupplies || !selectedGunning) {
+            if (!selectedSubRole || !selectedWorkspace || !selectedClient || !selectedSupplies || !selectedGunning) {
                 alert('Please complete all selections!');
                 return;
             }
 
             // Store the selections in localStorage
-            localStorage.setItem('selectedRole', selectedRole);
+            localStorage.setItem('selectedSubRole', selectedSubRole);
             localStorage.setItem('selectedGroup', selectedGroup);
             localStorage.setItem('selectedPartner', selectedPartner);
             localStorage.setItem('selectedWorkspace', selectedWorkspace);
@@ -442,8 +442,7 @@
             localStorage.setItem('selectedType', selectedGunning);
 
             // Optionally, log the selected values
-            console.log('Selected Role:', selectedRole);
-            console.log('Selected Type:', selectedType);
+            console.log('Selected Role:', selectedSubRole);
 
             // Redirect or perform other actions
             window.location.href = '../RoleStats/techStats.html'; // Change to your desired page

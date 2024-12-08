@@ -254,24 +254,24 @@
 
         // Handle submit action
         document.getElementById('submitBtn').addEventListener('click', function() {
-            const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+            const selectedSubRole = document.querySelector('input[name="role"]:checked')?.value;
             const selectedPublic = document.querySelector('input[name="public"]:checked')?.value;
             const selectedEthics = document.querySelector('input[name="ethical"]:checked')?.value;
             const selectedStories = document.querySelector('input[name="stories"]:checked')?.value;
 
-            if (!selectedRole || !selectedPublic || !selectedEthics || !selectedStories) {
+            if (!selectedSubRole || !selectedPublic || !selectedEthics || !selectedStories) {
                 alert('Please complete all selections!');
                 return;
             }
 
             // Store the selections in localStorage
-            localStorage.setItem('selectedRole', selectedRole);
+            localStorage.setItem('selectedSubRole', selectedSubRole);
             localStorage.setItem('selectedPublic', selectedPublic);
             localStorage.setItem('selectedEthics', selectedEthics);
             localStorage.setItem('selectedStories', selectedStories);
 
             // Optionally, log the selected values
-            console.log('Selected Role:', selectedRole);
+            console.log('Selected Role:', selectedSubRole);
             console.log('Selected Type:', selectedPublic);
 
             // Redirect or perform other actions

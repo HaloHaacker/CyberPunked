@@ -379,20 +379,20 @@
 
         // Handle submit action
         document.getElementById('submitBtn').addEventListener('click', function() {
-            const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+            const selectedSubRole = document.querySelector('input[name="role"]:checked')?.value;
             const selectedDivision = document.querySelector('input[name="division"]:checked')?.value;
             const selectedGoodBad = document.querySelector('input[name="good/bad"]:checked')?.value;
             const selectedBased = document.querySelector('input[name="based"]:checked')?.value;
             const selectedGunning = document.querySelector('input[name="gunningYou"]:checked')?.value;
             const selectedBoss = document.querySelector('input[name="boss"]:checked')?.value;
 
-            if (!selectedRole || !selectedDivision || !selectedGoodBad || !selectedBased || !selectedGunning || !selectedBoss) {
+            if (!selectedSubRole || !selectedDivision || !selectedGoodBad || !selectedBased || !selectedGunning || !selectedBoss) {
                 alert('Please complete all selections!');
                 return;
             }
 
             // Store the selections in localStorage
-            localStorage.setItem('selectedRole', selectedRole);
+            localStorage.setItem('selectedSubRole', selectedSubRole);
             localStorage.setItem('selectedDivision', selectedDivision);
             localStorage.setItem('selectedTerritory', selectedGoodBad);
             localStorage.setItem('selectedBased', selectedBased);
@@ -400,7 +400,7 @@
             localStorage.setItem('selectedBoss', selectedBoss);
 
             // Optionally, log the selected values
-            console.log('Selected Role:', selectedRole);
+            console.log('Selected Role:', selectedSubRole);
             console.log('Selected Type:', selectedDivision);
 
             // Redirect or perform other actions

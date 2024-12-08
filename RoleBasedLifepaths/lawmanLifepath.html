@@ -307,26 +307,26 @@
 
         // Handle submit action
         document.getElementById('submitBtn').addEventListener('click', function() {
-            const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+            const selectedSubRole = document.querySelector('input[name="role"]:checked')?.value;
             const selectedJurisdiction = document.querySelector('input[name="jurisdiction"]:checked')?.value;
             const selectedCurruption = document.querySelector('input[name="currupt"]:checked')?.value;
             const selectedGunning = document.querySelector('input[name="gunningYou"]:checked')?.value;
             const selectedTarget = document.querySelector('input[name="target"]:checked')?.value;
 
-            if (!selectedRole || !selectedJurisdiction || !selectedCurruption || !selectedGunning || !selectedTarget) {
+            if (!selectedSubRole || !selectedJurisdiction || !selectedCurruption || !selectedGunning || !selectedTarget) {
                 alert('Please complete all selections!');
                 return;
             }
 
             // Store the selections in localStorage
-            localStorage.setItem('selectedRole', selectedRole);
+            localStorage.setItem('selectedSubRole', selectedSubRole);
             localStorage.setItem('selectedJurisdiction', selectedJurisdiction);
             localStorage.setItem('selectedCurruption', selectedCurruption);
             localStorage.setItem('selectedGunning', selectedGunning);
             localStorage.setItem('selectedTarget', selectedTarget);
 
             // Optionally, log the selected values
-            console.log('Selected Role:', selectedRole);
+            console.log('Selected Role:', selectedSubRole);
             console.log('Selected Type:', selectedJurisdiction);
 
             // Redirect or perform other actions

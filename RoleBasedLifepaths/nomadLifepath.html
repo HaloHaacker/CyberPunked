@@ -477,7 +477,7 @@
 
         // Handle submit action
         document.getElementById('submitBtn').addEventListener('click', function() {
-            const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+            const selectedSubRole = document.querySelector('input[name="role"]:checked')?.value;
             const selectedType = document.querySelector('input[name="soloOrGroup"]:checked')?.value;
             const selectedAirWhatToDo = document.querySelector('input[name="airWhat"]:checked')?.value;
             const selectedLandWhatToDo = document.querySelector('input[name="landWhat"]:checked')?.value;
@@ -486,13 +486,13 @@
             const selectedPhilosophy = document.querySelector('input[name="philosophy"]:checked')?.value;
             const selectedGunning = document.querySelector('input[name="gunningYou"]:checked')?.value;
 
-            if (!selectedRole || !selectedType || !selectedAirWhatToDo || !selectedLandWhatToDo ||!selectedSeaWhatToDo || !selectedForYourPack || !selectedAirWhatToDo || !selectedGunning) {
+            if (!selectedSubRole || !selectedType || !selectedAirWhatToDo || !selectedLandWhatToDo ||!selectedSeaWhatToDo || !selectedForYourPack || !selectedAirWhatToDo || !selectedGunning) {
                 alert('Please complete all selections!');
                 return;
             }
 
             // Store the selections in localStorage
-            localStorage.setItem('selectedRole', selectedRole);
+            localStorage.setItem('selectedSubRole', selectedSubRole);
             localStorage.setItem('selectedType', selectedType);
             localStorage.setItem('selectedAirWhatToDo', selectedAirWhatToDo);
             localStorage.setItem('selectedLandWhatToDo', selectedLandWhatToDo);
@@ -502,7 +502,7 @@
             localStorage.setItem('selectedGunning', selectedGunning);
 
             // Optionally, log the selected values
-            console.log('Selected Role:', selectedRole);
+            console.log('Selected Role:', selectedSubRole);
             console.log('Selected Type:', selectedType);
 
             // Redirect or perform other actions
