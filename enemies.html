@@ -8,14 +8,14 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            color: white; /* Set all text color to white */
+            color: white;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         .container {
             display: grid;
-            grid-template-columns: 1fr 3fr 3fr 3fr; /* Four columns */
+            grid-template-columns: 1fr 3fr 3fr 3fr;
             gap: 16px;
             padding: 16px;
         }
@@ -156,53 +156,42 @@
                     <tbody>
                         <tr><td>1</td><td>Just themselves and even they won't go out of their way.</td><td><input type="radio" name="threat${i}" value="Just themselves and even they won't go out of their way." onclick="saveEnemyData(${i}, 'threat', 'Just themselves and even they won't go out of their way.')"></td></tr>
                         <tr><td>2</td><td>Just themselves</td><td><input type="radio" name="threat${i}" value="Just themselves" onclick="saveEnemyData(${i}, 'threat', 'Just themselves')"></td></tr>
-                        <tr><td>3</td><td>Just themselves and a close friend.</td><td><input type="radio" name="threat${i}" value="Just themselves and a close friend." onclick="saveEnemyData(${i}, 'threat', 'Just themselves and a close friend.')"></td></tr>
-                        <tr><td>4</td><td>Themselves and a few (1d6/2) friends</td><td><input type="radio" name="threat${i}" value="Themselves and a few (1d6/2) friends" onclick="saveEnemyData(${i}, 'threat', 'Themselves and a few (1d6/2) friends')"></td></tr>
-                        <tr><td>5</td><td>Themselves and a few (1d10/2) friends.</td><td><input type="radio" name="threat${i}" value="Themselves and a few (1d10/2) friends." onclick="saveEnemyData(${i}, 'threat', 'Themselves and a few (1d10/2) friends.')"></td></tr>
-                        <tr><td>6</td><td>An entire gang (at least 1d10 + 5 people).</td><td><input type="radio" name="threat${i}" value="An entire gang (at least 1d10 + 5 people)." onclick="saveEnemyData(${i}, 'threat', 'An entire gang (at least 1d10 + 5 people).')"></td></tr>
-                        <tr><td>7</td><td>The local cops or other Lawmen.</td><td><input type="radio" name="threat${i}" value="The local cops or other Lawmen." onclick="saveEnemyData(${i}, 'threat', 'The local cops or other Lawmen.')"></td></tr>
-                        <tr><td>8</td><td>Themselves, their crew, and even a hired killer.</td><td><input type="radio" name="threat${i}" value="Themselves, their crew, and even a hired killer." onclick="saveEnemyData(${i}, 'threat', 'Themselves, their crew, and even a hired killer.')"></td></tr>
-                        <tr><td>9</td><td>A professional hit squad.</td><td><input type="radio" name="threat${i}" value="A professional hit squad." onclick="saveEnemyData(${i}, 'threat', 'A professional hit squad.')"></td></tr>
-                        <tr><td>10</td><td>A professional hit squad, plus a mob boss.</td><td><input type="radio" name="threat${i}" value="A professional hit squad, plus a mob boss." onclick="saveEnemyData(${i}, 'threat', 'A professional hit squad, plus a mob boss.')"></td></tr>
+                        <tr><td>3</td><td>They'll hire goons</td><td><input type="radio" name="threat${i}" value="They'll hire goons" onclick="saveEnemyData(${i}, 'threat', 'They'll hire goons')"></td></tr>
+                        <tr><td>4</td><td>They're backed by a megacorp</td><td><input type="radio" name="threat${i}" value="They're backed by a megacorp" onclick="saveEnemyData(${i}, 'threat', 'They're backed by a megacorp')"></td></tr>
+                        <tr><td>5</td><td>They have dangerous allies</td><td><input type="radio" name="threat${i}" value="They have dangerous allies" onclick="saveEnemyData(${i}, 'threat', 'They have dangerous allies')"></td></tr>
+                        <tr><td>6</td><td>They have a lot of money and influence</td><td><input type="radio" name="threat${i}" value="They have a lot of money and influence" onclick="saveEnemyData(${i}, 'threat', 'They have a lot of money and influence')"></td></tr>
+                        <tr><td>7</td><td>They have access to high-tech weapons</td><td><input type="radio" name="threat${i}" value="They have access to high-tech weapons" onclick="saveEnemyData(${i}, 'threat', 'They have access to high-tech weapons')"></td></tr>
+                        <tr><td>8</td><td>They're part of a criminal organization</td><td><input type="radio" name="threat${i}" value="They're part of a criminal organization" onclick="saveEnemyData(${i}, 'threat', 'They're part of a criminal organization')"></td></tr>
+                        <tr><td>9</td><td>They have dirt on you</td><td><input type="radio" name="threat${i}" value="They have dirt on you" onclick="saveEnemyData(${i}, 'threat', 'They have dirt on you')"></td></tr>
+                        <tr><td>10</td><td>They're actually a dangerous psychopath</td><td><input type="radio" name="threat${i}" value="They're actually a dangerous psychopath" onclick="saveEnemyData(${i}, 'threat', 'They're actually a dangerous psychopath')"></td></tr>
                     </tbody>
                 `;
                 tableContainer3.appendChild(table3);
             }
         }
 
-        // Function to save the data for each enemy
-        function saveEnemyData(index, typeOrCauseOrThreat, value) {
-            enemiesData[index][typeOrCauseOrThreat] = value;
-            console.log(enemiesData); // You can log or use the data as needed
+        // Save data based on user selection
+        function saveEnemyData(index, category, value) {
+            enemiesData[index][category] = value;
         }
 
-        // Function to handle submission and save data to localStorage
+        // Validate that all enemies have selected options
         function handleSubmit() {
-            const enemyCount = parseInt(document.getElementById('enemyDropdown').value);
-
-            // Validate only the selected number of enemies
-            const incomplete = enemiesData.slice(0, enemyCount).some(enemy => !enemy.type || !enemy.cause || !enemy.threat);
-
-            if (incomplete) {
-                alert("Please make sure to select an option for every active enemy!");
-                return; // Stop form submission
+            for (let i = 0; i < enemiesData.length; i++) {
+                if (!enemiesData[i].type || !enemiesData[i].cause || !enemiesData[i].threat) {
+                    alert("Please make sure to select an option for every active enemy!");
+                    return;
+                }
             }
-
-            // Save only the active enemies to localStorage
-            const activeEnemiesData = enemiesData.slice(0, enemyCount);
-            localStorage.setItem('enemiesData', JSON.stringify(activeEnemiesData));
-            console.log("Saved Data:", activeEnemiesData);
-
-            // Navigate to the next page
-            window.location.href = 'revenge.html'; // Change this to your next page URL
+            localStorage.setItem("enemiesData", JSON.stringify(enemiesData)); // Save data to localStorage
+            window.location.href = "revenge.html"; // Navigate to next page
         }
 
-
-        // Initialize dropdown and tables on page load
+        // Event listener to trigger table updates based on dropdown
         document.getElementById('enemyDropdown').addEventListener('change', updateTables);
         document.getElementById('submitBtn').addEventListener('click', handleSubmit);
 
-        // Call updateTables initially to generate the tables based on the default dropdown value
+        // Initial table setup
         updateTables();
     </script>
 </body>

@@ -40,6 +40,108 @@
         <p id="selectedRevengepath"></p>
         <div id="loveAffairList"></div>
         <div id="selectedGoalpath"></div>
+
+        <h2>Role Based Lifepaths:</h2>
+         <!-- For Rockerboy -->
+         <div id="rockerboySpecific" style="display:none;">
+            <h3>Rockerboy Lifepath Information:</h3>
+            <p id="selectedSubRole"></p>
+            <p id="selectedType"></p>
+            <p id="selectedSoloTwo"></p>
+            <p id="selectedLeave"></p>
+            <p id="selectedPerform"></p>
+            <p id="selectedGunning"></p>
+        </div>
+        <!-- For Solo -->
+        <div id="soloSpecific" style="display:none;">
+            <h3>Solo Lifepath Information:</h3>
+            <p id="selectedSubRole"></p>
+            <p id="selectedCompass"></p>
+            <p id="selectedTerritory"></p>
+            <p id="selectedGunning"></p>
+        </div>
+        <!-- For Netrunner -->
+        <div id="netrunnerSpecific" style="display:none;">
+            <h3>Netrunner Lifepath Information:</h3>
+            <p id="selectedSubRole"></p>
+            <p id="selectedGroup"></p>
+            <p id="selectedPartner"></p>
+            <p id="selectedWorkspace"></p>
+            <p id="selectedClient"></p>
+            <p id="selectedPrograms"></p>
+            <p id="selectedGunning"></p>
+        </div>
+        <!-- For Tech -->
+        <div id="techSpecific" style="display:none;">
+            <h3>Tech Lifepath Information:</h3>
+            <p id="selectedSubRole"></p>
+            <p id="selectedGroup"></p>
+            <p id="selectedPartner"></p>
+            <p id="selectedWorkspace"></p>
+            <p id="selectedClient"></p>
+            <p id="selectedSupplies"></p>
+            <p id="selectedGunning"></p>
+        </div>
+        <!-- For MedTech -->
+        <div id="medtechSpecific" style="display:none;">
+            <h3>Medtech Lifepath Information:</h3>
+            <p id="selectedSubRole"></p>
+            <p id="selectedGroup"></p>
+            <p id="selectedPartner"></p>
+            <p id="selectedWorkspace"></p>
+            <p id="selectedClient"></p>
+            <p id="selectedSupplies"></p>
+        </div>
+        <!-- For Media -->
+        <div id="mediaSpecific" style="display:none;">
+            <h3>Media Lifepath Information:</h3>
+            <p id="selectedSubRole"></p>
+            <p id="selectedPublic"></p>
+            <p id="selectedEthics"></p>
+            <p id="selectedStories"></p>
+        </div>
+        <!-- For exec -->
+        <div id="execSpecific" style="display:none;">
+            <h3>Exec Lifepath Information:</h3>
+            <p id="selectedSubRole"></p>
+            <p id="selectedDivision"></p>
+            <p id="selectedGoodBad"></p>
+            <p id="selectedBased"></p>
+            <p id="selectedGunning"></p>
+            <p id="selectedBoss"></p>
+        </div>
+        <!-- For Lawman -->
+        <div id="lawmanSpecific" style="display:none;">
+            <h3>Lawman Lifepath Information:</h3>
+            <p id="selectedSubRole"></p>
+            <p id="selectedJurisdiction"></p>
+            <p id="selectedCurruption"></p>
+            <p id="selectedGunning"></p>
+            <p id="selectedTarget"></p>
+        </div>
+        <!-- For Fixer -->
+        <div id="fixerSpecific" style="display:none;">
+            <h3>Fixer Lifepath Information:</h3>
+            <p id="selectedSubRole"></p>
+            <p id="selectedGroup"></p>
+            <p id="selectedPartner"></p>
+            <p id="selectedWorkspace"></p>
+            <p id="selectedClient"></p>
+            <p id="selectedGunning"></p>
+        </div>
+        <!-- For Nomad -->
+        <div id="nomadSpecific" style="display:none;">
+            <h3>Nomad Lifepath Information:</h3>
+            <p id="selectedSubRole"></p>
+            <p id="selectedType"></p>
+            <p id="selectedAirWhatToDo"></p>
+            <p id="selectedLandWhatToDo"></p>
+            <p id="selectedSeaWhatToDo"></p>
+            <p id="selectedForYourPack"></p>
+            <p id="selectedPhilosophy"></p>
+            <p id="selectedGunning"></p>
+        </div>
+        
     </div>
 
     <button id="generatePDF">Generate PDF</button>
@@ -70,6 +172,102 @@
         const selectedRevengepath = localStorage.getItem('selectedRevengepath') || 'N/A';
         const loveaffairData = JSON.parse(localStorage.getItem('loveaffairData')) || [];
         const selectedGoalpath = localStorage.getItem('selectedGoalpath') || 'N/A';
+
+        // Define role-specific data
+        let roleSpecificData = {};
+
+        if (selectedRole === 'rockerboy') {
+            roleSpecificData = {
+                selectedSubRole: localStorage.getItem('selectedSubRole') || 'N/A',
+                selectedType: localStorage.getItem('selectedType') || 'N/A',
+                selectedSoloTwo: localStorage.getItem('selectedSoloTwo') || 'N/A',
+                selectedLeave: localStorage.getItem('selectedLeave') || 'N/A',
+                selectedPerform: localStorage.getItem('selectedPerform') || 'N/A',
+                selectedGunning: localStorage.getItem('selectedGunning') || 'N/A',
+            };
+        } else if (selectedRole === 'solo') {
+            roleSpecificData = {
+                selectedSubRole: localStorage.getItem('selectedSubRole') || 'N/A',
+                selectedCompass: localStorage.getItem('selectedCompass') || 'N/A',
+                selectedTerritory: localStorage.getItem('selectedTerritory') || 'N/A',
+                selectedGunning: localStorage.getItem('selectedGunning') || 'N/A',
+            };
+        } else if (selectedRole === 'netrunner') {
+            roleSpecificData = {
+                selectedSubRole: localStorage.getItem('selectedSubRole') || 'N/A',
+                selectedGroup: localStorage.getItem('selectedGroup') || 'N/A',
+                selectedPartner: localStorage.getItem('selectedPartner') || 'N/A',
+                selectedWorkspace: localStorage.getItem('selectedWorkspace') || 'N/A',
+                selectedClient: localStorage.getItem('selectedClient') || 'N/A',
+                selectedPrograms: localStorage.getItem('selectedPrograms') || 'N/A',
+                selectedGunning: localStorage.getItem('selectedGunning') || 'N/A',
+            };
+        } else if (selectedRole === 'tech') {
+            roleSpecificData = {
+                selectedSubRole: localStorage.getItem('selectedSubRole') || 'N/A',
+                selectedGroup: localStorage.getItem('selectedGroup') || 'N/A',
+                selectedPartner: localStorage.getItem('selectedPartner') || 'N/A',
+                selectedWorkspace: localStorage.getItem('selectedWorkspace') || 'N/A',
+                selectedClient: localStorage.getItem('selectedClient') || 'N/A',
+                selectedSupplies: localStorage.getItem('selectedSupplies') || 'N/A',
+                selectedGunning: localStorage.getItem('selectedGunning') || 'N/A',
+            };
+        } else if (selectedRole === 'medtech') {
+            roleSpecificData = {
+                selectedSubRole: localStorage.getItem('selectedSubRole') || 'N/A',
+                selectedGroup: localStorage.getItem('selectedGroup') || 'N/A',
+                selectedPartner: localStorage.getItem('selectedPartner') || 'N/A',
+                selectedWorkspace: localStorage.getItem('selectedWorkspace') || 'N/A',
+                selectedClient: localStorage.getItem('selectedClient') || 'N/A',
+                selectedSupplies: localStorage.getItem('selectedSupplies') || 'N/A',
+            };
+        } else if (selectedRole === 'media') {
+            roleSpecificData = {
+                selectedSubRole: localStorage.getItem('selectedSubRole') || 'N/A',
+                selectedPublic: localStorage.getItem('selectedPublic') || 'N/A',
+                selectedEthics: localStorage.getItem('selectedEthics') || 'N/A',
+                selectedStories: localStorage.getItem('selectedStories') || 'N/A',
+            };
+        } else if (selectedRole === 'exec') {
+            roleSpecificData = {
+                selectedSubRole: localStorage.getItem('selectedSubRole') || 'N/A',
+                selectedDivision: localStorage.getItem('selectedDivision') || 'N/A',
+                selectedGoodBad: localStorage.getItem('selectedGoodBad') || 'N/A',
+                selectedBased: localStorage.getItem('selectedBased') || 'N/A',
+                selectedGunning: localStorage.getItem('selectedGunning') || 'N/A',
+                selectedBoss: localStorage.getItem('selectedBoss') || 'N/A',
+            };
+        }  else if (selectedRole === 'lawman') {
+            roleSpecificData = {
+                selectedSubRole: localStorage.getItem('selectedSubRole') || 'N/A',
+                selectedJurisdiction: localStorage.getItem('selectedJurisdiction') || 'N/A',
+                selectedCurruption: localStorage.getItem('selectedCurruption') || 'N/A',
+                selectedGunning: localStorage.getItem('selectedGunning') || 'N/A',
+                selectedTarget: localStorage.getItem('selectedTarget') || 'N/A',
+            };
+        }  else if (selectedRole === 'fixer') {
+            roleSpecificData = {
+                selectedSubRole: localStorage.getItem('selectedSubRole') || 'N/A',
+                selectedGroup: localStorage.getItem('selectedGroup') || 'N/A',
+                selectedPartner: localStorage.getItem('selectedPartner') || 'N/A',
+                selectedWorkspace: localStorage.getItem('selectedWorkspace') || 'N/A',
+                selectedClient: localStorage.getItem('selectedClient') || 'N/A',
+                selectedGunning: localStorage.getItem('selectedGunning') || 'N/A',
+            };
+        }  else if (selectedRole === 'nomad') {
+            roleSpecificData = {
+                selectedSubRole: localStorage.getItem('selectedSubRole') || 'N/A',
+                selectedType: localStorage.getItem('selectedType') || 'N/A',
+                selectedAirWhatToDo: localStorage.getItem('selectedAirWhatToDo') || 'N/A',
+                selectedLandWhatToDo: localStorage.getItem('selectedLandWhatToDo') || 'N/A',
+                selectedSeaWhatToDo: localStorage.getItem('selectedSeaWhatToDo') || 'N/A',
+                selectedForYourPack: localStorage.getItem('selectedForYourPack') || 'N/A',
+                selectedPhilosophy: localStorage.getItem('selectedPhilosophy') || 'N/A',
+                selectedGunning: localStorage.getItem('selectedGunning') || 'N/A',
+            };
+        }
+
+
 
         // Display the retrieved data on the page
         document.getElementById('fullName').textContent = `Full Name: ${fullName}`;
@@ -120,6 +318,79 @@
 
         document.getElementById('selectedGoalpath').textContent = `Your Life Goals: ${selectedGoalpath}`;
 
+        // Show/Hide sections based on role
+        if (selectedRole === 'rockerboy') {
+            document.getElementById('selectedSubRole').textContent = `What Kind of Rockerboy are You: ${selectedSubRole}`;
+            document.getElementById('selectedType').textContent = `Are You in a Group or a Solo Act: ${selectedType}`;
+            document.getElementById('selectedSoloTwo').textContent = `Were You Once in a Group: ${selectedSoloTwo}`;
+            document.getElementById('selectedLeave').textContent = `Why Did You Leave: ${selectedLeave}`;
+            document.getElementById('selectedPerform').textContent = `Where Do You Perform: ${selectedPerform}`;
+            document.getElementById('selectedGunning').textContent = `Who's Gunning for You/Your Group: ${selectedGunning}`;
+        } else if (selectedRole === 'solo') {
+            document.getElementById('selectedSubRole').textContent = `What Kind of Solo are You: ${selectedSubRole}`;
+            document.getElementById('selectedCompass').textContent = `What's Your Moral Compass Like: ${selectedCompass}`;
+            document.getElementById('selectedTerritory').textContent = `What's Your Operational Territory: ${selectedTerritory}`;
+            document.getElementById('selectedGunning').textContent = `Who's Gunning for You: ${selectedGunning}`;
+        } else if (selectedRole === 'netrunner') {
+            document.getElementById('selectedSubRole').textContent = `What Kind of Runner are You: ${selectedSubRole}`;
+            document.getElementById('selectedGroup').textContent = `Got a Partner, or Do You Work Alone: ${selectedGroup}`;
+            document.getElementById('selectedPartner').textContent = ` If You Have a Partner, Who are They: ${selectedPartner}`;
+            document.getElementById('selectedWorkspace').textContent = `What's Your Workspace Like: ${selectedWorkspace}`;
+            document.getElementById('selectedClient').textContent = `Who are Some of Your Other Clients: ${selectedClient}`;
+            document.getElementById('selectedPrograms').textContent = `Where Do You Get Your Programs: ${selectedPrograms}`;
+            document.getElementById('selectedGunning').textContent = `Who's Gunning for You/Your Group: ${selectedGunning}`;
+        }  else if (selectedRole === 'tech') {
+            document.getElementById('selectedSubRole').textContent = `What Kind of Tech are You: ${selectedSubRole}`;
+            document.getElementById('selectedGroup').textContent = `Got a Partner, or Do You Work Alone: ${selectedGroup}`;
+            document.getElementById('selectedPartner').textContent = ` If You Have a Partner, Who are They: ${selectedPartner}`;
+            document.getElementById('selectedWorkspace').textContent = `What's Your Workspace Like: ${selectedWorkspace}`;
+            document.getElementById('selectedClient').textContent = `Who are Some of Your Other Clients: ${selectedClient}`;
+            document.getElementById('selectedSupplies').textContent = `Where Do You Get Your Supplies: ${selectedSupplies}`;
+            document.getElementById('selectedGunning').textContent = `Who's Gunning for You/Your Group: ${selectedGunning}`;
+        }  else if (selectedRole === 'medtech') {
+            document.getElementById('selectedSubRole').textContent = `What Kind of Medtech are You: ${selectedSubRole}`;
+            document.getElementById('selectedGroup').textContent = `Got a Partner, or Do You Work Alone: ${selectedGroup}`;
+            document.getElementById('selectedPartner').textContent = ` If You Have a Partner, Who are They: ${selectedPartner}`;
+            document.getElementById('selectedWorkspace').textContent = `What's Your Workspace Like: ${selectedWorkspace}`;
+            document.getElementById('selectedClient').textContent = `Who are Some of Your Other Clients: ${selectedClient}`;
+            document.getElementById('selectedSupplies').textContent = `Where Do You Get Your Supplies: ${selectedSupplies}`;
+        } else if (selectedRole === 'media') {
+            document.getElementById('selectedSubRole').textContent = `What Kind of Media are You: ${selectedSubRole}`;
+            document.getElementById('selectedPublic').textContent = `How Does Your Work Reach the Public: ${selectedPublic}`;
+            document.getElementById('selectedEthics').textContent = `How Ethical are You: ${selectedEthics}`;
+            document.getElementById('selectedStories').textContent = `What Types of Stories Do You Want to Tell: ${selectedStories}`;
+        }  else if (selectedRole === 'exec') {
+            document.getElementById('selectedSubRole').textContent = `What Kind of Corp Do You Work For: ${selectedSubRole}`;
+            document.getElementById('selectedDivision').textContent = `What Division Do You Work In: ${selectedDivision}`;
+            document.getElementById('selectedGoodBad').textContent = ` How Good/Bad is Your Corp: ${selectedGoodBad}`;
+            document.getElementById('selectedBased').textContent = `Where is Your Corp Based: ${selectedBased}`;
+            document.getElementById('selectedGunning').textContent = `Who's Gunning for Your Group: ${selectedGunning}`;
+            document.getElementById('selectedBoss').textContent = `Current State with Your Boss: ${selectedBoss}`;
+        }  else if (selectedRole === 'lawman') {
+            document.getElementById('selectedSubRole').textContent = `What is Your Position on the Force: ${selectedSubRole}`;
+            document.getElementById('selectedJurisdiction').textContent = `How Wide is Your Group's Jurisdiction: ${selectedJurisdiction}`;
+            document.getElementById('selectedCurruption').textContent = `How Corrupt is Your Group: ${selectedCurruption}`;
+            document.getElementById('selectedGunning').textContent = `Who's Gunning for Your Group: ${selectedGunning}`;
+            document.getElementById('selectedTarget').textContent = `Who is Your Group's Major Target: ${selectedTarget}`;
+        }  else if (selectedRole === 'fixer') {
+            document.getElementById('selectedSubRole').textContent = `What Kind of Fixer are You: ${selectedSubRole}`;
+            document.getElementById('selectedGroup').textContent = `Got a Partner, or Do You Work Alone: ${selectedGroup}`;
+            document.getElementById('selectedPartner').textContent = ` If You Have a Partner, Who are They: ${selectedPartner}`;
+            document.getElementById('selectedWorkspace').textContent = `What's Your Office Like: ${selectedWorkspace}`;
+            document.getElementById('selectedClient').textContent = `Who are Some of Your Side Clients: ${selectedClient}`;
+            document.getElementById('selectedGunning').textContent = `Who's Gunning for You: ${selectedGunning}`;
+        }  else if (selectedRole === 'nomad') {
+            document.getElementById('selectedSubRole').textContent = `What Kind of nomad are You: ${selectedSubRole}`;
+            document.getElementById('selectedType').textContent = `Is Your Pack Based on Land, Air, or Sea: ${selectedType}`;
+            document.getElementById('selectedAirWhatToDo').textContent = ` If in Air, What Do They Do: ${selectedAirWhatToDo}`;
+            document.getElementById('selectedLandWhatToDo').textContent = `If on Land, What Do They Do: ${selectedLandWhatToDo}`;
+            document.getElementById('selectedSeaWhatToDo').textContent = `If at Sea, What Do They Do: ${selectedSeaWhatToDo}`;
+            document.getElementById('selectedForYourPack').textContent = `What Do You Do for Your Pack: ${selectedForYourPack}`;
+            document.getElementById('selectedPhilosophy').textContent = `What's Your Pack's Overall Philosophy: ${selectedPhilosophy}`;
+            document.getElementById('selectedGunning').textContent = `Who's Gunning for Your Pack: ${selectedGunning}`;
+        }
+
+
         // Generate PDF
         document.getElementById('generatePDF').addEventListener('click', function () {
             const { jsPDF } = window.jspdf;
@@ -162,6 +433,77 @@
                     );
                     yPosition += 10;
                 });
+            }
+
+            if (role === 'rockerboy') {
+                data.subRole = document.getElementById('selectedSubRole').value;
+                data.type = document.getElementById('selectedType').value;
+                data.soloTwo = document.getElementById('selectedSoloTwo').value;
+                data.leave = document.getElementById('selectedLeave').value;
+                data.perform = document.getElementById('selectedPerform').value;
+                data.gunning = document.getElementById('selectedGunning').value;
+            } else if (role === 'solo') {
+                data.subRole = document.getElementById('selectedSubRole').value;
+                data.compass = document.getElementById('selectedCompass').value;
+                data.territory = document.getElementById('selectedTerritory').value;
+                data.gunning = document.getElementById('selectedGunning').value;
+            } else if (role === 'netrunner') {
+                data.subRole = document.getElementById('selectedSubRole').value;
+                data.group = document.getElementById('selectedGroup').value;
+                data.partner = document.getElementById('selectedPartner').value;
+                data.workspace = document.getElementById('selectedWorkspace').value;
+                data.client = document.getElementById('selectedClient').value;
+                data.programs = document.getElementById('selectedPrograms').value;
+                data.gunning = document.getElementById('selectedGunning').value;
+            } else if (role === 'tech') {
+                data.subRole = document.getElementById('selectedSubRole').value;
+                data.group = document.getElementById('selectedGroup').value;
+                data.partner = document.getElementById('selectedPartner').value;
+                data.workspace = document.getElementById('selectedWorkspace').value;
+                data.client = document.getElementById('selectedClient').value;
+                data.supplies = document.getElementById('selectedSupplies').value;
+                data.gunning = document.getElementById('selectedGunning').value;
+            } else if (role === 'medtech') {
+                data.subRole = document.getElementById('selectedSubRole').value;
+                data.group = document.getElementById('selectedGroup').value;
+                data.partner = document.getElementById('selectedPartner').value;
+                data.workspace = document.getElementById('selectedWorkspace').value;
+                data.client = document.getElementById('selectedClient').value;
+                data.supplies = document.getElementById('selectedSupplies').value;
+            } else if (role === 'media') {
+                data.subRole = document.getElementById('selectedSubRole').value;
+                data.public = document.getElementById('selectedPublic').value;
+                data.ethics = document.getElementById('selectedEthics').value;
+                data.stories = document.getElementById('selectedStories').value;
+            } else if (role === 'exec') {
+                data.subRole = document.getElementById('selectedSubRole').value;
+                data.selectedDivision = document.getElementById('selectedDivision').value;
+                data.selectedGoodBad = document.getElementById('selectedGoodBad').value;
+                data.selectedBased = document.getElementById('selectedBased').value;
+                data.selectedGunning = document.getElementById('selectedGunning').value;
+                data.selectedBoss = document.getElementById('selectedBoss').value;
+            } else if (role === 'lawman') {
+                data.subRole = document.getElementById('selectedSubRole').value;
+                data.jurisdiction = document.getElementById('selectedJurisdiction').value;
+                data.corruption = document.getElementById('selectedCurruption').value;
+                data.gunning = document.getElementById('selectedGunning').value;
+                data.target = document.getElementById('selectedTarget').value;
+            } else if (role === 'fixer') {
+                data.subRole = document.getElementById('selectedSubRole').value;
+                data.group = document.getElementById('selectedGroup').value;
+                data.partner = document.getElementById('selectedPartner').value;
+                data.workspace = document.getElementById('selectedWorkspace').value;
+                data.client = document.getElementById('selectedClient').value;
+                data.gunning = document.getElementById('selectedGunning').value;
+            } else if (role === 'nomad') {
+                data.subRole = document.getElementById('selectedSubRole').value;
+                data.group = document.getElementById('selectedType').value;
+                data.partner = document.getElementById('selectedAirWhatToDo').value;
+                data.workspace = document.getElementById('selectedLandWhatToDo').value;
+                data.client = document.getElementById('selectedSeaWhatToDo').value;
+                data.supplies = document.getElementById('selectedForYourPack').value;
+                data.client = document.getElementById('selectedPhilosophy').value;
+                data.supplies = document.getElementById('selectedGunning').value;
             }
 
             // Add image if exists
