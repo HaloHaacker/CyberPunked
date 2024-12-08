@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Role</title>
+    <link rel="stylesheet" href="../style.css">
+    
+    <style>
+
+        body {
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 0; /* Allow content to grow and take up available space */
+            padding: 20px;
+            }
+        /* General styling for tables */
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        /* Initially hide the additional tables */
+        .additional-table {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- First Table with Radio Buttons -->
+        <div class="column-title">What Kind of Solo are You?</div>
+        <table id="roleTable">
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Type</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Bodyguard</td>
+                    <td><input type="radio" name="role" value="option1"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Street Muscle for Hire</td>
+                    <td><input type="radio" name="role" value="option2"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Corporate Enforcer who takes jobs on the side</td>
+                    <td><input type="radio" name="role" value="option3"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Corporate or Freelance Black Ops Agent</td>
+                    <td><input type="radio" name="role" value="option4"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Local Vigilante for Hire</td>
+                    <td><input type="radio" name="role" value="option5"></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Assassin/Hitman for Hire</td>
+                    <td><input type="radio" name="role" value="option6"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Second Table with Radio Buttons for Solo or Group -->
+        <div id="moralCompass" class="additional-table">
+            <div class="column-title">What's Your Moral Compass Like?</div>
+            <table id="soloGroupTable">
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Moral Compass</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Always working for good, trying to take out the "bad guys."</td>
+                        <td><input type="radio" name="compass" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Always spare the innocent (elderly, women, children, pets).</td>
+                        <td><input type="radio" name="compass" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Will occasionally slip and do unethical or bad things, but it's rare</td>
+                        <td><input type="radio" name="compass" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Ruthless and profit centered; you will work for anyone, take any job for the money.</td>
+                        <td><input type="radio" name="compass" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Willing to bend the rules (and the law) to get the job done.</td>
+                        <td><input type="radio" name="compass" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Totally evil. You engage in illegal, unethical work all the time; in fact, you enjoy it.</td>
+                        <td><input type="radio" name="compass" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tables based on Solo or Group selection -->
+        <!-- Solo Table -->
+        <div id="operationalTerritory" class="additional-table">
+            <div class="column-title">What's Your Operational Territory? </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Terrirtoy</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>A Corporate Zone</td>
+                        <td><input type="radio" name="territory" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Combat Zones</td>
+                        <td><input type="radio" name="territory" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>The whole City</td>
+                        <td><input type="radio" name="territory" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>The territory of a single Corporation</td>
+                        <td><input type="radio" name="territory" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>The territory of a particular Fixer or contact</td>
+                        <td><input type="radio" name="territory" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Wherever the money takes you</td>
+                        <td><input type="radio" name="territory" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- why did you leave Table -->
+        <div id="gunningForYou" class="additional-table">
+            <div class="column-title">Who's Gunning for You?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Who?</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>A Corporation you may have angered.</td>
+                        <td><input type="radio" name="gunningYou" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>A boostergang you may have tackled earlier.</td>
+                        <td><input type="radio" name="gunningYou" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Corrupt Lawmen or Lawmen who mistakenly think you're guilty of something.</td>
+                        <td><input type="radio" name="gunningYou" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>A rival Solo from another Corp</td>
+                        <td><input type="radio" name="gunningYou" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>A Fixer who sees you as a threat.</td>
+                        <td><input type="radio" name="gunningYou" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>A rival Solo who sees you as their nemesis.</td>
+                        <td><input type="radio" name="gunningYou" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // When a role is selected, show the second table (solo or group)
+        const roleRadios = document.querySelectorAll('input[name="role"]');
+        roleRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('moralCompass').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const moralCompassconst = document.querySelectorAll('input[name="compass"]');
+        moralCompassconst.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('operationalTerritory').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const OperationalTerritoryconst = document.querySelectorAll('input[name="territory"]');
+        OperationalTerritoryconst.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('gunningForYou').style.display = 'block'; // Show second table
+            });
+        });
+
+        // Handle submit action
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+            const selectedCompass = document.querySelector('input[name="compass"]:checked')?.value;
+            const selectedTerritory = document.querySelector('input[name="territory"]:checked')?.value;
+            const selectedGunning = document.querySelector('input[name="gunningYou"]:checked')?.value;
+
+            if (!selectedRole || !selectedCompass || !selectedTerritory || !selectedGunning) {
+                alert('Please complete all selections!');
+                return;
+            }
+
+            // Store the selections in localStorage
+            localStorage.setItem('selectedRole', selectedRole);
+            localStorage.setItem('selectedCompass', selectedCompass);
+            localStorage.setItem('selectedTerritory', selectedTerritory);
+            localStorage.setItem('selectedGunning', selectedGunning);
+
+            // Optionally, log the selected values
+            console.log('Selected Role:', selectedRole);
+            console.log('Selected Type:', selectedCompass);
+
+            // Redirect or perform other actions
+            window.location.href = '../RoleStats/soloStats.html'; // Change to your desired page
+        });
+    </script>
+</body>
+</html>

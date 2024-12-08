@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Role</title>
+    <link rel="stylesheet" href="../style.css">
+    
+    <style>
+
+        body {
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 0; /* Allow content to grow and take up available space */
+            padding: 20px;
+            }
+        /* General styling for tables */
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        /* Initially hide the additional tables */
+        .additional-table {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- First Table with Radio Buttons -->
+        <div class="column-title">What Kind of Media are You?</div>
+        <table id="roleTable">
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Type</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Blogger</td>
+                    <td><input type="radio" name="role" value="option1"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Writer (Books)</td>
+                    <td><input type="radio" name="role" value="option2"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Videographer</td>
+                    <td><input type="radio" name="role" value="option3"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Documentarian</td>
+                    <td><input type="radio" name="role" value="option4"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Investigative Reporter</td>
+                    <td><input type="radio" name="role" value="option5"></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Street Scribe</td>
+                    <td><input type="radio" name="role" value="option6"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Second Table with Radio Buttons for Solo or Group -->
+        <div id="reachThePublic" class="additional-table">
+            <div class="column-title">How Does Your Work Reach the Public?</div>
+            <table id="soloGroupTable">
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>How?</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Monthly magazine</td>
+                        <td><input type="radio" name="public" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Blog</td>
+                        <td><input type="radio" name="public" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Mainstream vid feed</td>
+                        <td><input type="radio" name="public" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>News channel</td>
+                        <td><input type="radio" name="public" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>"Book" sales</td>
+                        <td><input type="radio" name="public" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Screamsheets</td>
+                        <td><input type="radio" name="public" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tables based on Solo or Group selection -->
+        <!-- Solo Table -->
+        <div id="howEthicalIAm" class="additional-table">
+            <div class="column-title">How Ethical are You?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Ethics</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Fair, honest reporting, strong ethical practices. You only report the verifiable truth.</td>
+                        <td><input type="radio" name="ethical" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Fair and honest reporting, but willing to go on hearsay and rumor if that's what it takes.</td>
+                        <td><input type="radio" name="ethical" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Will occasionally slip and do unethical things, but it's rare. You have some standards.</td>
+                        <td><input type="radio" name="ethical" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Willing to bend any rules to get the bad guys. But only the bad guys.</td>
+                        <td><input type="radio" name="ethical" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Ruthless and determined to make it big, even if it means breaking the law. You're a muckraker.</td>
+                        <td><input type="radio" name="ethical" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Totally corrupt. You take bribes, engage in illegal, unethical reporting all the time. Your pen is for hire to the highest bidder</td>
+                        <td><input type="radio" name="ethical" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- why did you leave Table -->
+        <div id="storiesYouTell" class="additional-table">
+            <div class="column-title">What Types of Stories Do You Want to Tell?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Stories</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Political Intrigue</td>
+                        <td><input type="radio" name="stories" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Ecological Impact</td>
+                        <td><input type="radio" name="stories" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Celebrity News</td>
+                        <td><input type="radio" name="stories" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Corporate Takedowns</td>
+                        <td><input type="radio" name="stories" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Editorials</td>
+                        <td><input type="radio" name="stories" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Propaganda</td>
+                        <td><input type="radio" name="stories" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // When a role is selected, show the second table (solo or group)
+        const roleRadios = document.querySelectorAll('input[name="role"]');
+        roleRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('reachThePublic').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const reachThePublicconst = document.querySelectorAll('input[name="public"]');
+        reachThePublicconst.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('howEthicalIAm').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const OperationalTerritoryconst = document.querySelectorAll('input[name="ethical"]');
+        OperationalTerritoryconst.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('storiesYouTell').style.display = 'block'; // Show second table
+            });
+        });
+
+        // Handle submit action
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+            const selectedPublic = document.querySelector('input[name="public"]:checked')?.value;
+            const selectedEthics = document.querySelector('input[name="ethical"]:checked')?.value;
+            const selectedStories = document.querySelector('input[name="stories"]:checked')?.value;
+
+            if (!selectedRole || !selectedPublic || !selectedEthics || !selectedStories) {
+                alert('Please complete all selections!');
+                return;
+            }
+
+            // Store the selections in localStorage
+            localStorage.setItem('selectedRole', selectedRole);
+            localStorage.setItem('selectedPublic', selectedPublic);
+            localStorage.setItem('selectedEthics', selectedEthics);
+            localStorage.setItem('selectedStories', selectedStories);
+
+            // Optionally, log the selected values
+            console.log('Selected Role:', selectedRole);
+            console.log('Selected Type:', selectedPublic);
+
+            // Redirect or perform other actions
+            window.location.href = '../RoleStats/mediaStats.html'; // Change to your desired page
+        });
+    </script>
+</body>
+</html>

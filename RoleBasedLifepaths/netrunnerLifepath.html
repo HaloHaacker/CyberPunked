@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Role</title>
+    <link rel="stylesheet" href="../style.css">
+    
+    <style>
+
+        body {
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 0; /* Allow content to grow and take up available space */
+            padding: 20px;
+            }
+        /* General styling for tables */
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        /* Initially hide the additional tables */
+        .additional-table {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- First Table with Radio Buttons -->
+        <div class="column-title">What Kind of Netrunner are You?</div>
+        <table id="roleTable">
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Type</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Freelancer who will hack for hire.</td>
+                    <td><input type="radio" name="role" value="option1"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Corporate "clone runner" who hacks for the Man</td>
+                    <td><input type="radio" name="role" value="option2"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Hacktivist interested in cracking systems and exposing bad guys</td>
+                    <td><input type="radio" name="role" value="option3"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Just like to crack systems for the fun of it.</td>
+                    <td><input type="radio" name="role" value="option4"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Part of a regular team of freelancers.</td>
+                    <td><input type="radio" name="role" value="option5"></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Hack for a Media, politico, or Lawman who hires you as needed.</td>
+                    <td><input type="radio" name="role" value="option6"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Second Table with Radio Buttons for Solo or Group -->
+        <div id="soloOrGroupContainer" class="additional-table">
+            <div class="column-title">Got a Partner, or Do You Work Alone?</div>
+            <table id="soloGroupTable">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Solo</td>
+                        <td><input type="radio" name="soloOrGroup" value="solo"></td>
+                    </tr>
+                    <tr>
+                        <td>In a Group</td>
+                        <td><input type="radio" name="soloOrGroup" value="group"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="whosePartner" class="additional-table">
+            <div class="column-title">If You Have a Partner, Who are They?</div>
+            <table id="soloGroupTable">
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Who?</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Family member</td>
+                        <td><input type="radio" name="partner" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Old friend</td>
+                        <td><input type="radio" name="partner" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Possible romantic partner as well</td>
+                        <td><input type="radio" name="partner" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Secret partner who might be a rogue AI. Might.</td>
+                        <td><input type="radio" name="partner" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Secret partner with mob/gang connections</td>
+                        <td><input type="radio" name="partner" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Secret partner with Corporate connections</td>
+                        <td><input type="radio" name="partner" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Second Table with Radio Buttons for Solo or Group -->
+        <div id="workSpace" class="additional-table">
+            <div class="column-title">What's Your Workspace Like?</div>
+            <table id="soloGroupTable">
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Workspace</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>There are screens everywhere.</td>
+                        <td><input type="radio" name="workspace" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>It looks better in Virtuality, you swear</td>
+                        <td><input type="radio" name="workspace" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>It's a filthy bed covered in wires.</td>
+                        <td><input type="radio" name="workspace" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Corporate, modular, and utilitarian.</td>
+                        <td><input type="radio" name="workspace" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Minimalist, clean, and organized.</td>
+                        <td><input type="radio" name="workspace" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>It's taken over your entire living space.</td>
+                        <td><input type="radio" name="workspace" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tables based on Solo or Group selection -->
+        <!-- Solo Table -->
+        <div id="otherClients" class="additional-table">
+            <div class="column-title">Who are Some of Your Other Clients?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Who?</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Local Fixers who send you clients.</td>
+                        <td><input type="radio" name="client" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Local gangers who also protect your work area while you sweep for NET threats.</td>
+                        <td><input type="radio" name="client" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Corporate Execs who use you for "black project" work.</td>
+                        <td><input type="radio" name="client" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Local Solos or other combat types who use you to keep their personal systems secure.</td>
+                        <td><input type="radio" name="client" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Local Nomads and Fixers who use you to keep their family systems secure.</td>
+                        <td><input type="radio" name="client" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>You work for yourself and sell whatever data you can find on the NET.</td>
+                        <td><input type="radio" name="client" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="whereDoYouGetPrograms" class="additional-table">
+            <div class="column-title">Where Do You Get Your Programs?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Where?</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Dig around in old abandoned City Zones.</td>
+                        <td><input type="radio" name="programs" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Steal them from other Netrunners you brain-burn</td>
+                        <td><input type="radio" name="programs" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Have a local Fixer supply programs in exchange for hack work</td>
+                        <td><input type="radio" name="programs" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Corporate Execs supply you with programs in exchange for your services.</td>
+                        <td><input type="radio" name="programs" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>You have backdoors into a few Corporate warehouses.</td>
+                        <td><input type="radio" name="programs" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>You hit the Night Markets and score programs whenever you can.</td>
+                        <td><input type="radio" name="programs" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- why did you leave Table -->
+        <div id="gunningForYou" class="additional-table">
+            <div class="column-title">Who's Gunning for You?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Who?</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>You think it might be a rogue AI or a NET Ghost. Either way, it's bad news</td>
+                        <td><input type="radio" name="gunningYou" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Rival Netrunners who just don't like you</td>
+                        <td><input type="radio" name="gunningYou" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Corporates who want you to work for them exclusively</td>
+                        <td><input type="radio" name="gunningYou" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Lawmen who consider you an illegal "black hat" and want to bust you.</td>
+                        <td><input type="radio" name="gunningYou" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Old clients who think you screwed them over.</td>
+                        <td><input type="radio" name="gunningYou" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Fixer or another client who wants your services exclusively.</td>
+                        <td><input type="radio" name="gunningYou" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // When a role is selected, show the second table (solo or group)
+        const roleRadios = document.querySelectorAll('input[name="role"]');
+        roleRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('soloOrGroupContainer').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const soloOrGroupRadios = document.querySelectorAll('input[name="soloOrGroup"]');
+        soloOrGroupRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Hide both tables first
+                document.getElementById('workSpace').style.display = 'none';
+                document.getElementById('whosePartner').style.display = 'none';
+
+                // Show the respective table based on selection
+                if (radio.value === 'solo') {
+                    document.getElementById('workSpace').style.display = 'block';
+                } else if (radio.value === 'group') {
+                    document.getElementById('whosePartner').style.display = 'block';
+                }
+            });
+        });
+
+        const yourPartner = document.querySelectorAll('input[name="partner"]');
+        yourPartner.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('workSpace').style.display = 'block'; // Show second table
+            });
+        });
+
+
+        // When a solo/group option is selected, show the respective table
+        const theWorkspace = document.querySelectorAll('input[name="workspace"]');
+        theWorkspace.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('otherClients').style.display = 'block'; // Show second table
+            });
+        });
+
+        const yourClients = document.querySelectorAll('input[name="client"]');
+        yourClients.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('whereDoYouGetPrograms').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const yourPrograms = document.querySelectorAll('input[name="programs"]');
+        yourPrograms.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('gunningForYou').style.display = 'block'; // Show second table
+            });
+        });
+
+        // Handle submit action
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+            const selectedGroup = document.querySelector('input[name="soloOrGroup"]:checked')?.value;
+            const selectedPartner = document.querySelector('input[name="partner"]:checked')?.value;
+            const selectedWorkspace = document.querySelector('input[name="workspace"]:checked')?.value;
+            const selectedClient = document.querySelector('input[name="client"]:checked')?.value;
+            const selectedPrograms = document.querySelector('input[name="programs"]:checked')?.value;
+            const selectedGunning = document.querySelector('input[name="gunningYou"]:checked')?.value;
+
+            if (!selectedRole || !selectedWorkspace || !selectedClient || !selectedPrograms || !selectedGunning) {
+                alert('Please complete all selections!');
+                return;
+            }
+
+            // Store the selections in localStorage
+            localStorage.setItem('selectedRole', selectedRole);
+            localStorage.setItem('selectedGroup', selectedGroup);
+            localStorage.setItem('selectedPartner', selectedPartner);
+            localStorage.setItem('selectedWorkspace', selectedWorkspace);
+            localStorage.setItem('selectedClient', selectedClient);
+            localStorage.setItem('selectedPrograms', selectedPrograms);
+            localStorage.setItem('selectedType', selectedGunning);
+
+            // Optionally, log the selected values
+            console.log('Selected Role:', selectedRole);
+            console.log('Selected Type:', selectedType);
+
+            // Redirect or perform other actions
+            window.location.href = '../RoleStats/soloStats.html'; // Change to your desired page
+        });
+    </script>
+</body>
+</html>

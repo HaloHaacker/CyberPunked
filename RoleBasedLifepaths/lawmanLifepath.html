@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Role</title>
+    <link rel="stylesheet" href="../style.css">
+    
+    <style>
+
+        body {
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 0; /* Allow content to grow and take up available space */
+            padding: 20px;
+            }
+        /* General styling for tables */
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        /* Initially hide the additional tables */
+        .additional-table {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- First Table with Radio Buttons -->
+        <div class="column-title">What is Your Position on the Force</div>
+        <table id="roleTable">
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Position</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Guard</td>
+                    <td><input type="radio" name="role" value="option1"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Standard Beat or Patrol</td>
+                    <td><input type="radio" name="role" value="option2"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Criminal Investigation</td>
+                    <td><input type="radio" name="role" value="option3"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Special Weapons and Tactics</td>
+                    <td><input type="radio" name="role" value="option4"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Motor Patrol</td>
+                    <td><input type="radio" name="role" value="option5"></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Internal Affairs</td>
+                    <td><input type="radio" name="role" value="option6"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Second Table with Radio Buttons for Solo or Group -->
+        <div id="yourGroupsJurisdiction" class="additional-table">
+            <div class="column-title">How Wide is Your Group's Jurisdiction?</div>
+            <table id="soloGroupTable">
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Jurisdiction</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Corporate Zones</td>
+                        <td><input type="radio" name="jurisdiction" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Standard City Patrol Zone</td>
+                        <td><input type="radio" name="jurisdiction" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Combat Zones</td>
+                        <td><input type="radio" name="jurisdiction" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Outer City</td>
+                        <td><input type="radio" name="jurisdiction" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Recovery Zones</td>
+                        <td><input type="radio" name="jurisdiction" value="option6"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Open Highways</td>
+                        <td><input type="radio" name="jurisdiction" value="option3"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tables based on Solo or Group selection -->
+        <!-- Solo Table -->
+        <div id="howCurruptAreYou" class="additional-table">
+            <div class="column-title">How Corrupt is Your Group?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Terrirtoy</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Fair, honest policing, strong ethical practices.</td>
+                        <td><input type="radio" name="currupt" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Fair and honest policing, but hard on lawbreakers.</td>
+                        <td><input type="radio" name="currupt" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Will occasionally slip and do unethical things, but it's rare</td>
+                        <td><input type="radio" name="currupt" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Willing to bend any rules to get the bad guys.</td>
+                        <td><input type="radio" name="currupt" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Ruthless and determined to control The Street, even if it means breaking the law</td>
+                        <td><input type="radio" name="currupt" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Totally corrupt. You take bribes, engage in illegal, and unethical business all the time</td>
+                        <td><input type="radio" name="currupt" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- why did you leave Table -->
+        <div id="gunningForYou" class="additional-table">
+            <div class="column-title">Who's Gunning for Your Group?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Who?</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Organized Crime</td>
+                        <td><input type="radio" name="gunningYou" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Boostergangs</td>
+                        <td><input type="radio" name="gunningYou" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Police Accountability Group</td>
+                        <td><input type="radio" name="gunningYou" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Dirty Politicians</td>
+                        <td><input type="radio" name="gunningYou" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Smugglers</td>
+                        <td><input type="radio" name="gunningYou" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Street Criminals</td>
+                        <td><input type="radio" name="gunningYou" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- why did you leave Table -->
+        <div id="groupsMajorTarget" class="additional-table">
+            <div class="column-title">Who is Your Group's Major Target?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Who?</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Organized Crime</td>
+                        <td><input type="radio" name="target" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Boostergangs</td>
+                        <td><input type="radio" name="target" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Drug Runners</td>
+                        <td><input type="radio" name="target" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Dirty Politicians</td>
+                        <td><input type="radio" name="target" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Smugglers</td>
+                        <td><input type="radio" name="target" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Street Crime</td>
+                        <td><input type="radio" name="target" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // When a role is selected, show the second table (solo or group)
+        const roleRadios = document.querySelectorAll('input[name="role"]');
+        roleRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('yourGroupsJurisdiction').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const groupsJurisdiction = document.querySelectorAll('input[name="jurisdiction"]');
+        groupsJurisdiction.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('howCurruptAreYou').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const currption = document.querySelectorAll('input[name="currupt"]');
+        currption.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('gunningForYou').style.display = 'block'; // Show second table
+            });
+        });
+
+        const gunningFOrYa = document.querySelectorAll('input[name="gunningYou"]');
+        gunningFOrYa.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('groupsMajorTarget').style.display = 'block'; // Show second table
+            });
+        });
+
+        // Handle submit action
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+            const selectedJurisdiction = document.querySelector('input[name="jurisdiction"]:checked')?.value;
+            const selectedCurruption = document.querySelector('input[name="currupt"]:checked')?.value;
+            const selectedGunning = document.querySelector('input[name="gunningYou"]:checked')?.value;
+            const selectedTarget = document.querySelector('input[name="target"]:checked')?.value;
+
+            if (!selectedRole || !selectedJurisdiction || !selectedCurruption || !selectedGunning || !selectedTarget) {
+                alert('Please complete all selections!');
+                return;
+            }
+
+            // Store the selections in localStorage
+            localStorage.setItem('selectedRole', selectedRole);
+            localStorage.setItem('selectedJurisdiction', selectedJurisdiction);
+            localStorage.setItem('selectedCurruption', selectedCurruption);
+            localStorage.setItem('selectedGunning', selectedGunning);
+            localStorage.setItem('selectedTarget', selectedTarget);
+
+            // Optionally, log the selected values
+            console.log('Selected Role:', selectedRole);
+            console.log('Selected Type:', selectedJurisdiction);
+
+            // Redirect or perform other actions
+            window.location.href = '../RoleStats/lawmanStats.html'; // Change to your desired page
+        });
+    </script>
+</body>
+</html>

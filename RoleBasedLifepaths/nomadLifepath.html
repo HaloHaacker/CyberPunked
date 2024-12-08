@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Role</title>
+    <link rel="stylesheet" href="../style.css">
+    
+    <style>
+
+        body {
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 0; /* Allow content to grow and take up available space */
+            padding: 20px;
+            }
+        /* General styling for tables */
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        /* Initially hide the additional tables */
+        .additional-table {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- First Table with Radio Buttons -->
+        <div class="column-title">How Big is Your Pack?</div>
+        <table id="roleTable">
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Pack Size</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>A single extended tribe or family</td>
+                    <td><input type="radio" name="role" value="option1"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>A couple dozen members</td>
+                    <td><input type="radio" name="role" value="option2"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Forty or fifty members</td>
+                    <td><input type="radio" name="role" value="option3"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>A hundred or more members</td>
+                    <td><input type="radio" name="role" value="option4"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>A Blood Family (hundreds of members)</td>
+                    <td><input type="radio" name="role" value="option5"></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>An Affiliated Family (made of several Blood Families</td>
+                    <td><input type="radio" name="role" value="option6"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Second Table with Radio Buttons for Solo or Group -->
+        <div id="soloOrGroupContainer" class="additional-table">
+            <div class="column-title">Is Your Pack Based on Land, Air, or Sea?</div>
+            <table id="soloGroupTable">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Air</td>
+                        <td><input type="radio" name="soloOrGroup" value="air"></td>
+                    </tr>
+                    <tr>
+                        <td>Land</td>
+                        <td><input type="radio" name="soloOrGroup" value="land"></td>
+                    </tr>
+                    <tr>
+                        <td>Sea</td>
+                        <td><input type="radio" name="soloOrGroup" value="sea"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Second Table with Radio Buttons for Solo or Group -->
+        <div id="whatToDoInAir" class="additional-table">
+            <div class="column-title"> If in Air, What Do They Do?</div>
+            <table id="soloGroupTable">
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Type</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Air piracy</td>
+                        <td><input type="radio" name="airWhat" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Cargo transport</td>
+                        <td><input type="radio" name="airWhat" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Passenger transport</td>
+                        <td><input type="radio" name="airWhat" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Aircraft protection</td>
+                        <td><input type="radio" name="airWhat" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Smuggling</td>
+                        <td><input type="radio" name="airWhat" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Combat support</td>
+                        <td><input type="radio" name="airWhat" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+                        <!-- Second Table with Radio Buttons for Solo or Group -->
+        <div id="whatToDoInLand" class="additional-table">
+            <div class="column-title"> If on Land, What Do They Do?</div>
+            <table id="soloGroupTable">
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Type</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Gogang</td>
+                        <td><input type="radio" name="landWhat" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Passenger transport</td>
+                        <td><input type="radio" name="landWhat" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Chautauqua/school</td>
+                        <td><input type="radio" name="landWhat" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Traveling show/carnival</td>
+                        <td><input type="radio" name="landWhat" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Migrant farmers</td>
+                        <td><input type="radio" name="landWhat" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Cargo transport</td>
+                        <td><input type="radio" name="landWhat" value="option6"></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Shipment protection</td>
+                        <td><input type="radio" name="landWhat" value="option7"></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Smuggling</td>
+                        <td><input type="radio" name="landWhat" value="option8"></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Mercenary army</td>
+                        <td><input type="radio" name="landWhat" value="option9"></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Construction work gang</td>
+                        <td><input type="radio" name="landWhat" value="option10"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Second Table with Radio Buttons for Solo or Group -->
+        <div id="whatToDoInSea" class="additional-table">
+            <div class="column-title">▶ If at Sea, What Do They Do? </div>
+            <table id="soloGroupTable">
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Type</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Piracy</td>
+                        <td><input type="radio" name="seaWhat" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Cargo transport</td>
+                        <td><input type="radio" name="seaWhat" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Passenger transport</td>
+                        <td><input type="radio" name="seaWhat" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Smuggling</td>
+                        <td><input type="radio" name="seaWhat" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Combat support</td>
+                        <td><input type="radio" name="seaWhat" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Submarine warfare</td>
+                        <td><input type="radio" name="seaWhat" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tables based on Solo or Group selection -->
+        <!-- Solo Table -->
+        <div id="whattoDoForPack" class="additional-table">
+            <div class="column-title">What Do You Do for Your Pack?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Type</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Scout (negotiator)</td>
+                        <td><input type="radio" name="whatyoudoforpack" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Outrider (protection, weapons)</td>
+                        <td><input type="radio" name="whatyoudoforpack" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Transport pilot/driver</td>
+                        <td><input type="radio" name="whatyoudoforpack" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Loadmaster (large cargo mover, trucker)</td>
+                        <td><input type="radio" name="whatyoudoforpack" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Solo smuggler</td>
+                        <td><input type="radio" name="whatyoudoforpack" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Procurement (fuel, vehicles, etc.)</td>
+                        <td><input type="radio" name="whatyoudoforpack" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="packPhilosophy" class="additional-table">
+            <div class="column-title">What's Your Pack's Overall Philosophy?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Philosophy</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Always working for good; your Pack accepts others, just wants to get along</td>
+                        <td><input type="radio" name="philosophy" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>It's more like a family business. Operates as a fair and honest concern.</td>
+                        <td><input type="radio" name="philosophy" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Will occasionally slip and do unethical things, but it's rare.</td>
+                        <td><input type="radio" name="philosophy" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Willing to bend the rules whenever they get in the way to get what the Pack needs</td>
+                        <td><input type="radio" name="philosophy" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Ruthless and self-centered, willing to do some bad things if it will get the Pack ahead.</td>
+                        <td><input type="radio" name="philosophy" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Totally evil. You rage up and down the highways, killing, looting, and just terrorizing everyone.</td>
+                        <td><input type="radio" name="philosophy" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- why did you leave Table -->
+        <div id="gunningForYou" class="additional-table">
+            <div class="column-title">Who's Gunning for Your Pack?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Who?</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Organized Crime</td>
+                        <td><input type="radio" name="gunningYou" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Boostergangs</td>
+                        <td><input type="radio" name="gunningYou" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Drug Runners</td>
+                        <td><input type="radio" name="gunningYou" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Dirty Politicians</td>
+                        <td><input type="radio" name="gunningYou" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Rival Packs in the same businesses</td>
+                        <td><input type="radio" name="gunningYou" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Dirty Cops</td>
+                        <td><input type="radio" name="gunningYou" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // When a role is selected, show the second table (solo or group)
+        const roleRadios = document.querySelectorAll('input[name="role"]');
+        roleRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('soloOrGroupContainer').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const soloOrGroupRadios = document.querySelectorAll('input[name="soloOrGroup"]');
+        soloOrGroupRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Hide both tables first
+                document.getElementById('whatToDoInAir').style.display = 'none';
+                document.getElementById('whatToDoInLand').style.display = 'none';
+                document.getElementById('whatToDoInSea').style.display = 'none';
+
+                // Show the respective table based on selection
+                if (radio.value === 'air') {
+                    document.getElementById('whatToDoInAir').style.display = 'block';
+                } else if (radio.value === 'land') {
+                    document.getElementById('whatToDoInLand').style.display = 'block';
+                } else if (radio.value === 'sea') {
+                    document.getElementById('whatToDoInSea').style.display = 'block';
+                }
+            });
+        });
+
+        const airInput = document.querySelectorAll('input[name="airWhat"]');
+        airInput.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('whattoDoForPack').style.display = 'block'; // Show second table
+            });
+        });
+        const landInput = document.querySelectorAll('input[name="landWhat"]');
+        landInput.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('whattoDoForPack').style.display = 'block'; // Show second table
+            });
+        });
+        const seaInput = document.querySelectorAll('input[name="seaWhat"]');
+        seaInput.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('whattoDoForPack').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const whatYouDo = document.querySelectorAll('input[name="whatyoudoforpack"]');
+        whatYouDo.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('packPhilosophy').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const yourPacksPhilosophy = document.querySelectorAll('input[name="philosophy"]');
+        yourPacksPhilosophy.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('gunningForYou').style.display = 'block'; // Show second table
+            });
+        });
+
+        // Handle submit action
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+            const selectedType = document.querySelector('input[name="soloOrGroup"]:checked')?.value;
+            const selectedAirWhatToDo = document.querySelector('input[name="airWhat"]:checked')?.value;
+            const selectedLandWhatToDo = document.querySelector('input[name="landWhat"]:checked')?.value;
+            const selectedSeaWhatToDo = document.querySelector('input[name="seaWhat"]:checked')?.value;
+            const selectedForYourPack = document.querySelector('input[name="whatyoudoforpack"]:checked')?.value;
+            const selectedPhilosophy = document.querySelector('input[name="philosophy"]:checked')?.value;
+            const selectedGunning = document.querySelector('input[name="gunningYou"]:checked')?.value;
+
+            if (!selectedRole || !selectedType || !selectedAirWhatToDo || !selectedLandWhatToDo ||!selectedSeaWhatToDo || !selectedForYourPack || !selectedAirWhatToDo || !selectedGunning) {
+                alert('Please complete all selections!');
+                return;
+            }
+
+            // Store the selections in localStorage
+            localStorage.setItem('selectedRole', selectedRole);
+            localStorage.setItem('selectedType', selectedType);
+            localStorage.setItem('selectedAirWhatToDo', selectedAirWhatToDo);
+            localStorage.setItem('selectedLandWhatToDo', selectedLandWhatToDo);
+            localStorage.setItem('selectedSeaWhatToDo', selectedSeaWhatToDo);
+            localStorage.setItem('selectedForYourPack', selectedForYourPack);
+            localStorage.setItem('selectedPhilosophy', selectedPhilosophy);
+            localStorage.setItem('selectedGunning', selectedGunning);
+
+            // Optionally, log the selected values
+            console.log('Selected Role:', selectedRole);
+            console.log('Selected Type:', selectedType);
+
+            // Redirect or perform other actions
+            window.location.href = '../RoleStats/nomadStats.html'; // Change to your desired page
+        });
+    </script>
+</body>
+</html>

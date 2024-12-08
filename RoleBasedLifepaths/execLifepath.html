@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Role</title>
+    <link rel="stylesheet" href="../style.css">
+    
+    <style>
+
+        body {
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 0; /* Allow content to grow and take up available space */
+            padding: 20px;
+            }
+        /* General styling for tables */
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        /* Initially hide the additional tables */
+        .additional-table {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- First Table with Radio Buttons -->
+        <div class="column-title">What Kind of Corp Do You Work For?</div>
+        <table id="roleTable">
+            <thead>
+                <tr>
+                    <th>Roll</th>
+                    <th>Type</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Financial</td>
+                    <td><input type="radio" name="role" value="option1"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Media and Communications</td>
+                    <td><input type="radio" name="role" value="option2"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Cybertech and Medical Technologies</td>
+                    <td><input type="radio" name="role" value="option3"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Pharmaceuticals and Biotech</td>
+                    <td><input type="radio" name="role" value="option4"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Food, Clothing, or other General Consumables</td>
+                    <td><input type="radio" name="role" value="option5"></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Energy Production</td>
+                    <td><input type="radio" name="role" value="option6"></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Personal Electronics and Robotics</td>
+                    <td><input type="radio" name="role" value="option7"></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Corporate Services</td>
+                    <td><input type="radio" name="role" value="option8"></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Consumer Services</td>
+                    <td><input type="radio" name="role" value="option9"></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Real Estate and Construction</td>
+                    <td><input type="radio" name="role" value="option10"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Second Table with Radio Buttons for Solo or Group -->
+        <div id="yourDivisionofWork" class="additional-table">
+            <div class="column-title">What Division Do You Work In?</div>
+            <table id="soloGroupTable">
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Division</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Procurement</td>
+                        <td><input type="radio" name="division" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Manufacturing</td>
+                        <td><input type="radio" name="division" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Research and Development</td>
+                        <td><input type="radio" name="division" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Human Resources</td>
+                        <td><input type="radio" name="division" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Public Affairs/Publicity/Advertising</td>
+                        <td><input type="radio" name="division" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Mergers and Acquisitions</td>
+                        <td><input type="radio" name="division" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tables based on Solo or Group selection -->
+        <!-- Solo Table -->
+        <div id="goodOrBadIsYourCorp" class="additional-table">
+            <div class="column-title">How Good/Bad is Your Corp?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Good/Bad</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Always working for good, fully supporting ethical practices.</td>
+                        <td><input type="radio" name="good/bad" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Operates as a fair and honest business all the time.</td>
+                        <td><input type="radio" name="good/bad" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Will occasionally slip and do unethical things, but it's rare.</td>
+                        <td><input type="radio" name="good/bad" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Willing to bend the rules to get what it needs</td>
+                        <td><input type="radio" name="good/bad" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Ruthless and profit-centered, willing to do some bad things.</td>
+                        <td><input type="radio" name="good/bad" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Totally evil. Will engage in illegal, unethical business all the time.</td>
+                        <td><input type="radio" name="good/bad" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- why did you leave Table -->
+        <div id="wheresItBased" class="additional-table">
+            <div class="column-title">Where is Your Corp Based?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Where?</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>One city</td>
+                        <td><input type="radio" name="based" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Several cities</td>
+                        <td><input type="radio" name="based" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Statewide</td>
+                        <td><input type="radio" name="based" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>National</td>
+                        <td><input type="radio" name="based" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>International, offices in a few major cities</td>
+                        <td><input type="radio" name="based" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>International, offices everywhere</td>
+                        <td><input type="radio" name="based" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- why did you leave Table -->
+        <div id="gunningForYou" class="additional-table">
+            <div class="column-title">Who's Gunning for You?</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Who?</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Rival Corp in the same industry.</td>
+                        <td><input type="radio" name="gunningYou" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Law enforcement is watching you.</td>
+                        <td><input type="radio" name="gunningYou" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Local Media wants to bring you down.</td>
+                        <td><input type="radio" name="gunningYou" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Different divisions in your own company are feuding with each other</td>
+                        <td><input type="radio" name="gunningYou" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Local government doesn't like your Corp.</td>
+                        <td><input type="radio" name="gunningYou" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>International Corporations are eyeing you for a hostile takeover.</td>
+                        <td><input type="radio" name="gunningYou" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+         <!-- why did you leave Table -->
+         <div id="currentStateofBoss" class="additional-table">
+            <div class="column-title">Current State with Your Boss</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll</th>
+                        <th>Current State</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Your Boss mentors you but watch out for their enemies.</td>
+                        <td><input type="radio" name="boss" value="option1"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Your Boss gives you a free hand and doesn't want to know what you're up to</td>
+                        <td><input type="radio" name="boss" value="option2"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Your Boss is a micromanager who tries to meddle in your work.</td>
+                        <td><input type="radio" name="boss" value="option3"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Your Boss is a psycho whose unpredictable outbursts are offset by quiet paranoia.</td>
+                        <td><input type="radio" name="boss" value="option4"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Your Boss is cool and watches your back against rivals.</td>
+                        <td><input type="radio" name="boss" value="option5"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Your Boss is threatened by your meteoric rise and is planning to knife you</td>
+                        <td><input type="radio" name="boss" value="option6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+
+        <!-- Submit Button -->
+        <footer>
+            <button id="submitBtn">Next</button>
+        </footer>
+    </div>
+
+    <script>
+        // When a role is selected, show the second table (solo or group)
+        const roleRadios = document.querySelectorAll('input[name="role"]');
+        roleRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('yourDivisionofWork').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const yourDivision = document.querySelectorAll('input[name="division"]');
+        yourDivision.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('goodOrBadIsYourCorp').style.display = 'block'; // Show second table
+            });
+        });
+
+        // When a solo/group option is selected, show the respective table
+        const goodOrBadIsYourCorp = document.querySelectorAll('input[name="good/bad"]');
+        goodOrBadIsYourCorp.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('wheresItBased').style.display = 'block'; // Show second table
+            });
+        });
+
+        const whereIsYourCorpBased = document.querySelectorAll('input[name="based"]');
+        whereIsYourCorpBased.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('gunningForYou').style.display = 'block'; // Show second table
+            });
+        });
+
+        const whoseGunningyou = document.querySelectorAll('input[name="gunningYou"]');
+        whoseGunningyou.forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('currentStateofBoss').style.display = 'block'; // Show second table
+            });
+        });
+
+        // Handle submit action
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
+            const selectedDivision = document.querySelector('input[name="division"]:checked')?.value;
+            const selectedGoodBad = document.querySelector('input[name="good/bad"]:checked')?.value;
+            const selectedBased = document.querySelector('input[name="based"]:checked')?.value;
+            const selectedGunning = document.querySelector('input[name="gunningYou"]:checked')?.value;
+            const selectedBoss = document.querySelector('input[name="boss"]:checked')?.value;
+
+            if (!selectedRole || !selectedDivision || !selectedGoodBad || !selectedBased || !selectedGunning || !selectedBoss) {
+                alert('Please complete all selections!');
+                return;
+            }
+
+            // Store the selections in localStorage
+            localStorage.setItem('selectedRole', selectedRole);
+            localStorage.setItem('selectedDivision', selectedDivision);
+            localStorage.setItem('selectedTerritory', selectedGoodBad);
+            localStorage.setItem('selectedBased', selectedBased);
+            localStorage.setItem('selectedGunning', selectedGunning);
+            localStorage.setItem('selectedBoss', selectedBoss);
+
+            // Optionally, log the selected values
+            console.log('Selected Role:', selectedRole);
+            console.log('Selected Type:', selectedDivision);
+
+            // Redirect or perform other actions
+            window.location.href = '../RoleStats/execStats.html'; // Change to your desired page
+        });
+    </script>
+</body>
+</html>
