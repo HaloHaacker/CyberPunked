@@ -19,6 +19,8 @@
         <p id="selectedRole"></p>
 
         <h2>Lifepath:</h2>
+        <p id="selectedCulturalpath"></p>
+        
         
         <h2>Friends List:</h2>
         <ul id="friendsList"></ul> <!-- Display friends data here -->
@@ -36,6 +38,20 @@
 
         const selectedRole = localStorage.getItem('selectedRole');
 
+        const selectedCulturalpath = localStorage.getItem('selectedCulturalpath');
+        const selectedPersonalitypath = localStorage.getItem('selectedPersonalitypath');
+        const selectedClothingpath = localStorage.getItem('selectedClothingpath');
+        const selectedAffectationpath = localStorage.getItem('selectedAffectationpath');
+        const selectedMotivationpath = localStorage.getItem('selectedMotivationpath');
+        const selectedRelationshippath = localStorage.getItem('selectedRelationshippath');
+        const selectedmvppath = localStorage.getItem('selectedmvppath');
+        const selectedPossessionpath = localStorage.getItem('selectedPossessionpath');
+        const selectedFamilyBackgroundpath = localStorage.getItem('selectedFamilyBackgroundpath');
+        const selectedEnvironmentpath = localStorage.getItem('selectedEnvironmentpath');
+        const selectedFamilyCrisispath = localStorage.getItem('selectedFamilyCrisispath');
+        
+        
+
         // Retrieve friends data from localStorage
         const friendsData = JSON.parse(localStorage.getItem('friendsData'));
         
@@ -45,12 +61,26 @@
         document.getElementById('biography').textContent = `Biography: ${biography}`;
         document.getElementById('description').textContent = `Description: ${description}`;
         
+        
         // Display image if available
         if (imageData) {
             document.getElementById('imagePreview').src = imageData;
         }
 
         document.getElementById('selectedRole').textContent = `Role: ${selectedRole}`;
+
+        document.getElementById('selectedCulturalpath').textContent = `Cultural Origins: ${selectedCulturalpath}`;
+        document.getElementById('selectedPersonalitypath').textContent = `Your Personality: ${selectedPersonalitypath}`;
+        document.getElementById('selectedClothingpath').textContent = `Your Dress and Personal Style: ${selectedClothingpath}`;
+        document.getElementById('selectedAffectationpath').textContent = `Affectation You Are Never Without: ${selectedAffectationpath}`;
+        document.getElementById('selectedMotivationpath').textContent = `Your Motivations: ${selectedMotivationpath}`;
+        document.getElementById('selectedRelationshippath').textContent = `Your Relationships: ${selectedRelationshippath}`;
+        document.getElementById('selectedmvppath').textContent = `Most Valued Person in Your Life: ${selectedmvppath}`;
+        document.getElementById('selectedPossessionpath').textContent = `Most Valued Possession You Own: ${selectedPossessionpath}`;
+        document.getElementById('selectedFamilyBackgroundpath').textContent = `Your Original Family Background: ${selectedFamilyBackgroundpath}`;
+        document.getElementById('selectedEnvironmentpath').textContent = `Your Childhood Environment: ${selectedEnvironmentpath}`;
+        document.getElementById('selectedFamilyCrisispath').textContent = `Your Family Crisis : ${selectedFamilyCrisispath}`;
+
 
         // Display friends list if available
         const friendsListElement = document.getElementById('friendsList');
